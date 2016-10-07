@@ -1,0 +1,249 @@
+%%
+%% Template of the department Very Large Business Applications,
+%%    CvO University Oldenburg for scientific papers
+%%
+%% Created by Dipl.-Inform. Daniel Süpke
+%%    For questions, comments, suggestions etc. send an email to:
+%%    suepke@wi-ol.de or suepke@gmx.de
+%%
+%% Version: April 16, 2010
+%%
+%% Note: Has only been tested with pdflatex, not latex (dvi). Still, there is
+%% theoretical support also for latex.
+%%
+
+
+\documentclass[11pt]{scrartcl}
+
+%% packages
+\usepackage[utf8]{inputenc}       % Standard for Linux
+%\usepackage[latin1]{inputenc}    % Standard for Windows
+\usepackage{ngerman}              % For German language
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{ifpdf}
+\usepackage{setspace}             % For line spread
+
+
+
+% For pdflatex
+\ifpdf
+  % One of these two:
+  \usepackage[pdftex]{graphicx}
+  %\usepackage[pdftex]{epsfig}
+
+  \usepackage[pdftex]{hyperref}
+% For latex (dvi)
+\else
+  % One of these two:
+  \usepackage[dvips]{graphicx}
+  %\usepackage[dvips]{epsfig}
+
+  % make the command \href from hyperref available as a 'print only'
+  \newcommand{\href}[2]{#2}
+\fi
+
+
+%% Picture options
+\graphicspath{{pictures/}}         % Default path to pictures used
+\DeclareGraphicsExtensions{.png}   % More extensions can be added
+
+
+%% Pagestyle options
+\pagestyle{fancy}
+%\lhead{}
+%\chead{}
+%\rhead{}
+%\lfoot{Daniel Süpke}
+%\cfoot{}
+%\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+
+\geometry{a4paper,left=3cm,right=3cm}
+%\geometry{a4paper,left=3cm,right=2.5cm}   % Please use these settings for a PhD-thesis
+
+
+
+
+%% Document start
+\begin{document}
+
+%% Title page
+\begin{titlepage}
+  \begin{centering}
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=310pt]{CvO-Oldenburg-Logo}    % Ggf. Copyright beachten - ansonsten nur für Gebrauch an der CvO
+  \end{figure}
+
+  \vspace*{-0.8cm}
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=250pt]{VLBA_waagerecht}    % Ggf. Copyright beachten - ansonsten nur für Gebrauch an der CvO/VLBA
+  \end{figure}
+
+  \vspace*{0.4cm}
+  
+  \textsf{\Huge \textbf{Using \LaTeX\ for creating scientific papers at the VLBA Oldenburg\\}}
+
+  \vspace*{0.5cm}
+  \noindent Referat / Diplomarbeit\\
+  \emph{Bei Referaten noch mit Zusatz:} im Rahmen des..     % Insert correct type
+
+  \end{centering}
+  
+  \vspace*{1.5cm}
+  \begin{tabbing}
+  xxxxxxxxxxxxxxxx\= \kill
+  
+  % Change me
+  \small Themensteller:\> Prof. Dr.-Ing. Jorge Marx Gómez\\
+  \small Betreuer:\> Titel Vorname Name\\\\
+
+  \small Vorgelegt von: \>Name\\
+  \small \>Semesteranschrift\\
+  \small \>PLZ Wohnort:\\
+  \small \>Telefonnummer:\\
+  \small \>mustermann@uni-oldenburg.de\\\\
+
+  \small Abgabetermin:\> 99. Januar 9999
+  \end{tabbing}
+\end{titlepage}
+
+
+
+%\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\newpage
+
+
+\section*{Glossar}             % Alternatively a glossary package can be used
+\addcontentsline{toc}{section}{Glossar}
+\section*{Symbolverzeichnis}   % If needed
+\addcontentsline{toc}{section}{Symbolverzeichnis}
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\listoftables
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+\newpage
+
+%% Line spread
+\onehalfspacing
+
+
+% For large documents, instead of typing all the text inside here, it may be better
+% splitting the content in multiple files and using \include or \includeonly
+
+% Start of content
+\section{Einleitung}
+In diesem Abschnitt der Arbeit wird das Ziel formuliert, in einen größeren Zusammenhang eingeordnet und gegen andere Themen abgegrenzt. Die wichtigsten Begriffe des Themas müssen in der Einleitung präzise definiert werden; eine sorgfältige Formulierung ist hier besonders wichtig. Weiterhin können Hinweise zur verwendeten Untersuchungsmethodik gegeben werden. Durch die Darstellung des Gangs der Untersuchung kann auch die Zweckmäßigkeit der gewählten Gliederung hervorgehoben werden.  Nach Möglichkeit sollte dieses Kapitel nicht ‚Einleitung‘ heißen, sondern einen sinnvollen Titel mit Bezug zur Arbeit tragen.
+
+Das einleitende Kapitel sollte also eine Hinführung zum Thema, das Ziel der Arbeit und den Aufbau der Arbeit enthalten. Diese Ausführungen basieren auf der vom jeweiligen Diplomanden anzufertigenden Disposition.
+
+Die Erfahrung zeigt, dass ein Teil der Einleitung erst zum Schluss der Arbeit ausformuliert  werden sollte. So werden wiederholte Änderungen am Text vermieden.
+
+Zum prinzipiellen Ablauf eines Diplomarbeitsvorhabens:
+
+\begin{itemize}
+  \item Der Diplomand setzt sich mit dem Betreuer in Verbindung.
+  \item Nach maximal zwei Vorgesprächen erstellt der Diplomand eine Disposition/Proposal  und reicht diese bei seinem Betreuer ein. Die Disposition sollte ungefähr zwei Seiten Umfang haben, das Thema erläutern, das Ziel der Arbeit beschreiben und den geplanten Aufbau darlegen.
+  \item Zur eigenen Hilfestellung hat der Diplomand einen Terminplan anzugeben. Dieser enthält neben angestrebten Abgabetermin entsprechende Meilensteine (z. B. Literaturrecherche beendet; Funktionsmodellierung beendet; Prototyp fertig etc.). Die jeweiligen Meilensteine unterscheiden sich naturgemäß von Arbeit zu Arbeit. Der Terminplan kann dem Diplomanden zur Kontrolle dienen, inwieweit seine Abschätzungen bezüglich der Dauer bestimmter Tätigkeiten mit dem Ist übereinstimmen und daraus u. U. Korrekturen in der weiteren Vorgehensweise vornehmen (natürlich immer in Absprache mit dem Betreuer).
+  \item Wird die Disposition angenommen, kann die Diplomarbeit angemeldet werden.
+  \item Die Bearbeitungsdauer für Diplomarbeiten  richtet sich nach der zugrunde zu legenden Diplomprüfungsordnung.
+  \item Der maximalen Seitenumfänge des reinen Textes (ohne Verzeichnisse und Anhang) betragen:
+  \begin{itemize}
+    \item bei Diplomarbeiten 100 Seiten,
+    \item bei Individuellen Projekten/Bachelorarbeit 80 Seiten.
+    \item Von Diplomarbeiten und Individuellen Projekten/Bachelorarbeiten ist jeweils ein digitales Exemplar beim Aufgabensteller abzugeben. Für die Abgabe gedruckter Exemplare gilt die Abgabe von 3 Exemplaren an das Prüfungsamt
+  \end{itemize}
+  \item Sowohl Diplomarbeiten als auch Individuelle Projekte/Bachelorarbeiten sind im Rahmen eines Kolloquiums zu verteidigen.
+\end{itemize}
+  
+  
+\section{Erster Abschnitt des Hauptteils}
+\subsection{Allgemeine Hinweise zur Formatierung}
+Das Mischen von altern und neuer Rechtschreibung ist unzulässig. 
+
+Für die Erstellung der eigenen Arbeit kann es sinnvoll sein, dieses Dokument zu übernehmen  und kontinuierlich die beispielhaften Bereiche gegen die eigenen neuen Passagen zu ersetzen; so bleibt der Aufbau erhalten und man verliert nicht versehentlich Formatierungen o. ä. Bei der Erstellung der Gliederung der eigenen wissenschaftlichen Arbeit sollten die beiden Kriterien Vollständigkeit und Überschneidungsfreiheit beachtet werden! Auf jeder eröffneten Gliederungsebene müssen jeweils mindestens zwei Gliederungspunkte existieren, also nicht:
+
+\noindent--------\\
+2	Ist-Zustand\\
+2.1	Ist-Zustand im Unternehmen XYZ\\
+3	Soll-Konzept\\
+--------
+
+Abkürzungen im Plural (Formatvorlagen) erhalten kein nachgestelltes "`s"'. Abkürzungen wie "`PCs"' oder "`CD-ROMs"' sind unzulässig.
+
+Sollen einzelne Wörter im Text hervorgehoben werden, so ist eine kursive Hervorhebung dem Druck in fetter Schrift  vorzuziehen.
+
+\subsection{Überschriften}
+Jeder Überschrift sollte auf der tiefsten Gliederungsebene mindestens eine Seite Text folgen, davon mindestens zwei Zeilen auf derselben Seite. Es sollten nicht mehr als vier Gliederungsebenen verwendet werden. 
+
+Überschriften sollten in eine Zeile passen, damit Silbentrennungen vermieden werden können. Sollten Silbentrennungen in Ausnahmefällen erforderlich sein, ist sinngemäß zu trennen, also z.B. nicht Umweltin-formatik, sondern Umwelt-informatik.
+
+
+\subsection{Abbildungen}
+Bei der Erstellung von Abbildungen ist darauf zu achten, dass die erzeugten Grafiken selbstähnlich seien müssen, d. h. Größe, Schriftart, Schattierung, Linienart und -stärke, sowie die Art der Pfeilspitzen müssen in allen Grafiken gleich gewählt werden. Die serifenlose Schriftart Arial sollte in jedem Fall benutzt werden. Dabei sollte jedoch beachtet werden, dass auf Schatten, 3D-Effekte  und Füllbereich zunächst zu verzichten ist. Sie dienen als Hervorhebung in einigen wenigen Grafiken; der Großteil der verwendeten Grafiken enthält diese Hervorhebungen nicht.
+
+Bei der Verwendung von perspektivischen Elementen wie Schatten oder 3D-Effekt ist zu beachten, dass die Perspektive in allen Zeichnungen gleich sein sollte (z. B. Parallelperspektive nach rechts unten).
+
+Erklärende Texte sind so weit wie möglich in Text einzugeben (z. B. die Quellenangabe).
+ 
+
+\subsection{Allgemeine Hinweise}
+\subsubsection{Querverweise}
+Wird in der Arbeit auf andere Stellen (Bilder, Kapitel, Tabellen ...) verwiesen, so ist jeder Verweis immer über Querverweise zu realisieren. In \LaTeX\  sollten dazu z.B. die Befehle $\backslash$ref und $\backslash$label verwendet werden.
+
+\subsubsection{Ausdrucke}
+Beste Ergebnisse werden erzielt, wenn das Dokument immer auf demselben Drucker in derselben Auslösung ausgedruckt wird. Bei einem Wechsel der Druckertreiber ergeben sich sonst neue Seiten- und Zeilenumbrüche; auch bei einem Wechsel von einem 300dpi auf einen 600dpi Ausdruck entstehen erhebliche Unterschiede im gesamten Dokument. Durch völlig andere Zeilenumbrüche werden Trennungsfehler nicht erkannt; auch das Auffinden von zu korrigierenden Textpassagen wird durch unterschiedliche Ausdrucke erheblich erschwert. Für den endgültigen Ausdruck sind durch diese Abhängigkeit von einem speziellen Druckermodell geeignete Maßnahmen zur Gewährleistung der Verfügbarkeit  der Hardware zu ergreifen.
+
+\subsubsection{Fußnoten}
+Fußnoten werden in \LaTeX mit dem Befehl $\backslash$footnote erstellt. Dabei beginnen die einfügten Fußnoten immer mit einem Großbuchstaben und enden mit einem Punkt\footnote{Vergleiche diese Fußnote.}. Fußnoten sind Anmerkungen des Autors vorbehalten, die nicht zwingend zum Verständnis des Haupttextes erforderlich sind (somit im stringenten Argumentationsfluss des Haupttextes stören würden), jedoch für den Leser wertvolle zusätzliche Hinweise enthalten. Es kann sich dabei um Zusatzinformationen (z.B. alternative Formulierungen, Spezifika zitierter Literatur, prägnante Zitate, die im Haupttext stören würden), Erklärungen (z.B. weitere Formelinterpretationen, die jedoch vom Hauptgedankengang ablenken würden) oder Querverweise (Abschnittsverweise in der vorliegenden Arbeit oder spezifische, nicht zitierte Zusatzliteratur) handeln.
+
+Das Zitieren verwendeter Literatur erfolgt somit nicht in den Fußnoten, sondern im Haupttext unter Verwendung von $\backslash$cite und BibTeX. Es werden direkte Zitate (d. h. Text wird wörtlich – in Anführungszeichen - übernommen; Quellennachweis ohne ‚vgl.‘) und indirekte Zitate (d. h. sinngemäße Wiedergabe des Textes; Quellennachweis mit ‚vgl.‘) unterschieden. Bei Zitaten mit einer Länge von zwei Seiten wird die erste Seite und "`f."' angegeben, bei mehr als zwei Seiten wird "`ff."' verwendet. 
+
+\section{Weitere Abschnitte des Hauptteils}
+Der Hauptteil sollte in mehrere Abschnitte unterteilt werden; für die weiteren Abschnitte gelten dieselben Anforderungen, die bereits in Kapitel "`Erster Abschnitt des Hauptteils"' dargelegt wurden.
+
+\section{Schlussteil}
+Zum Schluss der Arbeit kann in dem letzten Teil eine thesenartige Zusammenfassung der Untersuchungsergebnisse gegeben werden. Andere Möglichkeiten sind hier auch der Ausblick auf weitere – noch ungelöste – Fragestellungen im Zusammenhang mit dem Thema.
+
+
+
+% Appendix
+\begin{appendix}
+
+\section{Anhang}
+Weitere Informationen werden im Anhang abgedruckt (z. B. Listings).
+
+\begin{verbatim}
+10 PRINT "Sales and Distribution"
+20 GOTO 10
+\end{verbatim}
+
+\newpage
+Das Literaturverzeichnis ist Bestandteil jeder wissenschaftlichen Arbeit. Präzise und aussagekräftige Angaben erleichtern die Recherche für spätere Leser. Die Verwendung von Zitaten oder Ideen aus anderen Arbeiten oder aus sonstigen Quellen ohne deutlichen Hinweis auf deren Ursprung stellt eines der schwersten akademischen Vergehen dar. Eine wissenschaftliche Arbeit, in der dieser Fehler wiederholt gemacht wird, wird zu Recht als Plagiat bezeichnet.
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\bibliographystyle{alpha}
+\bibliography{literatur} % Point to BibTeX literature file e.g. literatur.bib
+
+\end{appendix}
+
+
+
+\newpage
+\section*{Abschließende Erklärung}
+
+Ich versichere hiermit, dass ich meine Diplomarbeit / Individuelle Projekt ...(Titel der Arbeit)... selbständig und ohne fremde Hilfe angefertigt habe, und dass ich alle von anderen Autoren wörtlich übernommenen Stellen wie auch die sich an die Gedankengänge anderer Autoren eng anlegenden Ausführungen meiner Arbeit besonders gekennzeichnet und die Quellen zitiert habe.
+
+\vspace*{3cm}
+\noindent Oldenburg, den \today \hspace*{2cm} NAME
+
+\end{document}
