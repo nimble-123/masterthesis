@@ -1,3 +1,6 @@
+## Custom blacklistings
+material/
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
