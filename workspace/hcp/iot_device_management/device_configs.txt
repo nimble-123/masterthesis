@@ -1,0 +1,45 @@
+iOS message type id
+220292d9b5ebe8331df0
+
+iOS device type ID
+fd3aed205f85aeb49d3e
+
+Geräteregistrierungstoken
+f7f5b84915d6a3d060da7dda2e7e1fcb
+
+OAuth Token
+524bbc3bae26ed33d6d983acdb59895
+
+Device ID
+2132b78d-ee81-454e-aa01-739730a2edc2
+
+HCP IoT Services API Endpoint URL
+https://iotmmsa00badecc.hana.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/
+
+API Endpoint + Device ID
+https://iotmmsa00badecc.hana.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/2132b78d-ee81-454e-aa01-739730a2edc2
+
+HCP Shared HANA Schema
+NEO_51IAABJ5AW6OP6041RUVSQLO5
+
+Table Name
+T_IOT_220292D9B5EBE8331DF0
+
+Raspberry Pi GrovePi
+OAuth Token
+c26d8943cb9af346faa01b57ca137ac5
+
+Device ID
+61bd634e-7b91-40f8-a312-08a0ea834bca
+
+Geräteregistrierungstoken
+f3a44b42dd53c5e041a96bfdce5970
+
+RPI GPI device type id
+bb7f536173c091b4fc7e
+
+RPI GPI message type id
+bcfad6eb0476387fe51f
+
+API Endpoint + Device ID
+https://iotmmsa00badecc.hana.ondemand.com/com.sap.iotservices.mms/v1/api/http/data/61bd634e-7b91-40f8-a312-08a0ea834bca
