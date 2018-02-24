@@ -11,7 +11,7 @@
 %% Note: Has only been tested with pdflatex, not latex (dvi). Still, there is
 %% theoretical support also for latex.
 %%
-\documentclass[12pt]{scrartcl}
+\documentclass[enabledeprecatedfontcommands,12pt]{scrartcl}
 
 %% packages
 \usepackage[utf8]{inputenc}       % Standard for Linux
@@ -83,6 +83,8 @@
 
 % Insert body
 \input{chapters/40_body_a}
+\input{chapters/40_body_b}
+\input{chapters/50_body_a}
 \input{chapters/50_body_b}
 
 % Insert conclusion
