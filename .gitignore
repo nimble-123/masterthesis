@@ -1,5 +1,5 @@
 ## Custom blacklistings
-#material/
+material/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
