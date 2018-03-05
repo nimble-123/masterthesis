@@ -1,0 +1,100 @@
+%%
+%% Template of the department Very Large Business Applications,
+%%    CvO University Oldenburg for scientific papers
+%%
+%% Created by Dipl.-Inform. Daniel Süpke
+%%    For questions, comments, suggestions etc. send an email to:
+%%    suepke@wi-ol.de or suepke@gmx.de
+%%
+%% Version: April 16, 2010
+%%
+%% Note: Has only been tested with pdflatex, not latex (dvi). Still, there is
+%% theoretical support also for latex.
+%%
+\documentclass[enabledeprecatedfontcommands,12pt]{scrartcl}
+
+%% packages
+\usepackage[utf8]{inputenc}       % Standard for Linux
+%\usepackage[latin1]{inputenc}    % Standard for Windows
+\usepackage{ngerman}              % For German language
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{ifpdf}
+\usepackage{setspace}             % For line spread
+
+% For pdflatex
+\ifpdf
+  % One of these two:
+  \usepackage[pdftex]{graphicx}
+  %\usepackage[pdftex]{epsfig}
+
+  \usepackage[pdftex]{hyperref}
+% For latex (dvi)
+\else
+  % One of these two:
+  \usepackage[dvips]{graphicx}
+  %\usepackage[dvips]{epsfig}
+
+  % make the command \href from hyperref available as a 'print only'
+  \newcommand{\href}[2]{#2}
+\fi
+
+%% Picture options
+\graphicspath{{pictures/}}         % Default path to pictures used
+\DeclareGraphicsExtensions{.png}   % More extensions can be added
+
+% Hyper ref coloring
+\hypersetup{colorlinks, citecolor=black, linkcolor= black, urlcolor=black}
+
+%% Pagestyle options
+\pagestyle{fancy}
+%\lhead{}
+%\chead{}
+%\rhead{}
+%\lfoot{Daniel Süpke}
+%\cfoot{}
+%\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\geometry{a4paper,left=3cm,right=3cm}
+%\geometry{a4paper,left=3cm,right=2.5cm}   % Please use these settings for a PhD-thesis
+
+%% Document start
+\begin{document}
+    
+\pagenumbering{Roman}
+
+% Insert titlepage
+\input{chapters/00_titlepage}
+
+% Insert table of contents
+\input{chapters/10_tableofcontents}
+
+% Insert glossary, table of symbols, list of figures and list of tables
+\input{chapters/20_lists}
+
+\pagenumbering{arabic}
+
+%% Line spread
+\onehalfspacing
+
+% Insert introduction
+\input{chapters/30_introduction}
+
+% Insert body
+\input{chapters/40_problem}
+\input{chapters/50_objectives}
+\input{chapters/60_approach}
+\input{chapters/70_outline}
+
+
+% Insert conclusion
+\input{chapters/80_timetable}
+
+\pagenumbering{Roman}
+\setcounter{page}{5}
+
+% Insert appendix
+\input{chapters/90_appendix}
+
+\end{document}
