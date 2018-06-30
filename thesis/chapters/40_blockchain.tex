@@ -2,13 +2,30 @@
 In diesem Grundlagen Kapitel soll ein Verständnis für die unterschiedlichen Begriffe und Verfahren der Blockchain Technologie etabliert werden. Beginnend mit einer allgemeinen Definition des Begriffs Blockchain, werden die verschiedenen Arten von \ac{dlt} im Detail betrachtet und definiert. Eine Abgrenzung zu Kryptowährungen soll zeigen, dass Blockchain nicht gleich Kryptowährungen bedeutet. In Kapitel 2.4 wird der technologische Hintergrund erörtert und abschließend soll eine Auflistung der vorhandenen \ac{dlt} die aktuelle Herstellerlandschaft zeigen.
 
 \subsection{Definition}
-Unter dem Begriff Blockchain wird eine Technologie verstanden, die eine erweiterbare Liste von Datensätzen bildet. Jeder Eintrag in dieser Liste wird Block genannt und ist durch kryptographische Methoden untereinander verkettet. Als Inhalt besitzt jeder Block einen kryptographischen Hashwert des vorhergehenden Blocks, sowie einen Zeitstempel und die eigentlichen Daten.\cite[Vgl.]{narayanan2016bitcoin}\\
-Technisch ist eine Blockchain also eine Art dezentrale Datenbank. Das Netzwerk aus Teilnehmern der Blockchain entscheidet im Konsens welcher Block (Datensatz) valide ist und der Gesamtmenge an Blöcken (Datenbank) angehangen wird. Zur Konsensbildung werden spezielle Algorithmen verwendet, um einen sog. byzantinischen Fehler zu verhindern. Durch die Vielzahl der Teilnehmer kann das mögliche Fehlermodell bei der Konsensbildung sehr komplex und schwer zu erfassen sein. Darauf beziehen sich byzantinische Fehler und die vorhandenen Lösungsansätze.\\
-Der Oberbegriff \acf{dlt} wird in diesem Kontext gleichermaßen Synonym verwendet. Jedoch muss nicht zwingend jedes \glqq Distributed Ledger\grqq{} eine Blockchain als technische Grundlage verwenden. Viele unterschiedliche Ansätze werden aktuell in der Forschung und freien Marktwirtschaft erprobt und auf ihre Eigenschaften hin untersucht.\\
-Das hohe Maß an Sicherheit, welches mit dem Begriff Blockchain assoziert wird, wird durch die Signierung der Blöcke und Transaktionen mit dem Public-Key-Verfahren garantiert. Auf dieses kryptographische Verfahren wird in Kapitel \ref{tec_bkgrnd_sec} näher eingegangen.\cite[Vgl.]{Mitschele2018}
+Unter dem Begriff Blockchain wird eine Technologie verstanden, die eine erweiterbare Liste von Datensätzen bildet. Jeder Eintrag in dieser Liste wird Block genannt und ist durch kryptographische Methoden untereinander verkettet. Als Inhalt besitzt jeder Block einen kryptographischen Hashwert des vorhergehenden Blocks, sowie einen Zeitstempel und die eigentlichen Daten.\cite[Vgl.]{narayanan2016bitcoin} (Abbildung \ref{fig:simple-blockchain-schema})
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{pictures/simple-blockchain-schema}
+	\caption[Vereinfachte Darstellung einer Blockchain]{Vereinfachte Darstellung einer Blockchain\cite{Gayvoronskaya2017}}
+	\label{fig:simple-blockchain-schema}
+\end{figure}
+
+Technisch ist eine Blockchain also eine Art dezentrale Datenbank. Das Netzwerk aus Teilnehmern der Blockchain entscheidet im Konsens welcher Block (Datensatz) valide ist und der Gesamtmenge an Blöcken (Datenbank) angehangen wird. Zur Konsensbildung werden spezielle Algorithmen verwendet, um einen sog. byzantinischen Fehler zu verhindern. Durch die Vielzahl der Teilnehmer kann das mögliche Fehlermodell bei der Konsensbildung sehr komplex und schwer zu erfassen sein. Darauf beziehen sich byzantinische Fehler und die vorhandenen Lösungsansätze.
+
+Der Oberbegriff \acf{dlt} wird in diesem Kontext gleichermaßen Synonym verwendet. Jedoch muss nicht zwingend jedes \glqq Distributed Ledger\grqq{} eine Blockchain als technische Grundlage verwenden. Viele unterschiedliche Ansätze werden aktuell in der Forschung und freien Marktwirtschaft erprobt und auf ihre Eigenschaften hin untersucht.
+
+Das hohe Maß an Sicherheit, welches mit dem Begriff Blockchain assoziert wird, wird durch die Signierung der Blöcke und Transaktionen mit dem Public-Key-Verfahren garantiert. Auf dieses kryptographische Verfahren wird in Kapitel \ref{tec_bkgrnd_sec} näher eingegangen. In klassischen verteilten Datenbanken oder Systemen hat eine zentrale Organisation oder Kontrolleinheit als einzige die Möglichkeit den Datenbestand in einem konsistenten Zustand zu halten. Viel mehr ist diese zentrale Organisation der Vertrauensgeber des Systems - ohne Schutz vor Missbrauch. Um einem Missbrauch vorzubeugen sind \ac{dlt} dezentral organisiert. Dies bedeutet das es keine zentrale Einheit benötigt um Vertrauen über die Korrektheit der Transaktionen herzustellen.\cite[Vgl.]{Mitschele2018} (Abbildung \ref{fig:change-in-transaction-model-blockchain})
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.81\linewidth]{pictures/change-in-transaction-model-blockchain}
+	\caption[Veränderung des Transaktionsmodells durch die Blockchain]{Veränderung des Transaktionsmodells durch die Blockchain\cite{Kastrati2016}}
+	\label{fig:change-in-transaction-model-blockchain}
+\end{figure}
+
+Die älteste sich noch in Betrieb befindliche \ac{dlt} ist die Blockchain der Kryptowährung \ac{btc}.
 
 \subsection{Arten von \acl{dlt}}
-
+Neben dem Blockchain Ansatz existieren noch weitere Ideen eines \ac{dlt}. Die aktuell am weitesten fortgeschrittenen Projekte sind der sog. \glqq Tangle\grqq{} von der Iota Foundation und die \glqq HashGraph\grqq{} genannte Technologie von Leemon Baird.\cite{Baird2016} Außerdem lassen sich \ac{dlt} in öffentlich-, privat- und konsortium Geführte Lösungen kategorisieren. Einige Ansätze lassen sich zu mehr als einer Kategorie zuordnen. Dies wird in den folgenden Unterkapiteln näher untersucht.
 
 \subsubsection{Blockchain}
 \begin{figure}[h!]
