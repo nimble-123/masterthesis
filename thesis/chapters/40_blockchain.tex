@@ -1,4 +1,4 @@
-\section{Blockchain}
+\section{Grundlagen Distributed Ledger Technology}
 In diesem Grundlagen Kapitel soll ein Verständnis für die unterschiedlichen Begriffe und Verfahren der Blockchain Technologie etabliert werden. Beginnend mit einer allgemeinen Definition des Begriffs Blockchain, werden die verschiedenen Arten von \ac{dlt} im Detail betrachtet und definiert. Eine Abgrenzung zu Kryptowährungen soll zeigen, dass Blockchain nicht gleich Kryptowährungen bedeutet. In Kapitel 2.4 wird der technologische Hintergrund erörtert und abschließend soll eine Auflistung der vorhandenen \ac{dlt} die aktuelle Herstellerlandschaft zeigen.
 
 \subsection{Definition}
@@ -24,52 +24,11 @@ Das hohe Maß an Sicherheit, welches mit dem Begriff Blockchain assoziert wird, 
 
 Die älteste sich noch in Betrieb befindliche \ac{dlt} ist die Blockchain der Kryptowährung \ac{btc}.
 
-\subsection{Arten von \acl{dlt}}
-Neben dem Blockchain Ansatz existieren noch weitere Ideen eines \ac{dlt}. Die aktuell am weitesten fortgeschrittenen Projekte sind das Ethereum Projekt, der sog. \glqq Tangle\grqq{} von der Iota Foundation und die \glqq HashGraph\grqq{} genannte Technologie von Leemon Baird.\cite{Baird2016} Außerdem lassen sich \ac{dlt} in öffentlich-, privat- und konsortium Geführte Lösungen kategorisieren. Einige Ansätze lassen sich zu mehr als einer Kategorie zuordnen. Dies wird in den folgenden Unterkapiteln näher untersucht.
-
-\subsubsection{Blockchain}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\linewidth]{pictures/placeholder_half_page}
-	\caption[Placeholder Half Page]{Placeholder Half Page}
-	\label{fig:placeholder_half_page}
-\end{figure}
-
-
-\subsubsection{Tangle}
-
-
-\subsubsection{Hash Graph}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\linewidth]{pictures/placeholder_half_page}
-	\caption[Placeholder Half Page]{Placeholder Half Page}
-	\label{fig:placeholder_half_page}
-\end{figure}
-
-
-\subsubsection{Public}
-
-
-\subsubsection{Private}
-
-
-\subsubsection{Consortium}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\linewidth]{pictures/dlt-type-matrix}
-	\caption[DLT Type Matrix]{DLT Type Matrix}
-	\label{fig:dlt-type-matrix}
-\end{figure}
-
-\subsection{Abgrenzung Kryptowährungen}
-
-
 \subsection{Technologischer Hintergrund}
-
+Der technologische Hintergrund bei DLT hat verschiedene Fundamente. Sicherheit wird durch Kryptographie hergestellt. Insbesondere werden digitale Signaturen verwendet um Transaktionen fälschungssicher zu erzeugen und über das Netzwerk zu verteilen. Unterschiedlichste Konsensalgorithmen kommen zum Einsatz um ein Konsistenten Zustand zu garantieren. Das Netzwerk selbst ist ein Peer-to-Peer Netzwerk. Ein Netzwerk, dass auf dem normalen Internet aufsetzt und operiert. Außerdem bietet DLT die möglichkeit des verteilten Computing durch sog. Smart Contracts die im Netzwerk gespeichert und von diesem auch ausgeführt werden.
 
 \subsubsection{Sicherheit} \label{tec_bkgrnd_sec}
-
+Sicherheit ist eines der Hauptmerkmale einer DLT. Zum einen müssen die Konten bzw. Accounts der Teilnehmer ausreichend geschützt sein vor Missbrauch oder Diebstahl. Zum anderen müssen Transaktionen zwischen Teilnehmern so gesichert sein, dass alle Teilnehmer im Netzwerk die authentizität prüfen können ohne die Parteien der Transaktion direkt kennen zu müssen. Diese Anforderungen werden durch kryptographische Methoden sichergestellt die nachfolgend näher ausgeführt werden.
 
 \paragraph{Public-Key Authorization}
 \begin{figure}[h!]
@@ -78,18 +37,17 @@ Neben dem Blockchain Ansatz existieren noch weitere Ideen eines \ac{dlt}. Die ak
 	\caption[Placeholder Half Page]{Placeholder Half Page}
 	\label{fig:placeholder_half_page}
 \end{figure}
-
+- Verwendete Algorithmen
+- Public Keys
+- Private Keys
+- Multi-Sig
 
 \paragraph{Hashing Algorithmus}
+- Algorithmen
+- Allgemeine Erklärung Hash Funktion
 
-
-\subsubsection{Consensus Algorithmus}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\linewidth]{pictures/placeholder_half_page}
-	\caption[Placeholder Half Page]{Placeholder Half Page}
-	\label{fig:placeholder_half_page}
-\end{figure}
+\subsubsection{Konsensalgorithmen}
+byzantinische Fehler als Ursprung des Konsensproblems. Verschiedene Ansätze vorhanden um dieses Problem zu lösen. Darunter Proof-of-Work (Bitcoin), Proof-of-Stake (Ethereum nach Caspar), Delegated Proof-of-Stake (EOS).
 
 
 \paragraph{Proof-of-Work}
@@ -113,17 +71,70 @@ Neben dem Blockchain Ansatz existieren noch weitere Ideen eines \ac{dlt}. Die ak
 \paragraph{Delegated Proof-of-Stake}
 
 
-\subsubsection{Peer-to-Peer Netzwerke}
+\subsubsection{Netzwerke}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1.0\linewidth]{pictures/placeholder_half_page}
 	\caption[Placeholder Half Page]{Placeholder Half Page}
 	\label{fig:placeholder_half_page}
 \end{figure}
+- Herkunft
+- Technologie
 
+\paragraph{Peer-to-peer Netzwerke}
+
+\paragraph{Business Netzwerke}
 
 \subsubsection{Distributed Computing}
 
+
+\subsection{Ausprägungen von \acl{dlt}}
+Neben dem Blockchain Ansatz existieren noch weitere Ideen eines \ac{dlt}. Die aktuell am weitesten fortgeschrittenen Projekte sind das Ethereum Projekt, der sog. \glqq Tangle\grqq{} von der Iota Foundation und die \glqq HashGraph\grqq{} genannte Technologie von Leemon Baird.\cite{Baird2016} Außerdem lassen sich \ac{dlt} in öffentlich-, privat- und konsortium Geführte Lösungen kategorisieren. Einige Ansätze lassen sich zu mehr als einer Kategorie zuordnen. Dies wird in den folgenden Unterkapiteln näher untersucht.
+
+\subsubsection{Blockchain}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{pictures/placeholder_half_page}
+	\caption[Placeholder Half Page]{Placeholder Half Page}
+	\label{fig:placeholder_half_page}
+\end{figure}
+- Herkunft
+- Technologie
+
+\subsubsection{Tangle}
+- Herkunft
+- Technologie
+
+\subsubsection{Hash Graph}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{pictures/placeholder_half_page}
+	\caption[Placeholder Half Page]{Placeholder Half Page}
+	\label{fig:placeholder_half_page}
+\end{figure}
+- Herkunft
+- Technologie
+
+\subsubsection{Public}
+- Vorteile
+- Nachteile
+
+\subsubsection{Private}
+- Vorteile
+- Nachteile
+
+\subsubsection{Consortium}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{pictures/dlt-type-matrix}
+	\caption[DLT Type Matrix]{DLT Type Matrix}
+	\label{fig:dlt-type-matrix}
+\end{figure}
+- Vorteile
+- Nachteile
+
+\subsection{Abgrenzung Kryptowährungen}
+Blockchain ist nicht gleich Bitcoin. Mit dem Bitcoin Protokoll wurde die erste Blockchain verwendet. Erfinder ist bis heute unbekannt. Auszüge Whitepaper
 
 \subsection{Vorhandene Distributed Ledger}
 
