@@ -1,21 +1,25 @@
 \section{Motivation}
 
-Lebensmittelsicherheit ist strategisch für die Volksgesundheit und das Wohlbefinden der Gesellschaft. Der öffentliche Druck auf Hersteller für eine ausreichende Kennzeichnung von Produkten und ihre Bestandteile wird stetig größer.\\
+Lebensmittelsicherheit ist strategisch für die Volksgesundheit und das Wohlbefinden der Gesellschaft. Der öffentliche Druck auf Hersteller für eine ausreichende Kennzeichnung von Produkten und ihre Bestandteile wird stetig größer.\cite[vgl.]{EU2002}\\
 
-Vom Rohstofflieferanten bis zum Endkunden gibt es ein Netz von Marktteilnehmern, die nur locker gekoppelt sind. Es gibt de facto kein Standard Informationsaustausch Verfahren. In der Fleischwarenindustrie zum Beispiel existieren weit über 140 unterschiedliche Austauschformate zwischen den Teilnehmern der Lieferkette. So basiert die Echtheit der ausgetauschten Daten im Zweifel auf dem Glaube der Marktteilnehmer.\\
+Vom Rohstofflieferanten bis zum Endkunden gibt es ein Netz von Marktteilnehmern, die bzgl. des Informationsaustausches nur locker gekoppelt sind. Es gibt de facto kein Standard Informationsaustauschverfahren. In der Fleischwarenindustrie beispielsweise existieren weit über 140 unterschiedliche Austauschformate zwischen den Teilnehmern der Lieferkette. So basiert die Echtheit und Verlässlichkeit der ausgetauschten Daten im Zweifel auf dem Glaube der einzelnen Marktteilnehmer.\\
 
-Zum jetzigen Zeitpunkt findet eine Chargenrückverfolgung fast ausschließlich durch einen Datei-Austausch bzw. eine zentrale Datenbank je Teilnehmer der Lieferkette statt. Dabei müssen Informationen für einen mehrstufigen Produktionsporozess bereitgestellt und verarbeitet werden.\\
+Zum jetzigen Zeitpunkt (Stand 2019) findet eine Chargenrückverfolgung fast ausschließlich durch einen Datei-Austausch bzw. eine zentrale Datenbank je Teilnehmer der Lieferkette statt. Dabei müssen Informationen für einen mehrstufigen Produktionsporozess bereitgestellt und verarbeitet werden.\\
 
-Grafik Züchter -> Mäster -> Schlachter -> Zerlegung -> Produktion -> Großhandel -> Einzelhandel -> Endkunde
-Externe Dienstleister\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1.0\linewidth]{pictures/Lieferkette-schematisch}
+	\caption[Schematische Darstellung einer Lieferkette in der Fleischwarenindustrie]{Schematische Darstellung einer Lieferkette in der Fleischwarenindustrie\cite[vgl.]{CIOWSCE2019} (eigene Darstellung)}
+	\label{fig:lieferkette-schematisch}
+\end{figure}
 
-Abbildung XYZ zeigt schematisch eine Lieferkette innerhalb der Fleischwarenindustrie. Der Abbildung ist zu entnehmen, dass es keine zentrale \glqq Clearing Stelle\grqq{} bzw. Supervisor gibt, welche sämtliche Transaktionen kontrolliert bzw. verifiziert.\\
+Abbildung \ref{fig:lieferkette-schematisch} zeigt schematisch eine Lieferkette innerhalb der Fleischwarenindustrie. Der Abbildung ist zu entnehmen, dass es keine zentrale \glqq Clearing Stelle\grqq{} bzw. Supervisor gibt, welche sämtliche Transaktionen kontrolliert bzw. verifiziert.\\
 
-Aus der geringen Gewinnmarge von -1\% bis +1,5\% Umsatzrendite kann es zu Unregelmäßigkeiten kommen.\cite{CIOWSCE2019}\cite{CIOMuehlenhof2019} Falsch etikettierte Ware wie zum Beispiel Pferdefleisch in Hamburger Patties oder Lasagne.\cite[vgl.]{Bundespartei}\\
+Aus der geringen Gewinnmarge von -1\% bis +1,5\% Umsatzrendite kann es zu Unregelmäßigkeiten kommen.\cite{CIOWSCE2019}\cite{CIOMuehlenhof2019} Beispiel: Falsch etikettierte Ware wie Pferdefleisch in Hamburger Patties oder Lasagne.\cite[vgl.]{Bundespartei}\\
 
-Benötigt wird eine verlässliche Basis, grade auch dann, wenn Futtermittel- und Logistik-Informationen unter allen Marktteilnehmern ausgetauscht werden müssen. Grundlage dafür ist die EU-Verordnung 178/02 (insbesondere Artikel 18 und 19), die die Notwendigkeit beschreibt, dass jeder in einer Lieferkette befindliche Teil der Lieferkette dafür verantwortlich ist nachzuweisen, von wem er seine Waren bezogen und an wen er seine Waren geliefert hat.\cite[vgl.]{EU2002}\\
+Um eine formal korrekte Identitätskette aufzubauen, wird eine verlässliche Basis, grade auch dann, wenn Futtermittel- und Logistik-Informationen unter allen Marktteilnehmern ausgetauscht werden müssen. Grundlage dafür ist die EU-Verordnung 178/02 (insbesondere Artikel 18 und 19), die die Notwendigkeit beschreibt, dass jeder in einer Lieferkette befindliche Teil der Lieferkette dafür verantwortlich ist nachzuweisen, von wem er seine Waren bezogen und an wen er seine Waren geliefert hat.\cite[vgl.]{EU2002}\\
 
-Die Blockchain Technologie könnte in dieser Situation behilflich sein. Eine Blockchain ist ein dezentrales System zur manipulationssicheren Speicherung von Informationen in sog. Blöcken die untereinander durch kryptographische Methoden verkettet sind - daher auch der Name Blockchain. Änderungen und Erzeugung von neuen Datensätzen sind nur möglich, wenn das gesamte Netzwerk eine solche Transaktion validiert und verifizert hat. Dazu werden verschiedenste Verfahren zur Konsensbildung innerhalb des Netzwerks angewandt.\\
+Der Einsatz von Blockchain Technologie könnte in dieser Situation eine Lösung darstellen. Eine Blockchain ist ein dezentrales System zur manipulationssicheren Speicherung von Informationen in sog. Blöcken die untereinander durch kryptographische Methoden verkettet sind - daher auch der Name Blockchain. Änderungen und Erzeugung von neuen Datensätzen sind nur möglich, wenn das gesamte Netzwerk eine solche Transaktion validiert und verifizert hat. Dazu werden verschiedenste Verfahren zur Konsensbildung innerhalb des Netzwerks angewandt.\\
 
 % \glqq Es ist davon auszugehen, dass wir in ein bis zwei Jahrzehnten wirtschaftlich über Mechanismen miteinander interagieren werden, für die wir bislang weder Konzepte noch Begriffe haben.\grqq{} \cite[S.~92]{Platzer2014} Auch die Deutsche Bundesregierung ist an der Blockchain Technologie interessiert und erwägt den Einsatz in der Zukunft für die unterschiedlichsten Services. In einer der jüngsten Pressemitteilungen hat der Blockchain Bundesverband mitgeteilt, dass die Regierung eine umfassende Strategie zum Umgang und Einsatz der Technologie erarbeiten will. \cite{BCBundesverband2018}
 
@@ -26,7 +30,7 @@ Die Blockchain Technologie könnte in dieser Situation behilflich sein. Eine Blo
 	\label{fig:gartner-hype-cycle-2017}
 \end{figure}
 
-Noch ist die Blockchain jedoch kein Alltag, bemessen am jährlich erscheinenden Hype Cycle des Marktforschungsinstituts Gartner, Inc. $( Abb.~ \ref{fig:gartner-hype-cycle-2017} )$ hat die Technologie noch fünf bis zehn Jahre Entwicklungszeit vor sich. Erst dann wird sie nach aktueller Einschätzung im produktiven Einsatz sein.\\
+Aktuell ist die Blockchain jedoch noch kein industrieller Standard oder verbreitet im Einsatz, bemessen am jährlich erscheinenden Hype Cycle des Marktforschungsinstituts Gartner, Inc. $( Abb.~ \ref{fig:gartner-hype-cycle-2017} )$ hat die Technologie noch fünf bis zehn Jahre Entwicklungszeit vor sich. Erst dann wird sie nach aktueller Einschätzung im produktiven Einsatz sein.\\
 
 Bereits heute zeigen sich signifikante Unterschiede zwischen den unzähligen Blockchains die in Pilotprojekten realisiert wurden. So gibt es Anwendungen der Blockchain um beispielsweise den Kilometerstand eines Fahrzeugs täglich \glqq in die Blockchain\grqq~ zu schreiben. Die inhärenten Eigenschaften der Blockchain ermöglichen es sehr einfach festzustellen, ob ein Kilometerstand nachträglich durch Fremdeinwirkung manipuliert wurde. Ebenfalls ist keine zentrale \glqq Clearing Stelle\grqq{} bzw. Supervisor mehr nötig, um für die Echtheit des hinterlegten Wertes zu garantieren. \cite{carVertical}\\
 
