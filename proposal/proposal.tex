@@ -22,6 +22,9 @@
 \usepackage{ifpdf}
 \usepackage{setspace}             % For line spread
 \usepackage[printonlyused, withpage, smaller]{acronym}
+\usepackage[authoryear, round, sort]{natbib}
+\usepackage{csquotes}
+\renewcommand{\mkbegdispquote}[2]{\itshape}
 
 % For pdflatex
 \ifpdf
@@ -84,8 +87,8 @@
 
 % Insert body
 \input{chapters/40_problem}
-\input{chapters/50_objectives}
-\input{chapters/60_approach}
+\input{chapters/50_approach}
+\input{chapters/60_objectives}
 \input{chapters/70_outline}
 
 

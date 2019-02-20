@@ -1,37 +1,57 @@
 \section{Problemstellung}
 
-Die Arbeit beschäftigt sich mit dem Problem der zeitnahen und transparenten Rückverfolgung von Chargen und Einzelprodukten über den gesamten Verlauf der Wertschöpfungskette in Produktionsnetzwerken.\\
+Wie lässt sich der in Abschnitt \ref{Motivation} beschriebenen Entwicklung entgegen wirken?
 
-Die wissenschaftliche Fragestellung der Arbeit lautet daher: Kann die Blockchain Technologie den Prozess der Rückverfolgung von Chargen und/oder individuellen Produkten von der Rohstoffgewinnung bis hin zum letztendlichen Verkauf an den Endverbraucher für alle Teilnehmer der Wertschöpfungskette transparenter und sicherer gestalten?\\
+Um eine formal korrekte Identitätskette aufzubauen, wird eine verlässliche Basis, grade auch dann, wenn Futtermittel- und Logistik-Informationen unter allen Marktteilnehmern ausgetauscht werden müssen benötigt. Grundlage dafür ist die EU-Verordnung 178/02 (insbesondere Artikel 18 und 19), die die Notwendigkeit beschreibt, dass jeder in einer Lieferkette befindliche Teil der Lieferkette dafür verantwortlich ist nachzuweisen, von wem er seine Waren bezogen und an wen er seine Waren geliefert hat \citep{EPER2002}.\\
 
-Dafür ist zu klären,
+Der Einsatz von Blockchain Technologie könnte in dieser Situation eine Lösung darstellen. Eine Blockchain ist ein dezentrales System zur manipulationssicheren Speicherung von Informationen in sog. Blöcken die untereinander durch kryptographische Methoden verkettet sind - daher auch der Name Blockchain. Änderungen und Erzeugung von neuen Datensätzen sind nur möglich, wenn das gesamte Netzwerk eine solche Transaktion validiert und verifizert hat. Dazu werden verschiedenste Verfahren zur Konsensbildung innerhalb des Netzwerks angewandt \citep[siehe auch][]{Nakamoto2009, Buterin2014, Cardano2017, carVertical}.\\
 
-\begin{enumerate}
-  \item ob mit der Blockchain Technologie eine Abbildung von komplexen Trenn- und Mischprozessen realisiert werden kann.
-  \item Ob Informationen über Teilprozesse zusammengefasst werden können bei gleichbleibender Transparenz für andere Teilnehmer - Rezepturgeheimnisse müssen geschützt bleiben im Fall der Fleischwarenindustrie.
-  \item Ob ein Blockchain System gewisse Unschärfe-/Abstraktions-Funktionen realisieren kann zum Schutz der Marktteilnehmer.
-  \item Und ob eine Möglichkeit exisitert, dass auch externe Dienstleister, die Teil des Prozesses eines Teilnehmers der Lieferkette sind, mit eingebunden werden können ohne das Informationen verfälscht werden. Beispielsweise durch den Einsatz von multiplen Blockchains die untereinander wieder einen konsisten und sicheren Datenaustausch ermöglichen. (siehe Abbildung \ref{fig:multi-blockchain-example})
-\end{enumerate}
+% \glqq Es ist davon auszugehen, dass wir in ein bis zwei Jahrzehnten wirtschaftlich über Mechanismen miteinander interagieren werden, für die wir bislang weder Konzepte noch Begriffe haben.\grqq{} \citep[S.~92]{Platzer2014} Auch die Deutsche Bundesregierung ist an der Blockchain Technologie interessiert und erwägt den Einsatz in der Zukunft für die unterschiedlichsten Services. In einer der jüngsten Pressemitteilungen hat der Blockchain Bundesverband mitgeteilt, dass die Regierung eine umfassende Strategie zum Umgang und Einsatz der Technologie erarbeiten will. \citep{BCBundesverband2018}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\linewidth]{pictures/Multi-Blockchain-Example}
-	\caption[Multiple Blockchains innerhalb der Lieferkette]{Multiple Blockchains innerhalb der Lieferkette (eigene Darstellung)}
-	\label{fig:multi-blockchain-example}
+	\includegraphics[width=0.65\linewidth]{pictures/Gartner-Hype-Cycle-2017}
+	\caption[Gartner Hype Cycle 2017]{Emerging Technologies Hype Cycle 2017\citep{Gartner2017}}
+	\label{fig:gartner-hype-cycle-2017}
 \end{figure}
 
-%Soll die Blockchain Technologie zum Einsatz kommen gibt es offene Fragen. Eine Blockchain ist keine Silberkugel für sämtliche betriebswirtschaftliche Prozesse. Viel mehr kann eine Blockchain als Skalpell dienen um präzise ein bestimmtes Problem zu lösen.\\
+Aktuell ist die Blockchain jedoch noch kein industrieller Standard oder verbreitet im Einsatz, bemessen am jährlich erscheinenden Hype Cycle des Marktforschungsinstituts Gartner, Inc. $( Abb.~ \ref{fig:gartner-hype-cycle-2017} )$ hat die Technologie noch fünf bis zehn Jahre Entwicklungszeit vor sich. Erst dann wird sie nach aktueller Einschätzung im produktiven Einsatz sein.\\
 
-%\begin{itemize}
-%	\item Technologie ist so neu und frisch verfügbar im Industriekontext
-%	\item Ermittlung und Definition möglicher Geschäftsprozesse der Energiewirtschaft
-%	\item Vorhandene Lösungen am Markt vergleichen für den Einsatz
-%	\item Mehrwert eines DLT-basierten Geschäftsprozesses herausarbeiten
-%	\item Spieltheorie neue Geschäftsfelder Blockchain
-%\end{itemize}
+Bereits heute zeigen sich signifikante Unterschiede zwischen den unzähligen Blockchains die in Pilotprojekten realisiert wurden. So gibt es Anwendungen der Blockchain um beispielsweise den Kilometerstand eines Fahrzeugs täglich \glqq in die Blockchain\grqq~ zu schreiben. Die inhärenten Eigenschaften der Blockchain ermöglichen es sehr einfach festzustellen, ob ein Kilometerstand nachträglich durch Fremdeinwirkung manipuliert wurde. Ebenfalls ist keine zentrale \glqq Clearing Stelle\grqq{} bzw. Supervisor mehr nötig, um für die Echtheit des hinterlegten Wertes zu garantieren. \citep{carVertical}\\
 
-%Video [Wir und die Blockchain (The Blockchain and Us) (2017) - Deutsche Synchronfassung/German version - YouTube](\url{https://www.youtube.com/watch?v=x2mKDWsNijo})
+% Bitcoin war die erste Generation von Blockchain. Die Bitcoin Blockchain ist in der Lage Einheiten der Bitcoin Währung zwischen zwei Parteien zu versenden ohne das eine Bank oder eine Clearingstelle diese Transaktion validieren muss. \citep{Nakamoto2009} Ethereum war die zweite Generation einer Blockchain. Im Vergleich zur Bitcoin Blockchain lassen sich mit dem Ethereum Netzwerk auch sog. \ac{sc} erstellen und ausführen.\citep{Buterin2014} Skalierbarkeit und Interoperabilität spielen in dieser Generation eine der entscheidenden Rollen. \citep{Cardano} Blockchain Anwendungen im Enterprise Bereich exisiteren maximal auf dem Reißbrett.\\
 
-% konkrete Beschreibung des Problems
+% Die Kernidee hinter der Blockchain-Technologie ist es einen Intermediär zu substituieren, der nur eingesetzt wurde um eine neutrale Vertrauensbildung zu ermöglichen. \ac{dlt} verfolgt dabei den Ansatz die Vertrauensbildung, den Ablauf von Transaktionen und deren sichere Festschreibung mit mathematischen und kryptographischen Methoden zu realisieren. Im Kontrast zum konventionellen Intermediär, welcher durch eine dritte Person oder Institution wie z.B. eine Bank oder einen Notar repräsentiert wird.\\
+
+% Für das Problem der Einigkeit über den Zustand eines Werts innerhalb der Blockchain sind zwei generelle Verfahren etabliert. Die \ac{pow} und \ac{pos} genannten Algorithmen nutzen unterschiedliche Ansätze um Konsens innerhalb eines Netzwerks zu bilden und so Vertrauen herzustellen. Beide Verfahren haben ihre Vor- und Nachteile.\\
+
+% Prozesse die einen transaktionalen Charakter besitzen und oft auch ein oder mehrere Vermittlerstellen zwischengeschaltet haben würden sich Ideal für den Einsatz von Blockchain Technologie eignen. Fehlende Standards und generelle Unsicherheit verhindern allerdings den flächendeckenden Einsatz der Technologie.\\
+
+Abbildung \ref{fig:statista-huerden-blockchain-2016} zeigt die Ergebnisse einer Umfrage des Fachmagazins Cofinpro zum Thema \glqq Wo sehen Sie Hürden für die Blockchain-Technologie?\grqq~. So scheinen die mit Abstand größten Einstiegsbarrieren fehlende Standards und rechtliche Regelungen zu sein.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{pictures/Statista-Huerden-Blockchain-2016}
+	\caption[Statista Blockchain Umfrage]{Cofinpro - Wo sehen Sie Hürden für die Blockchain Technologie? \citep{Cofinpro}}
+	\label{fig:statista-huerden-blockchain-2016}
+\end{figure}
+
+Die Arbeit beschäftigt sich mit dem Problem der zeitnahen und transparenten Rückverfolgung von Chargen und Einzelprodukten über den gesamten Verlauf der Wertschöpfungskette in Produktionsnetzwerken. Die wissenschaftliche Fragestellung der Arbeit lautet daher: Wie muss ein dezentralisiertes System aussehen, um eine schnelle Rückverfolgbarkeit von Chargen in der Fleischindustrie über die gesamte Supply Chain zu realisieren?\\
+
+Daraus ergeben sich die folgenden Unterfragen:
+
+\begin{enumerate}
+  \item Welche Anforderungen an eine Blockchain werden von der Fleischindustrie gestellt?
+  \item Welche Daten müssen in einer Blockchain persistiert werden, um eine Rückverfolgbarkeit überhaupt erst möglich zu machen?
+  \item Welche Blockchain-Technologie kommt in Frage um 1. zu realisieren und den spezifischen Anforderungen der Fleischindustrie gerecht zu werden?
+  \item Wie könnte eine System Architektur für ein solches, in 3. definiertes, Blockchain Netzwerk konzipiert sein?
+\end{enumerate}
+
+% \begin{figure}[h!]
+% 	\centering
+% 	\includegraphics[width=0.8\linewidth]{pictures/Multi-Blockchain-Example}
+% 	\caption[Multiple Blockchains innerhalb der Lieferkette]{Multiple Blockchains innerhalb der Lieferkette (eigene Darstellung)}
+% 	\label{fig:multi-blockchain-example}
+% \end{figure}
 
 \newpage

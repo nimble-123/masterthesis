@@ -1,55 +1,28 @@
-\section{Motivation}
+\section{Motivation} \label{Motivation}
 
-Lebensmittelsicherheit ist strategisch für die Volksgesundheit und das Wohlbefinden der Gesellschaft. Der öffentliche Druck auf Hersteller für eine ausreichende Kennzeichnung von Produkten und ihre Bestandteile wird stetig größer.\cite[vgl.]{EU2002}\\
+\begin{displayquote}
+  \glqq Weltweit ist die Fleischerzeugung zwischen 2002 und 2012 um 23\% und in Deutschland um 29\% gestiegen. Die globalen Fleischexporte erhöhten sich im gleichen Zeitraum um 60\%, in Deutschland sogar um 124\%. Deutschland zählt sowohl beim Import als auch beim Export von Fleisch- und Fleischprodukten zu den bedeutendsten Handelsnationen weltweit.\grqq{}
+\end{displayquote}
 
-Vom Rohstofflieferanten bis zum Endkunden gibt es ein Netz von Marktteilnehmern, die bzgl. des Informationsaustausches nur locker gekoppelt sind. Es gibt de facto kein Standard Informationsaustauschverfahren. In der Fleischwarenindustrie beispielsweise existieren weit über 140 unterschiedliche Austauschformate zwischen den Teilnehmern der Lieferkette. So basiert die Echtheit und Verlässlichkeit der ausgetauschten Daten im Zweifel auf dem Glaube der einzelnen Marktteilnehmer.\\
+\begin{flushright}
+  \citet{Efken2015}
+\end{flushright}
 
-Zum jetzigen Zeitpunkt (Stand 2019) findet eine Chargenrückverfolgung fast ausschließlich durch einen Datei-Austausch bzw. eine zentrale Datenbank je Teilnehmer der Lieferkette statt. Dabei müssen Informationen für einen mehrstufigen Produktionsporozess bereitgestellt und verarbeitet werden.\\
+Lebensmittelsicherheit ist ganz offensichtlich strategisch für die Volksgesundheit und das Wohlbefinden der Gesellschaft. Der öffentliche Druck auf Hersteller für eine ausreichende Kennzeichnung von Produkten und ihre Bestandteile wird stetig größer. Jeder Teil der Lieferkette ist in der Verpflichtung im Falle von Kontamination schnellstmöglich reagieren zu können. \citep{EPER2002}.\\
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1.0\linewidth]{pictures/Lieferkette-schematisch}
-	\caption[Schematische Darstellung einer Lieferkette in der Fleischwarenindustrie]{Schematische Darstellung einer Lieferkette in der Fleischwarenindustrie\cite[vgl.]{CIOWSCE2019} (eigene Darstellung)}
-	\label{fig:lieferkette-schematisch}
-\end{figure}
+Vom Rohstofflieferanten bis zum Endkunden gibt es allein in Deutschland ein Netz von Marktteilnehmern mit erheblicher Größe. Knapp 150.000 Betriebe für die Rinder Mast und Milchproduktion, etwa 30.000 Betriebe im Bereich der Schweinehaltung und rund 60.000 Unternehmen für die Geflügelhaltung \citep{Efken2015}. Dabei existiert de facto kein Standard Verfahren zwischen diesen Marktteilnehmern zum Informationsaustausch für die Chargenrückverfolgung. In der Fleischwarenindustrie beispielsweise existieren weit über 140 unterschiedliche Austauschformate zwischen den Teilnehmern einzelner Lieferketten.\\
 
-Abbildung \ref{fig:lieferkette-schematisch} zeigt schematisch eine Lieferkette innerhalb der Fleischwarenindustrie. Der Abbildung ist zu entnehmen, dass es keine zentrale \glqq Clearing Stelle\grqq{} bzw. Supervisor gibt, welche sämtliche Transaktionen kontrolliert bzw. verifiziert.\\
+Zum jetzigen Zeitpunkt (Stand 2019) findet eine Chargenrückverfolgung daher fast ausschließlich durch einen Datei-Austausch bzw. eine zentrale Datenbank je Teilnehmer der Lieferkette statt. Dabei müssen Informationen für einen mehrstufigen Produktionsporozess bereitgestellt und verarbeitet werden.\\
 
-Aus der geringen Gewinnmarge von -1\% bis +1,5\% Umsatzrendite kann es zu Unregelmäßigkeiten kommen.\cite{CIOWSCE2019}\cite{CIOMuehlenhof2019} Beispiel: Falsch etikettierte Ware wie Pferdefleisch in Hamburger Patties oder Lasagne.\cite[vgl.]{Bundespartei}\\
+% \begin{figure}[h!]
+% 	\centering
+% 	\includegraphics[width=1.0\linewidth]{pictures/Lieferkette-schematisch}
+% 	\caption[Schematische Darstellung einer Lieferkette in der Fleischwarenindustrie]{Schematische Darstellung einer Lieferkette in der Fleischwarenindustrie\citep{CIOWSCE2019} (eigene Darstellung)}
+% 	\label{fig:lieferkette-schematisch}
+% \end{figure}
 
-Um eine formal korrekte Identitätskette aufzubauen, wird eine verlässliche Basis, grade auch dann, wenn Futtermittel- und Logistik-Informationen unter allen Marktteilnehmern ausgetauscht werden müssen. Grundlage dafür ist die EU-Verordnung 178/02 (insbesondere Artikel 18 und 19), die die Notwendigkeit beschreibt, dass jeder in einer Lieferkette befindliche Teil der Lieferkette dafür verantwortlich ist nachzuweisen, von wem er seine Waren bezogen und an wen er seine Waren geliefert hat.\cite[vgl.]{EU2002}\\
+% Abbildung \ref{fig:lieferkette-schematisch} zeigt schematisch eine Lieferkette innerhalb der Fleischwarenindustrie. Der Abbildung ist zu entnehmen, dass es keine zentrale \glqq Clearing Stelle\grqq{} bzw. Supervisor gibt, welche sämtliche Transaktionen kontrolliert bzw. verifiziert.\\
 
-Der Einsatz von Blockchain Technologie könnte in dieser Situation eine Lösung darstellen. Eine Blockchain ist ein dezentrales System zur manipulationssicheren Speicherung von Informationen in sog. Blöcken die untereinander durch kryptographische Methoden verkettet sind - daher auch der Name Blockchain. Änderungen und Erzeugung von neuen Datensätzen sind nur möglich, wenn das gesamte Netzwerk eine solche Transaktion validiert und verifizert hat. Dazu werden verschiedenste Verfahren zur Konsensbildung innerhalb des Netzwerks angewandt.\\
-
-% \glqq Es ist davon auszugehen, dass wir in ein bis zwei Jahrzehnten wirtschaftlich über Mechanismen miteinander interagieren werden, für die wir bislang weder Konzepte noch Begriffe haben.\grqq{} \cite[S.~92]{Platzer2014} Auch die Deutsche Bundesregierung ist an der Blockchain Technologie interessiert und erwägt den Einsatz in der Zukunft für die unterschiedlichsten Services. In einer der jüngsten Pressemitteilungen hat der Blockchain Bundesverband mitgeteilt, dass die Regierung eine umfassende Strategie zum Umgang und Einsatz der Technologie erarbeiten will. \cite{BCBundesverband2018}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.65\linewidth]{pictures/Gartner-Hype-Cycle-2017}
-	\caption[Gartner Hype Cycle 2017]{Emerging Technologies Hype Cycle 2017\cite{Gartner2017}}
-	\label{fig:gartner-hype-cycle-2017}
-\end{figure}
-
-Aktuell ist die Blockchain jedoch noch kein industrieller Standard oder verbreitet im Einsatz, bemessen am jährlich erscheinenden Hype Cycle des Marktforschungsinstituts Gartner, Inc. $( Abb.~ \ref{fig:gartner-hype-cycle-2017} )$ hat die Technologie noch fünf bis zehn Jahre Entwicklungszeit vor sich. Erst dann wird sie nach aktueller Einschätzung im produktiven Einsatz sein.\\
-
-Bereits heute zeigen sich signifikante Unterschiede zwischen den unzähligen Blockchains die in Pilotprojekten realisiert wurden. So gibt es Anwendungen der Blockchain um beispielsweise den Kilometerstand eines Fahrzeugs täglich \glqq in die Blockchain\grqq~ zu schreiben. Die inhärenten Eigenschaften der Blockchain ermöglichen es sehr einfach festzustellen, ob ein Kilometerstand nachträglich durch Fremdeinwirkung manipuliert wurde. Ebenfalls ist keine zentrale \glqq Clearing Stelle\grqq{} bzw. Supervisor mehr nötig, um für die Echtheit des hinterlegten Wertes zu garantieren. \cite{carVertical}\\
-
-Bitcoin war die erste Generation von Blockchain. Die Bitcoin Blockchain ist in der Lage Einheiten der Bitcoin Währung zwischen zwei Parteien zu versenden ohne das eine Bank oder eine Clearingstelle diese Transaktion validieren muss. \cite[vgl.]{Nakamoto2009} Ethereum war die zweite Generation einer Blockchain. Im Vergleich zur Bitcoin Blockchain lassen sich mit dem Ethereum Netzwerk auch sog. \ac{sc} erstellen und ausführen.\cite[vgl.]{Buterin2014} Skalierbarkeit und Interoperabilität spielen in dieser Generation eine der entscheidenden Rollen. \cite[vgl.]{Cardano} Blockchain Anwendungen im Enterprise Bereich exisiteren maximal auf dem Reißbrett.\\
-
-Die Kernidee hinter der Blockchain-Technologie ist es einen Intermediär zu substituieren, der nur eingesetzt wurde um eine neutrale Vertrauensbildung zu ermöglichen. \ac{dlt} verfolgt dabei den Ansatz die Vertrauensbildung, den Ablauf von Transaktionen und deren sichere Festschreibung mit mathematischen und kryptographischen Methoden zu realisieren. Im Kontrast zum konventionellen Intermediär, welcher durch eine dritte Person oder Institution wie z.B. eine Bank oder einen Notar repräsentiert wird.\\
-
-Für das Problem der Einigkeit über den Zustand eines Werts innerhalb der Blockchain sind zwei generelle Verfahren etabliert. Die \ac{pow} und \ac{pos} genannten Algorithmen nutzen unterschiedliche Ansätze um Konsens innerhalb eines Netzwerks zu bilden und so Vertrauen herzustellen. Beide Verfahren haben ihre Vor- und Nachteile.\\
-
-Prozesse die einen transaktionalen Charakter besitzen und oft auch ein oder mehrere Vermittlerstellen zwischengeschaltet haben würden sich Ideal für den Einsatz von Blockchain Technologie eignen. Fehlende Standards und generelle Unsicherheit verhindern allerdings den flächendeckenden Einsatz der Technologie.\\
-
-Abbildung \ref{fig:statista-huerden-blockchain-2016} zeigt die Ergebnisse einer Umfrage des Fachmagazins Cofinpro zum Thema \glqq Wo sehen Sie Hürden für die Blockchain-Technologie?\grqq~. So scheinen die mit Abstand größten Einstiegsbarrieren fehlende Standards und rechtliche Regelungen zu sein.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\linewidth]{pictures/Statista-Huerden-Blockchain-2016}
-	\caption[Statista Blockchain Umfrage]{Cofinpro - Wo sehen Sie Hürden für die Blockchain Technologie? \cite{Cofinpro}}
-	\label{fig:statista-huerden-blockchain-2016}
-\end{figure}
-
+Aus der geringen Umsatzrendite von -1\% bis +1,5\%  und den dadurch entstehnden Druck am Markt bestehen zu bleiben resultieren immer häufiger Unregelmäßigkeiten innerhalb der Lieferkette. Nur Betriebe in Österreich und Spanien können eine langfristige Rentabilität innerhalb des europäischen Marktes aufweisen \citep{Efken2015}. Ein Beispiel für die genannten Unregelmäßigkeiten ist der Pferdefleisch Skandal aus dem Jahr 2013, bei dem Fleischprodukte nachträglich neu etikettiert und dadurch in Produkten wie Lasagne oder Hamburger Patties weiterverarbeitet wurden \citep{Bundespartei}.\\
 
 \newpage
