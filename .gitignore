@@ -220,3 +220,6 @@ node_modules
 
 # Visio autosave temporary files
 *.~vsdx
+
+# Visual Paradigm Backup files
+*.vpp.*
