@@ -1,6 +1,10 @@
 \section{Ziele}
 
-Ziel dieser Arbeit ist es, durch Entwicklung und Evaluation eines Prototyps die Möglichkeiten und Grenzen der \textit{Blockchain-Technologie} im Kontext der Chargenrückverfolgung in der Fleischwarenindustrie zu überprüfen. Dabei sollen die dafür nötigen Daten und Informationen ermittelt und in einen System Entwurf eingearbeitet werden. Außerdem ist angestrebt aus der vielzahl von unterschiedlichen Implementierungen einer \textit{Blockchain} genau die Ausprägung zu identifizieren, welche für die spezifischen Anforderungen der Fleischwarenindustrie ideal erscheint.
+Der Einsatz von \textit{Blockchain-Technologie} könnte - für die in Kapitel \ref{Problemstellung} beschriebene Problemstellung - eine Lösung darstellen. Eine \textit{Blockchain} ist ein dezentrales System zur manipulationssicheren Speicherung von Informationen in sog. \textit{Blöcken} die untereinander durch kryptographische Methoden verkettet sind - daher auch der Name \textit{Blockchain}. Eine \textit{Blockchain} verwendet verschiedenste Verfahren zur Konsensbildung innerhalb des Netzwerks, um sicherzustellen das neue \textit{Blöcke} und die darin enthaltenen Transaktionen vom gesamten Netzwerk validiert und verifizert werden bevor der \textit{Block} in die \textit{Blockchain} geschrieben wird \citep[siehe auch][]{Nakamoto2009, Buterin2014, Cardano2017, carVertical}.
+
+Außerdem kann eine \textit{Blockchain} durch den Einsatz einer kryptographischen \textit{Hashfunktion}\footnote{Spezielle Form einer Hashfunktion, welche kollisionsresistent ist. Es ist praktisch nicht möglich, zwei unterschiedliche Eingabewerte zu finden, die einen identischen Hashwert ergeben \citep{Menezes1997}.} zur Bildung einer Prüfsumme für jeden \textit{Block} innerhalb der \textit{Blockchain} sicherstellen, dass bereits persistierte Informationen nicht ohne weiteres manipuliert werden können. Im Idealfall ist eine \textit{Blockchain} dezentral konzipiert, was bedeutet, das jeder Teilnehmer eines \textit{Blockchain} Netzwerks eine exakte Kopie des Datenbestands lokal vorhält. Hierdurch soll sichergestellt werden, das auch bei einem Ausfall oder einer Kompromittierung einzelner Teilnehmer das Gesamtsystem weiterhin in seiner Funktion stabil bleibt \citep{Drescher2017, Tribis2018}.\\
+
+Ziel dieser Arbeit ist es, durch Entwicklung und Evaluation eines Prototyps die Möglichkeiten und Grenzen der \textit{Blockchain-Technologie} im Kontext der Chargenrückverfolgung in der Fleischwarenindustrie zu überprüfen. Dabei sollen die dafür nötigen Daten und Informationen ermittelt und in einen Systementwurf eingearbeitet werden. Außerdem ist angestrebt aus der vielzahl von unterschiedlichen Implementierungen einer \textit{Blockchain} genau die Ausprägung zu identifizieren, welche für die spezifischen Anforderungen der Fleischwarenindustrie ideal erscheint.
 
 Konkret lassen sich hieraus folgende Ziele und erwartete Ergebnisstypen zu den jeweiligen Forschungsfragen aus Kapitel \ref{Problemstellung} ableiten.
 
@@ -12,15 +16,15 @@ Konkret lassen sich hieraus folgende Ziele und erwartete Ergebnisstypen zu den j
     \item Qualitativ
     \item Rahmenbedingungen
   \end{itemize}
-  \item Prozessanalyse für FF1.2
+  \item Prozessaufnahme und -analyse für FF1.2
   \begin{itemize}
-    \item Identifikation des \glqq kritischen Pfads\grqq{} im IST-Prozess
-    \item Modellierung eines SOLL-Prozess bei Einsatz von \textit{Blockchain-Technologie}
+    \item Schwachstellenanalyse des \textit{Ist}-Prozess
+    \item Modellierung eines \textit{Soll}-Prozess bei Einsatz von \textit{Blockchain-Technologie}
   \end{itemize}
-  \item SWOT-Analyse für FF1.3
-  \item Ableitung eines Systementwurf mittels Design Science Research für FF1.4
-  \item Entwicklung eines Prototypen anhand der Ergebnisse von FF1.1-4 für FF1
-  \item Evaluation des Prototypen durch Experteninterview für FF1
+  \item SWOT-Analyse als Vorbereitung für eine Nutzwertanalyse zur Klärung von FF1.3
+  \item Ableitung eines Systementwurfs mittels Design Science Research für FF1.4
+  \item Entwicklung eines Prototyps anhand der Ergebnisse von FF1.1-4 für FF1
+  \item Evaluation des Prototyps durch Experteninterview für FF1
 \end{itemize}
 
 Der enstandene Prototyp soll beim Praxispartner Westfleisch SCE mbH als Entscheidungshilfe für eine zukünftige Innovationsstrategie zur Optimierung der Lieferkette dienen.
@@ -31,4 +35,4 @@ Der enstandene Prototyp soll beim Praxispartner Westfleisch SCE mbH als Entschei
 
 % Der technische Hintergrund einer \textit{Blockchain} ist nicht neu. Die einzelnen Komponenten sind bereits heute vielfach erprobt im produktiven Einsatz. \citep{Diffie1976}\citep{Steinmetz2005} Die Kombination zu einer \textit{Blockchain} ist allerdings neu und aktuell nur in Pilotprojekten für vereinzelte Use-cases zu finden.\\
 
-% \newpage
+\newpage
