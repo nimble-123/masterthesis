@@ -1,0 +1,26 @@
+{
+  "name": "masterthesis",
+  "version": "0.0.1",
+  "description": "Everything i need to get my master thesis done",
+  "scripts": {
+    "release": "standard-version -s && git push --follow-tags origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlsltz/masterthesis.git"
+  },
+  "author": "Nils Lutz",
+  "bugs": {
+    "url": "https://github.com/nlsltz/masterthesis/issues"
+  },
+  "homepage": "https://github.com/nlsltz/masterthesis#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0",
+    "standard-version": "^5.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
