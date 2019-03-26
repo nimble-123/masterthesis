@@ -1,9 +1,9 @@
 {
   "name": "masterthesis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Everything i need to get my master thesis done",
   "scripts": {
-    "release": "standard-version -s && git push --follow-tags origin master"
+    "release": "standard-version -s"
   },
   "repository": {
     "type": "git",
