@@ -22,6 +22,11 @@
 \usepackage{ifpdf}
 \usepackage{setspace}             % For line spread
 \usepackage[printonlyused, withpage, smaller]{acronym}
+\usepackage[authoryear, round, sort]{natbib}
+\usepackage{csquotes}
+\renewcommand{\mkbegdispquote}[2]{\itshape}
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
 
 % For pdflatex
 \ifpdf
@@ -85,21 +90,21 @@
 % Insert body
 \input{chapters/40_related_work}
 \input{chapters/50_basics}
-\input{chapters/51_solution_concept}
-\input{chapters/60_system_design}
-\input{chapters/70_technical_implementation}
-\input{chapters/80_evaluation}
+\input{chapters/60_solution_concept}
+\input{chapters/70_system_design}
+\input{chapters/80_technical_implementation}
+\input{chapters/90_evaluation}
 
 % Insert conclusion
-\input{chapters/90_concluding_review}
+\input{chapters/100_concluding_review}
 
 \pagenumbering{Roman}
 \setcounter{page}{7}
 
 % Insert appendix
-\input{chapters/100_appendix}
+\input{chapters/110_appendix}
 
 % Insert declaration
-\input{chapters/110_declaration}
+\input{chapters/120_declaration}
 
 \end{document}
