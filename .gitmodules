@@ -1,0 +1,3 @@
+[submodule "workspace/blockchain/hyperledger-first-example"]
+	path = workspace/blockchain/hyperledger-first-example
+	url = https://github.com/nimble-123/hyperledger-first-example
