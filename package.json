@@ -1,6 +1,6 @@
 {
   "name": "masterthesis",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Everything i need to get my master thesis done",
   "scripts": {
     "release": "standard-version -s"

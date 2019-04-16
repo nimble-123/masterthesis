@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.6.0](https://github.com/nlsltz/masterthesis/compare/v0.5.0...v0.6.0) (2019-04-16)
+
+
+### Bug Fixes
+
+* Update thesis title ([371adbb](https://github.com/nlsltz/masterthesis/commit/371adbb))
+
+
+### Features
+
+* **batch traceability:** Add first sections ([9eac7d1](https://github.com/nlsltz/masterthesis/commit/9eac7d1))
+* **blockchain:** Add content ([4a36f98](https://github.com/nlsltz/masterthesis/commit/4a36f98))
+* **blockchain:** Add example business network ([3b6b1a4](https://github.com/nlsltz/masterthesis/commit/3b6b1a4))
+* **introduction:** Add introduction from proposal ([cc3c9aa](https://github.com/nlsltz/masterthesis/commit/cc3c9aa))
+
+
+
 # [0.5.0](https://github.com/nlsltz/masterthesis/compare/v0.1.1...v0.5.0) (2019-03-26)
 
 
