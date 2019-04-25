@@ -3,7 +3,7 @@
 \subsubsection{Definition} \label{blockchain-definition}
 Eine \textit{Blockchain} als Ganzes betrachtet, ist ein System zur Transaktionsabwicklung mit besonderen Eigenschaften. Als erstes beschrieben wurde die \textit{Blockchain} im Paper von \cite{Nakamoto2009} zur Realisierung der digitalen Währung \ac{btc}. Aus technischer Sicht gehört die \textit{Blockchain-Technologie} zum Bereich der verteilten Datenbanken. Ein \textit{Block} in einer \textit{Blockchain} repräsentiert eine Menge von Datensätzen die in der \textit{Blockchain} (Datenbank) vorgehalten werden. Jeder \textit{Block} (Datensatz) widerrum besitzt genau einen Vorgänger und einen Nachfolger. Allerdings werden diese Blöcke nicht wie in klassischen relationalen Datenbanksystemen in Tabellenstrukturen abgelegt und verwaltet. Durch die Vorgänger Information wird jeder neue Datensatz immer an den letzten Datensatz angehangen. Daraus bildet sich eine Kette von Blöcken - daher der Name \textit{Blockchain} (dt. Blockkette).
 
-Ein \textit{Block} innerhalb der Kette kann definiert werden als verschlüsseltes Stück Information. Er beinhaltet neben den Transaktionen noch einen Zeitstempel und zwei kryptographische Hashwerte. Der erste Hashwert wird aus dem \textit{Block} selbst gebildet und der zweite Hashwert ist die Verknüpfung zum Vorgänger \citep{Tschorsch2016}. Wird nachträglich ein Wert einer Transaktion verändert oder ein ganzer \textit{Block} aus der Kette entfernt passt der jeweilige Hashwert des Vorgängers nicht mehr und durch den linearen Aufbau der \textit{Blockchain} würde diese Manipulation jederzeit unmittelbar bemerkt werden bei der Validierung von neuen Transaktionen. Die Daten in der \textit{Blockchain} sind somit vor unbefugter Veränderung geschützt. Als dezentrale Datenbank wird auf jedem Knoten des sich aufspannenden Netzwerks aus Teilnehmern der \textit{Blockchain} eine exakte Kopie\footnote{Es gibt Ausprägungen von \ac{dlt} Systemen bei denen sog. Light Nodes nur einen zeitlichen Abschnitt der Datensätze vorhalten, um neue Transaktionen validieren zu können. In der generellen Definition wird von sog. Full Nodes ausgegangen in denen stets alle Datensätze vorgehalten werden.} des Datenbestands vorgehalten. Diese dezentrale Struktur bedeutet, dass ein \textit{Blockchain} Netzwerk nicht unter der Kontrolle oder Regulierung einer einzelnen Entität steht. Jeder Teilnehmer kann eigenständig im Netzwerk agieren und es ist kein Zwischenhändler nötig \citep{Drescher2017}.
+Ein \textit{Block} innerhalb der Kette kann definiert werden als verschlüsseltes Stück Information. Er beinhaltet neben den Transaktionen noch einen Zeitstempel und zwei kryptographische Hashwerte. Der erste Hashwert wird aus dem \textit{Block} selbst gebildet und der zweite Hashwert ist die Verknüpfung zum Vorgänger \citep{Tschorsch2016}. Wird nachträglich ein Wert einer Transaktion verändert oder ein ganzer \textit{Block} aus der Kette entfernt passt der jeweilige Hashwert des Vorgängers nicht mehr und durch den linearen Aufbau der \textit{Blockchain} würde diese Manipulation jederzeit unmittelbar bemerkt werden bei der Validierung von neuen Transaktionen. Die Daten in der \textit{Blockchain} sind somit vor unbefugter Veränderung geschützt. Als dezentrale Datenbank wird auf jedem Knoten des sich aufspannenden Netzwerks aus Teilnehmern der \textit{Blockchain} eine exakte Kopie\footnote{Es gibt Ausprägungen von \ac{dlt} Systemen bei denen sog. Light Nodes nur einen zeitlichen Abschnitt der Datensätze vorhalten, um neue Transaktionen validieren zu können. In der generellen Definition wird von sog. Full Nodes ausgegangen in denen stets alle Datensätze vorgehalten werden.} des Datenbestands vorgehalten. Diese dezentrale Struktur bedeutet, dass ein \textit{Blockchain} Netzwerk nicht unter der Kontrolle oder Regulierung einer einzelnen Entität steht. Jeder Teilnehmer kann eigenständig im Netzwerk agieren und es ist kein Zwischenhändler nötig \citep{Drescher2017, Meier2018}.
 
 Wird von einem der Teilnehmer eine Transaktion ausgelöst, wird diese nicht durch einen Intermediär sondern durch das Netzwerk erfasst und verarbeitet (Abbildung \ref{fig:change-in-transaction-model-blockchain}). Ein neuer \textit{Block} wird erschaffen und validiert wie es durch das Konsensprotokoll festgelegt wird.
 
@@ -115,19 +115,32 @@ Die Schreibrechte bestimmen für ein \textit{Blockchain} Netzwerk den Grad der S
 	\label{fig:dlt-type-matrix}
 \end{figure}
 
-\subsubsection{Technologischer Aufbau}
-tl;dr Architektur Modell Abbildung erläutern. In Details einleiten
+\subsubsection{Technologischer Hintegrund}
+Eine \textit{Blockchain} operiert auf einem \textit{Peer-to-Peer} Netzwerk in welchem jeder \textit{Knoten} eine exakte Kopie der Transaktionshistorie vorhält. Eine \textit{Blockchain} ist somit eine verteilte Datenbank, die eine kontinuierliche Liste von Transaktionen speichert und durch kryptographische Mechanismen vor Manipulation schützt. Transaktionen werden anhand eines Konsensusprotokolls validiert und zur Liste der Transaktionen hinzugefügt \citep{Nakamoto2009}.
 
 \paragraph{Peer-to-Peer Netzwerke}$~~$\\
-Grundlegende Technik dahinter erklären in 1-2 Sätzen. Bekanntester und größter Einsatzzweck Torrent Netzwerk.
+Ein \textit{Peer-to-Peer} Netzwerk ist der Gegensatz zum klassischen \textit{Client-Server-Modell}, bei dem ein \textit{Server} einen Dienst zur Verfügung stellt und ein oder mehrere \textit{Clients} diesen Dienst abrufen und nutzen. Bei einem \textit{Peer-to-Peer} Netz sind alle Teilnehmer, die sog. \textit{Peers}, gleichberechtigt und können Dienste anbieten und auch konsumieren. \textit{Peer-to-Peer} Netzwerke operieren als \textit{Overlay-Netze}\footnote{Ein \textit{Overlay-Netz} baut auf ein bestehendes Netz (\textit{Underlay Netz}) auf. Es kann mit eigenen Protokollen arbeiten und selbst als \textit{Underlay Netz} fungieren.\citep{Andersen2001}} auf dem Internet. Einige der häufigsten Eigenschaften von \textit{Peer-to-Peer} Netzwerken sind nach \citet{Steinmetz2005}:
+
+\begin{itemize}
+  \item Heterogenität zwischen den \textit{Peers} in Bezug auf Bandbreite, Rechenkraft und Speichergröße
+  \item Qualität einzelner \textit{Peers} in Form von Verfügbarkeit und Verbindungsstärke lässt sich nicht voraussetzen
+  \item Client-Server-Funktionalität wird für \textit{Peers} ermöglicht, um Dienste und Ressourcen anzubieten und zu konsumieren
+  \item Austausch von Diensten und Ressourcen unter allen \textit{Peers} gewährleistet
+  \item Bereitstellung von Such-Funktionen durch ein zusätzliches \textit{Overlay-Netz}
+  \item Autonomie der \textit{Peers} in punkto Ressourcenbereitstellung
+  \item Das \textit{Peer-to-Peer} Netzwerk organisiert sich selbst und nicht durch Dritte
+\end{itemize}
 
 \paragraph{Signierte Transaktionen durch Public-Key-Infrastruktur}$~~$\\
 Was ist Public-Key-Infrastruktur?
 Beispiel Wallets und Asset X das gehandelt wird.
+\citep{Beutelspacher2010}
+\citep{Menezes1997}
 
 \paragraph{Kryptographisches Hashing}$~~$\\
 Unterschied zwischen Hashing und krypt. Hashing aufzeigen. Matheformel :D
 Evtl. die kleine Bilderreihe mit dem sich verändernden Hash Wert.
+\citep{Menezes1997}
 \citep{Diffie1976}
 
 \paragraph{Konsensusprotokolle}$~~$\\
