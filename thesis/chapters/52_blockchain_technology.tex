@@ -132,10 +132,39 @@ Ein \textit{Peer-to-Peer} Netzwerk ist der Gegensatz zum klassischen \textit{Cli
 \end{itemize}
 
 \paragraph{Signierte Transaktionen durch Public-Key-Infrastruktur}$~~$\\
-Was ist Public-Key-Infrastruktur?
-Beispiel Wallets und Asset X das gehandelt wird.
+Wird eine Transaktion von einem Teilnehmer erstellt und soll durch das Netzwerk validiert werden kommen digitale Signaturen zum Einsatz. Digitale Signaturen gehören zur asymmetrischen Kryptographie und werden dazu verwendet die Urheberschaft und Integrität einer Nachricht oder im Falle der Blockchain einer Transaktion zu prüfen.
+
 \citep{Beutelspacher2010}
 \citep{Menezes1997}
+
+// Schlüsselpaare (Unterschied Public- und Private-Key, öffentlich an privat/privat an öffentlich)\\
+// Erstellen einer Signature\\
+// Bild modellieren in anlehnung an Drescher2017\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/digital-signatures-create}
+	\caption[Erstellen einer digitalen Signatur]{Schematische Darstellung für das Erstellen einer digitalen Signatur}
+	\label{fig:digital-signatures-create}
+\end{figure}
+
+// Prüfen einer Signatur\\
+// Fall A Signatur ist korrekt -> Nachricht/Transaktion wurde nicht manipuliert UND Urheberschaft kann eindeutig zugeordnet werden
+// Bild modellieren in anlehnung an Drescher2017\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/digital-signatures-validate-positive}
+	\caption[Prüfen einer digitalen Signatur]{Erfolgreiche Prüfung einer digitalen Signatur}
+	\label{fig:digital-signatures-validate-positive}
+\end{figure}
+
+// Fall B Signatur ist nicht korrekt -> Nachricht/Transaktion wurde entweder manipuliert oder nicht vom angeblichen Urheber autorisiert
+// Bild modellieren in anlehnung an Drescher2017\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/digital-signatures-validate-negative}
+	\caption[Manipulationerkennung durch digitale Signaturen]{Erkennung von Manipulation anhand der digitalen Signatur}
+	\label{fig:digital-signatures-validate-negative}
+\end{figure}
 
 \paragraph{Kryptographisches Hashing}$~~$\\
 Unterschied zwischen Hashing und krypt. Hashing aufzeigen. Matheformel :D
