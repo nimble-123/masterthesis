@@ -1,5 +1,11 @@
-# masterthesis
-Everything i need to get my master thesis done
+# Batch Traceability in the Food Industry
+
+## Conception and prototype implementation of a Blockchain solution
+
+#### Compiled documents
+
+- [Proposal](./proposal/proposal.pdf)
+- [Thesis](./thesis/thesis.pdf)
 
 ## Todo
 
