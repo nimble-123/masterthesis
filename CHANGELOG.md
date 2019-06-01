@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.0.0](https://github.com/nlsltz/masterthesis/compare/v0.6.0...v1.0.0) (2019-06-01)
+
+
+### Features
+
+* **blockchain:** Add content and images ([312e33b](https://github.com/nlsltz/masterthesis/commit/312e33b))
+* **blockchain:** Add Hyperledger Composer module ([0b7bfd8](https://github.com/nlsltz/masterthesis/commit/0b7bfd8))
+* **Digital Signatures:** Add content for create and validate process ([4e4259c](https://github.com/nlsltz/masterthesis/commit/4e4259c))
+* **P2P Networks:** Add content for Peer-to-Peer networks subsection ([60bbac5](https://github.com/nlsltz/masterthesis/commit/60bbac5))
+
+
+### BREAKING CHANGES
+
+* **blockchain:** First working `Business Network Definition`
+
+
+
 # [0.6.0](https://github.com/nlsltz/masterthesis/compare/v0.5.0...v0.6.0) (2019-04-16)
 
 
