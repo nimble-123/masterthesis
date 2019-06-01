@@ -223,6 +223,7 @@ node_modules
 
 # Visual Paradigm Backup files
 *.vpp.*
+*.vux*
 
 # Ignore package-lock.json to always get latest packages
 package-lock.json
