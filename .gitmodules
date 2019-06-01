@@ -1,3 +1,6 @@
 [submodule "workspace/source/hyperledger-fabric-byfn"]
 	path = workspace/source/hyperledger-fabric-byfn
 	url = https://github.com/nimble-123/hyperledger-fabric-byfn.git
+[submodule "workspace/source/hlc-food-chain-traceability"]
+	path = workspace/source/hlc-food-chain-traceability
+	url = https://github.com/nimble-123/hlc-food-chain-traceability.git
