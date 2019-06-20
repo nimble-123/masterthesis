@@ -16,3 +16,4 @@
 - [ ] Quellenangaben für Tabellen, Abbildungen und Listings prüfen
 - [ ] Fußnoten Bedarf prüfen lassen
 - [ ] Akronyme sortieren (Alphabetisch oder nach Position im Dokument)
+- [ ] BibTex-Einträge prüfen auf reine Onlinequellen (korrekter BibTex Type)
