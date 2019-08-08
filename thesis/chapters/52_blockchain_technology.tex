@@ -78,7 +78,7 @@ Bei der Auswahl der Art einer \textit{Blockchain} trifft man auf zwei Widersprü
 \paragraph{Transparenz vs. Vertraulichkeit}$~~$\\
 Verwendet man eine \textit{Blockchain} werden Besitzverhältnisse durch die Transaktionshistorie ermittelt. Dabei lässt sie eine \textit{Blockchain} mit einem öffentlichen Register vergleichen. Im Sinne der Übertragung von Eigentum sind Offenheit und Transparenz zwei wesentliche Eigenschaften der Blockchain. Durch diese Offenheit ist jeder Teilnehmer in der Lage alle Transaktionen einzusehen und auf Manipulationen zu prüfen.
 
-Dieses Vorgehen steht Gegensatz zur Vertraulichkeit die in bestimmten Bereichen unabdingbar ist. Durch Vertraulichkeit werden Informationen wie die Transaktionsdaten oder deren Details (beteiligte Konten oder transferierte Menge) vor unbefugter Einsicht geschützt. Hierdurch entsteht der Widerspruch zwischen Transparenz auf der einen Seite und Anforderungen an die Vertraulichkeit auf der anderen Seite \citep{Drescher2017}.
+Dieses Vorgehen steht im Gegensatz zur Vertraulichkeit, die in bestimmten Bereichen unabdingbar ist. Durch Vertraulichkeit werden Informationen wie die Transaktionsdaten oder deren Details (beteiligte Konten oder transferierte Menge) vor unbefugter Einsicht geschützt. Hierdurch entsteht der Widerspruch zwischen Transparenz auf der einen Seite und Anforderungen an die Vertraulichkeit auf der anderen Seite \citep{Drescher2017}.
 
 \paragraph{Sicherheit vs. Geschwindigkeit}$~~$\\
 Die Datenstruktur einer \textit{Blockchain} sichert die Transaktionshistorie vor Manipulationen und Fälschungen. Jeder neue \textit{Block} der in der \textit{Blockchain} gespeichert werden soll muss vom Netzwerk durch das Lösen einer kryptographischen Aufgabe erzeugt und der Datenstruktur hinzugefügt werden. Dadurch ist es ziemlich aufwendig die Transaktionshistorie nachträglich zu manipulieren oder zu fälschen. Durch diesen Sicherheitsmechanismus sinkt die Geschwindigkeit mit der ein \textit{Blockchain} Netzwerk neue Transaktionen verarbeiten kann. Moderne Applikationen erfordern Geschwindigkeit und Skalierbarkeit was im direkten Kontrast zum erwähnten Sicherheitskonzept einer \textit{Blockchain} steht \citep{Drescher2017}.
@@ -86,33 +86,43 @@ Die Datenstruktur einer \textit{Blockchain} sichert die Transaktionshistorie vor
 \paragraph{Ursachen der Konflikte}$~~$\\
 Zwei grundlegende Operationen eines \textit{Blockchain} Netzwerks sind Ursache für die beiden beschriebenen Widersprüche - Schreiben und Lesen von Transaktionsdaten. Der Konflikt zwischen Transparenz und Vertraulichkeit ist auf die Lese-Operationen einer \textit{Blockchain} zurückzuführen. Je offener die Leseberechtigungen einer \textit{Blockchain} sind, desto höher ist die Transparenz und desto niedriger ist die Vertraulichkeit der Transaktionsdaten. Die Schreib-Operationen sind für den Widerspruch zwischen Sicherheit und Geschwindigkeit verantwortlich. Je restriktiver die Berechtigungen zum Schreiben innerhalb des \textit{Blockchain} Netzwerks sind, desto höher ist die Geschwindigkeit mit der Transaktionen verarbeitet werden können. In Tabelle \ref{tab:technical-restricts-blockchain} werden die technischen Beschränkungen, der Widerspruch und die Operation innerhalb der \textit{Blockchain} zusammengefasst \citep{Drescher2017}.
 
-\begin{table}[H]\centering
-  \begin{tabularx}{\textwidth}{XXX}
-    \toprule
-    \textbf{Beschränkung} &\textbf{Widerspruch} &\textbf{Blockchain Operation}\\ \midrule
-    Keine Vertraulichkeit & Transparenz vs. Vertraulichkeit & Transaktionshistorie lesen\\ \addlinespace
-    Skalierbarkeit & Sicherheit vs. Geschwindigkeit & Transaktionen schreiben\\
-    \bottomrule
-  \end{tabularx}
-  \caption{Technische Beschränkungen der \textit{Blockchain} und ihre Ursachen}
-  \label{tab:technical-restricts-blockchain}
+\begin{table}[H]
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		\textbf{Beschränkung} & \textbf{Widerspruch}            & \textbf{Blockchain Operation} \\
+		\midrule
+		Keine Vertraulichkeit & Transparenz vs. Vertraulichkeit & Transaktionshistorie lesen    \\ \addlinespace
+		Skalierbarkeit        & Sicherheit vs. Geschwindigkeit  & Transaktionen schreiben       \\
+		\bottomrule
+	\end{tabular}
+	\caption{Technische Beschränkungen der \textit{Blockchain} und ihre Ursachen}
+    \label{tab:technical-restricts-blockchain}
 \end{table}
 
 \paragraph{Public vs. Private}$~~$\\
 Betrachtet man die Berechtigungen zum Lesen innerhalb eines \textit{Blockchain} Netzwerks in der einfachsten Form muss das System zwischen Transparenz und Vertraulichkeit entscheiden. Entweder es werden allen Teilnehmern Leseberechtigungen zugeteilt oder nur einer ausgewählten Gruppe von Teilnehmern. Anhand des Kriterium, welcher Teilnehmer im Netzwerk neue Transaktionen erstellen und die Historie lesen kann, lässt sich eine \textit{Blockchain} als öffentliche oder private \textit{Blockchain} charakterisieren \citep{Drescher2017}.
 
 \paragraph{Permissioned vs. Permissionless}$~~$\\
-Die Schreibrechte bestimmen für ein \textit{Blockchain} Netzwerk den Grad der Skalierbarkeit. Werden Schreibrechte in ihrer einfachsten Form zugeteilt und alle Teilnehmer sind berechtigt Schreib-Operationen auszuführen, erhöht sich der Arbeitsaufwand je Teilnehmer der zur Berechnung nötigt wird. Dies ist für die Sicherheit des Netzwerk positiv, wirkt sich aber negativ auf die Geschwindigkeit aus. Durch die Geschwindigkeit wird das Netzwerk in der Skalierbarkeit beschränkt. Teilt man hingegen nur einer Gruppe von Teilnehmern Schreibrechte zu, ist der Arbeitsaufwand im Vergleich niedrig. Hierdurch kann das Netzwerk Transaktionen vergleichsweise schnell verarbeiten und ist dadurch selbst skalierbarer \citep{Drescher2017}.
+Die Schreibrechte bestimmen für ein \textit{Blockchain} Netzwerk den Grad der Skalierbarkeit. Werden Schreibrechte in ihrer einfachsten Form zugeteilt und alle Teilnehmer sind berechtigt Schreib-Operationen auszuführen, erhöht sich der Arbeitsaufwand je Teilnehmer der zur Berechnung nötigt wird. Dies ist für die Sicherheit des Netzwerk positiv, wirkt sich aber negativ auf die Geschwindigkeit aus. Durch die Geschwindigkeit wird das Netzwerk in der Skalierbarkeit beschränkt. Teilt man hingegen nur einer Gruppe von Teilnehmern Schreibrechte zu, ist der Arbeitsaufwand im Vergleich niedrig. Hierdurch kann das Netzwerk Transaktionen vergleichsweise schnell verarbeiten und ist dadurch selbst skalierbarer \citep{Drescher2017}.\\
 
 \noindent
-\textcolor{red}{Abbildung \ref{fig:dlt-type-matrix} als zusammenfassung und matrix repräsentation der 2 dimensionen. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. }
+Alle zuvor beschriebenen Eigenschaft einer Blockchain ermöglichen es eine Matrix mit zwei Dimensionen zu modellieren in die sich nahezu sämtliche Blockchain Lösungen einordnen lassen. Ausgenommen sind etwaige Mischformen, die für sehr spezielle Anwendungsfälle konzipiert wurden und sich beispielsweise aus einer Kombination einer öffentlichen und konsortialen Blockchain zusammensetzen. Tabelle \ref{tab:types-of-blockchain-networks} zeigt diese Matrix. Die vertikale Achse beschreibt in diesem Fall die Anonymität der Teilnehmer. Diese reicht von vollständiger Anonymität\footnote{Anonymität meint hier eine Pseudo-Anonymität, da aus technischer Sicht mit einigem Aufwand der Teilnehmen klar identifiziert werden kann.} bis zur Offenlegung und direkten Verknüpfung zwischen einem Teilnehmer des Netzwerks und einer Entität (Person, Maschine oder Unternehmen) in der realen Welt. Auf der horizontalen Achse wird das Vertrauen in die Validatoren abgebildet. Konkret können entweder alle Teilnehmer auch als Validatoren auftreten (Permissionless) oder es wird eine Gruppe von Teilnehmern zum validieren von Transaktionen gebildet, die definierte Anforderungen erfüllen (Permissioned). An den Schnittpunkten der Zeilen und Spalten wurden Beispiele für Implementationen der jeweiligen Kombination eingefügt.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1.0\linewidth]{pictures/dlt-type-matrix}
-	\caption[Distributed Ledger Type Matrix]{Distributed Ledger Type Matrix \textcolor{red}{ERSETZEN/QUELLE}}
-	\label{fig:dlt-type-matrix}
-\end{figure}
+\begin{table}[H]
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{@{}lll@{}}
+	\toprule
+								& \textbf{Permissionless}                                                                                                               & \textbf{Permissioned}                                                                                                                    \\
+	\midrule
+	\textbf{Public}             & \begin{tabular}[c]{@{}l@{}}Bitcoin, Ethereum, IOTA\\ \\ Jeder kann validieren\\ Jeder kann teilnehmen\end{tabular}                    & \begin{tabular}[c]{@{}l@{}}Ethereum 2.0\\ \\ Ausgewählte Gruppe kann validieren\\ Jeder kann teilnehmen\end{tabular}                     \\
+	\midrule
+	\textbf{Consortium/Private} & \begin{tabular}[c]{@{}l@{}}Interplanetary Database(IPDB)\\ \\ Jeder kann validieren\\ Ausgewählte Gruppe kann teilnehmen\end{tabular} & \begin{tabular}[c]{@{}l@{}}Hyperledger, Quorum\\ \\ Ausgewählte Gruppe kann validieren\\ Ausgewählte Gruppe kann teilnehmen\end{tabular} \\
+	\bottomrule
+	\end{tabular}%
+	}
+	\caption{Arten von Blockchain Netzwerken (eigene Darstellung)}
+	\label{tab:types-of-blockchain-networks}
+\end{table}
 
 \subsubsection{Technologischer Hintegrund}
 Eine \textit{Blockchain} operiert auf einem \textit{Peer-to-Peer} Netzwerk in welchem jeder \textit{Knoten} eine exakte Kopie der Transaktionshistorie vorhält. Eine \textit{Blockchain} ist somit eine verteilte Datenbank, die eine kontinuierliche Liste von Transaktionen speichert und durch kryptographische Mechanismen vor Manipulation schützt. Transaktionen werden anhand eines Konsensusprotokolls validiert und zur Liste der Transaktionen hinzugefügt \citep{Nakamoto2009}.
@@ -130,13 +140,32 @@ Ein \textit{Peer-to-Peer} Netzwerk ist der Gegensatz zum klassischen \textit{Cli
   \item Das \textit{Peer-to-Peer} Netzwerk organisiert sich selbst und nicht durch Dritte
 \end{itemize}
 
-\paragraph{Kryptographisches Hashing}$~~$\\
-\textcolor{red}{Unterschied zwischen Hashing und krypt. Hashing aufzeigen. Matheformel :D
-Evtl. die kleine Bilderreihe mit dem sich verändernden Hash Wert.\citep{Menezes1997} \citep{Diffie1976}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.}
+\paragraph{Kryptografisches Hashing}$~~$\\
+Kryptografisches Hashing gehört zu einem der wichtigsten Instrumente der Kryptografie und bildet einen eigenen Teilbereich der Kryptografie. Mit einer kryptografischen Hash-Funktion lässt sich aus einem beliebig langen Wort (oder Datensatz) eine Zeichenkette mit fixer Stellenanzahl generieren. Die jeweilige Ausgabelänge wird in Bit angegeben. Formal ist eine Hash-Funktion definiert als
+
+\begin{equation}
+	f:\left \{ 0,1 \right \}^{*} \mapsto \left \{ 0,1 \right \}^{n}
+\end{equation}
+
+Das Ergebnis wird als digitaler Fingerabdruck bezeichnet. Die Generierung des Hash-Werts ist nicht zwingend kryptografisch, denn nicht jede Hash-Funktion erfüllt alle Anforderungen einer kryptografischen Hash-Funktion \citep{Menezes1997, Diffie1976}. Dabei gilt, eine kryptografische Hash-Funktion muss folgende Kriterien erfüllen:
+
+\begin{itemize}
+	\item Eindeutigkeit
+	\item Reversibilität
+	\item Kollisionsresistenz
+\end{itemize}
+
+Mit der Eindeutigkeit ist gegeben, dass ein bestimmter Eingabewert immer zum selben Ausgabewert führt. Reversibilität beschreibt die Eigenschaft einer Hash-Funktion, das der Ausgabewert nicht in den ursprünglichen Eingabewert zurückberechnet werden kann. Die Kollisionsresistenz sorgt dafür, dass zwei unterschiedliche Eingabewerte nicht den gleichen Ausgabewert erzeugen. Abbildung \ref{fig:schema-hash-function} zeigt schematisch die Funktionsweise einer kryptografischen Hash-Funktion. Der Eingabewert, hier Urbild, wird durch die kryptografische Hash-Funktion in einen Ausgabewert (Hash-Wert) fester Länge transformiert.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\linewidth]{pictures/schema-hash-function}
+	\caption[Funktionsweise einer kryptografischen Hash-Funktion]{Funktionsweise einer kryptografischen Hash-Funktion \textcolor{red}{QUELLE Elektronik Kompendium}}
+	\label{fig:schema-hash-function}
+\end{figure}
 
 \paragraph{Signierte Transaktionen durch Public-Key-Infrastruktur}$~~$\\
-Wird eine Transaktion von einem Teilnehmer erstellt und soll durch das Netzwerk validiert werden kommen digitale Signaturen zum Einsatz. Digitale Signaturen gehören zur asymmetrischen Kryptographie und werden dazu verwendet die Urheberschaft und Integrität einer Nachricht oder im Falle der Blockchain einer Transaktion zu prüfen.\citep{Beutelspacher2010, Menezes1997}
+Wird eine Transaktion von einem Teilnehmer erstellt und soll durch das Netzwerk validiert werden kommen digitale Signaturen zum Einsatz. Digitale Signaturen gehören zur asymmetrischen Kryptographie und werden dazu verwendet die Urheberschaft und Integrität einer Nachricht oder, im Falle der Blockchain, einer Transaktion zu prüfen.\citep{Beutelspacher2010, Menezes1997}
 
 In Abbildung \ref{fig:digital-signatures-create} wird das digitale Signieren einer Transaktion verdeutlicht. Der Prozess startet oben links in der Abbildung mit einer Transaktion. Durch Anwendung einer kryptographischen Hashfunktion wird ein Hash gebildet. Dieser Hashwert wird anschließend mit dem privaten Schlüssel des Erstellers verschlüsselt. Dieser verschlüsselte Hashwert ist die digitale Signatur und zusammen mit der Transaktion bilden sie die digital signierte Transaktion. Durch die Verwendung der \ac{pki} ist die digitale Signatur auf zwei Arten einzigartig. Zum einen kann der Ersteller der Signatur eindeutig zugeordnet werden und zum anderen wird die Integrität der Transaktion sichergestellt \citep{Drescher2017}.
 \begin{figure}[H]
@@ -162,8 +191,18 @@ Stellt sich bei der Überprüfung der signierten Transaktion heraus, dass die Ha
 	\label{fig:digital-signatures-validate-negative}
 \end{figure}
 
-\paragraph{Konsensusprotokolle}$~~$\\
-\textcolor{red}{Byzantine Fault Tolerance erklären als Einstieg. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.}
+\paragraph{Konsensmechanismen}$~~$\\
+Es gibt hauptsächlich zwei Kategorien von Konsensmechanismen:
+
+\begin{itemize}
+	\item Lotterie-basiert
+	\item Byzantinische Fehlervereinbarung
+\end{itemize}
+
+Die erste Kategorie wird auch Nakamoto-Konsens genannt nach dem Pseudonym des Bitcoin Erfinders Satoshi Nakamoto. Der Konsensmechanismus wählt den Prüfer, d.h. den Knoten, der entscheidet, welcher der nächste Block ist, der an die Blockchain angehangen wird. Dabei ist die Wahl eine Lotterieziehung. Der Gewinner ist der Validierer. Jeder neue Block erfordert auch eine neue Ziehung eines Validierers. Die Auswahl durch eine Lotterie reduziert die Wahrscheinlichkeit, dass ein kompromittierter Knoten einen gefälschten Block validiert. Hierbei folgt die Lotterie keiner gleichwertigen Verteilung. Jeder Mechanismus definiert seine eigene Wahrscheinlichkeitsverteilung anhand eine bestimmte Eigenschaft des Gewinners bevorzugt wird. So besitzt jeder Lotterie-basierte Konsensmechanismus ein anderes Vertrauensmodell. Bitcoin beispielsweise verwendet den bekanntesten Mechanismus - \acf{pow}. Daneben gibt es wie beschrieben noch einige andere Mechanismen wie \acf{pos}, \acf{posp} oder \acf{poet}.
+
+\acf{bft}-Systeme bilden die Basis für Mechanismen der zweiten Kategorie. \ac{bft}-Systeme sind so konzipiert, dass sie auch bei Ausfall einiger Teilnehmer des Netzwerks weiterhin funktionieren. Dabei kann der Ausfall unfreiwillig (z.B. ein teilnehmender Knoten ist außer Betrieb) oder freiwillig (z.B. ein Angreifer kontrolliert den fehlerhaften Knoten) sein. \ac{bft}-Systeme verwenden Abstimmungsmechanismen, um einen Konsens herstellen zu können. Der verwendete Mechanismus legt das Vertrauensmodell fest. Der \acf{pbft} Mechanismus ist der bekannteste Mechanismus dieser Kategorie.
+Außerdem sind hybride Konsensmechanismen möglich die eine Mischung aus Lotterie und \ac{bft} darstellen.
 
 \subparagraph{Proof-of-X}$~~$\\
 \textcolor{red}{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.}
