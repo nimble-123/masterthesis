@@ -1,7 +1,7 @@
 \section{Lösungskonzept}
 Das Kapitel Lösungskonzept soll aufzeigen mit welcher konkreten Ausprägung der Blockchain Techologie der gewählte Use-Case realisiert werden soll. Dazu wird im ersten Schritt eine SWOT-Analyse zur Blockchain Technologie allgemein durchgeführt und die Ergebnise beschrieben. In Schritt zwei kommt eine Nutzwertanalyse zum Einsatz anhand welcher ermittelt wird welche Ausprägung der Technologie sich zur Umsetzung bestmöglichst eignet.
 
-\subsection{SWOT-Analyse der \textit{Blockchain-Technologie}}
+\subsection{SWOT-Analyse der \textit{Blockchain-Technologie}} \label{swot-analyse}
 Durch die Vielzahl an unterschiedlichen Use-Cases die mittels der Blockchain Technologie umgesetzt werden ist es nötig für den spezifischen Use-Case der Chargenrückverfolgung die Technologie einer SWOT-Analyse zu unterziehen. Hierdurch wird gewährleistet, dass die Technologie für den Use-Case überhaupt geeignet ist. Im folgenden werden daher aus interner Sicht die Stärken und Schwächen gegenübergestellt, sowie die dadurch möglichen externen Chancen und Risiken diskutiert. Abbildung \ref{fig:blockchain-technology-swot-analysis} zeigt eine schematische Sicht der SWOT-Analyse.
 
 \begin{figure}[H]
@@ -109,7 +109,7 @@ Mit:
 Aus diesen Summen der Zeilenwerte ergibt sich eine Rangfolge bzw. eine Gewichtung für die Kriterien. Mit diesen gewichteten Kriterien lassen sich dann die Entscheidungsvarianten in der eigentlichen Nutzwertanalyse bewerten.
 
 \subsubsection{Kriterien}
-\textcolor{red}{Woher kommen die Kriterien?} Diese Kriterien wurden für die Nutzwertanalyse identifiziert und sollen im Folgenden kurz erläutert werden.
+Aus den Ergebnis der SWOT-Analyse in Kapitel \ref{swot-analyse} wurden die folgenden Kriterien der Nutzwertanalyse abgeleitet. Eine kurze Erläuterung der Kriterien soll einen Überblick bieten.
 
 \begin{itemize}
 	\item Konsensmechanismus
@@ -172,12 +172,17 @@ Die beschriebenen Kriterien lassen sich in einer Präferenzmatrix (Tabelle \ref{
 \end{table}
 
 \subsubsection{Ergebnis}
-Tabelle/Bild beschreiben, Besonderheiten der Varianten erläutern, \glqq Gewinner \grqq{} detaillierter Beschreiben wieso weshalb.
+Werden alle Komponenten zusammengefügt ergibt sich das Grundgerüst der Nutzwertanalyse. Die bewerteten Entscheidungsvarianten lassen sich an den Spalten der Tabelle \ref{tab:nutzwertanalyse} ablesen. Einige Besonderheiten der Varianten sollen nachfolgend beschrieben werden.
 
-Besonderheiten Ethereum: Oracle Services für Interoperabilität
-Besonderheiten HL: Pluggable Konsensalgorithmus, Standardisierte REST-API nach OpenAPI Specification (aka Swagger), Enterprise Focus
-Besonderheiten IOTA: angeblich Quantumproof Konsens, Ternäres System, IoT Focus
-Besonderheiten Quorum: Proprietäre Lösung von JPMorgan Chase, Oracle Services für Interoperabilität
+Ethereum, als erste Entscheidungsvariante, lässt sich durch den Aufbau des Systems für den Einsatz einer Chargenrückverfolgung in der Fleischwarenindustrie nur bedingt einsetzen. Dies lässt sich begründen mit der Art und Weise wie innerhalb des Ethereum Netzwerks neue Transaktionen validiert werden (permissionless). Ein entscheidender Faktor warum Ethereum das Schlusslicht in dieser Analyse bildet ist die fehlende Möglichkeit Geschäftsdaten ausreichend vor ungewollter Einsicht schützen zu können. Ebenfalls bietet Ethereum keine native Möglichkeit für einen Smart Contract Daten oder Informationen aus Drittsystemen zu beziehen und für die Ausführung der Geschäftslogik zu nutzen.
+
+IOTA, nach Ethereum die nächst höher bewertete Entscheidungsvariante, ist von Grund auf als \ac{dlt} für den Einsatz im \acf{iot} konzipiert worden und bietet daher einige Vorteile gegenüber Ethereum. Die Kriterien Interoperabilität und Konsensmechanismus erfüllt IOTA mehr als Ethereum. Konkret bietet IOTA einen Konsensmechanismus der zukunftssicher sein soll und einen erheblich niederigen Energieverbrauch verursacht als klassische Konsensmechanismen wie beispielsweise \ac{pow}. Im Gegenzug steht IOTA noch relativ am Anfang was den Reifegrad des Gesamtsystems betrifft. So ist das IOTA Netzwerk zum aktuellen Zeitpunkt nicht dezentralisiert. Es wird zur Koordination der Transaktionen noch ein sogenannter \glqq Coordinator \grqq{} eingesetzt.\textcolor{red}{Quelle Coordinator}
+
+Quorum realisiert einige Aspekte des Blockchain Netzwerks grundlegend anders als Ethereum. Quorum ist als permissioned private Netzwerk konzipiert was dem Gegenteil von Ethereum entspricht. Aus diesem Grund setzt Quorum nicht auf einen \ac{pow} Konsensmechanismus, sondern bietet verschiedene \ac{bft}-basierte Mechanismen an. Ebenfalls bietet Quorum eine Möglichkeit Transaktionen mit Zugriffsbeschränkungen zu nutzen. Dadurch sind nur Teilnehmer berechtigt den Inhalt der Transaktion zu sehen, die im Vorfeld für diese Transaktion bestimmt wurden. Dennoch wird solch eine Transaktion vom Gesamtnetzwerk verarbeitet und validiert. Quorum wurde von JPMorgan Chase entwickelt und entsprechend ist die Lösung nicht quelloffen. Eine Herstellabhängigkeit kann nicht ausgeschlossen werden.
+
+Hyperledger bietet anhand den Ergebnissen der Analyse die besten Möglichkeiten um eine Chargenrückverfolgung über eine Blockchain zu realisieren. Dies beruht darauf, dass wichtige Kriterien wie Konsensmechanismus, Interoperabilität und allgemeine Eignung für den Einsatz im Supply Chain Umfeld von Hyperledger im Vergleich zu den drei anderen Entscheidungsvarianten am meisten erfüllt werden. So lassen sich in einem Hyperledger Netzwerk die unterschiedlichsten Konsensmechanismen nutzen. Je nach Einsatzzweck des Netzwerks kann der Konsensmechanismus nahezu frei gewählt werden. Außerdem bietet Hyperledger eine native Möglichkeit um Smart Contracts mit Informationen aus Drittsystemen zu versorgen. So lassen sich Hyperledger Netzwerk nahtlos in vorhandene Systemlandschaften implementieren.
+
+So lässt sich aus Tabelle \ref{tab:nutzwertanalyse} entnehmen, das Hyperledger die Kriterien mit Abstand am besten erfüllt. Aus diesem Grund wird für die Konzeption und prototypische Implementierung einer Chargenrückverfolgung für die Fleischwarenindustrie die Hyperledger Plattform verwendet.
 
 \begin{landscape}
 	\begin{table}[H]
@@ -205,5 +210,6 @@ Besonderheiten Quorum: Proprietäre Lösung von JPMorgan Chase, Oracle Services 
 
 
 \subsection{Zusammenfassung Lösungskonzept}
+
 
 \newpage
