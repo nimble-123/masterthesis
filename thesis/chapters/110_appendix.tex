@@ -2,8 +2,61 @@
 
 \addcontentsline{toc}{section}{Anhang}
 \section*{Anhang}
-Weitere Informationen werden im Anhang abgedruckt (z. B. Listings).
+\subsection*{Funktionale Anforderungen}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+        \toprule
+        ID                & Anforderung & Quelle \\
+        \midrule
+        \textbf{A1.1}              & Das Gesamtsystem muss fähig sein den Lebenszyklus eines Tieres vom Erzeuger bis zum Lebensmitteleinzelhandel abzubilden.                    & \textit{Wissensch. Kontext}                \\ \addlinespace
+        \multicolumn{1}{r}{A1.1.1} & Das Gesamtsystem muss fähig sein Tiere anzulegen/registrieren.                     &                 \\ \addlinespace
+        \multicolumn{1}{r}{A1.1.2} & Das Gesamtsystem muss fähig sein Tiere und Chargen einander zuzuordnen.                     &                 \\ \addlinespace
+        \multicolumn{1}{r}{A1.1.3} & Das Gesamtsystem muss fähig sein Tiere zwischen Teilnehmern zu transferieren im Sinne eines Eigentumswechsel.                     &                 \\
+        \textbf{A1.2}              & Das Gesamtsystem muss eine generische Schnittstelle zur Kommunikation mit dem Ledger anbieten.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A1.3}              & Das Gesamtsystem muss fähig sein Transaktionsdaten manipulationssicher speichern zu können.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A1.4}              & Das Gesamtsystem muss fähig sein den Lebenszyklus einer Charge abzubilden.                     & \textit{Partner}                \\ \addlinespace
+        \multicolumn{1}{r}{A1.4.1} & Das Gesamtsystem muss fähig sein Chargen anzulegen.                     &                 \\ \addlinespace
+        \multicolumn{1}{r}{A1.4.2} & Das Gesamtsystem muss fähig sein Chargen und Tiere einander zuzuordnen.                     &                 \\ \addlinespace
+        \bottomrule
+    \end{tabularx}
+    \caption{Funktionale Anforderungen}
+    \label{tab:functional-requirements}
+\end{table}
 
+\subsection*{Rahmenbedingungen}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+        \toprule
+        ID                & Anforderung & Quelle \\
+        \midrule
+        \textbf{A2.1}              & Der Prototyp muss mit der Hyperledger Fabric Blockchain Technologie konzipiert und implementiert werden.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A2.2}              & Der Prototyp bildet die Teilnehmer der Wirtschöpfungskette vom Erzeuger bis zum Lebensmitteleinzelhandel ab.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A2.3}              & Der Prototyp fokussiert sich bei der Transaktionsabwicklung auf die Tierart Schwein. (Verminderte Komplexität)                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A2.4}\phantomsection\label{req:A2.4}              & Das Gesamtsystem muss in einer abgeschlossenen Umgebung gehosted und vor pseudonymen Zugriff geschützt sein.                     & \textit{Partner}                \\ \addlinespace
+        \bottomrule
+    \end{tabularx}
+    \caption{Funktionale Anforderungen}
+    \label{tab:functional-requirements}
+\end{table}
+
+\subsection*{Qualitätsanforderungen}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+        \toprule
+        ID                & Anforderung & Quelle \\
+        \midrule
+        \textbf{A3.1}              & Die Architektur des Systems muss eine nachträgliche Erweiterung ermöglichen, um weitere Geschäftszweige abbilden zu können.                     & \textit{Wissensch. Kontext}                \\ \addlinespace
+        \textbf{A3.2}              & Die Architektur des Systems muss mindestens eine konstante Performance bei steigender Teilnehmerzahl.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A3.3}              & Das System muss auch bei Ausfall oder Komprimitierung eines oder mehrerer Teilnehmer konsistent und stabil weiter arbeiten.                    & \textit{Partner}                \\ \addlinespace
+        \bottomrule
+    \end{tabularx}
+    \caption{Funktionale Anforderungen}
+    \label{tab:functional-requirements}
+\end{table}
+
+\newpage
+\subsection*{Listings}
+\subsubsection*{Listing A}
 \begin{verbatim}
 10 PRINT "Sales and Distribution"
 20 GOTO 10
