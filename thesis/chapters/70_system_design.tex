@@ -65,7 +65,7 @@ Die vorrangegangene Betrachtung der Waren- und Datenströme macht deutlich an we
 Der Vergleich zwischen dem Prozess der Rückverfolgung wie er aktuell durchgeführt wird (Ist-Prozess) und wie er mit dem Einsatz eines Blockchain Systems aussehen kann (Soll-Prozess) dient dazu die funktionalen Anforderungen ableiten zu können.
 
 \paragraph{Ist-Prozess}
-Der Ist-Prozess durchläuft die Schritte von der Verbrauchermeldung bis zur Information der anderen Teilnehmer in der Wertschöpfungskette. Dabei wird anhand der Produktkennung und Verbrauchermeldung ermittelt zu welcher Produktcharge die Meldung gehört. Hierfür wird eine vielzahl an Software und Datenbeständen benötigt. Dazu zählt die Office Suite von Microsoft und ein ERP-System in Kombination mit einer Lieferantenmanagement- (SAP SRM) und Vertriebslösung (SAP CRM). Nach der Zuordnung der Verbrauchermeldung zur Produktcharge wird im Sinne des Uptracing die Charge bis zum Erzeuger zurückverfolgt, um zu prüfen in welchem Produktionsschritt das gemeldete Problem entstanden ist. Hierdurch können Maßnahmen zum Abstellen des Problem erarbeitet werden, die an alle Teilnehmer übermittelt werden. Die Chargeninformationen werden bereitsgestellt von einer zentralen Instanz, der Viehvermarktungsgenossenschaft. Dies bedeutet, liegen der Viehvermarktungsgenossenschaft lückenhafte bzw. manipulierte Datensätze vor besteht die Gefahr eine Rückverfolgung nicht vollständig durchführen zu können. Ebenfalls muss der Verbraucher der Viehvermarktungsgenossenschaft vertrauen für vollständig- und korrektheit der bereitgestellten Informationen. Nachdem alle Teilnehmer informiert sind ist der Prozess der Rückverfolgung abgeschlossen. Entsprechende folge Prozesse für einen eventuellen Rückruf von Produkten werden beim Abschluss der Rückverfolgung teils automatisch teils manuell ausgelöst.
+Der Ist-Prozess (Abbildung \ref{fig:business-process-epc-diagramm}) durchläuft die Schritte von der Verbrauchermeldung bis zur Information der anderen Teilnehmer in der Wertschöpfungskette. Dabei wird anhand der Produktkennung und Verbrauchermeldung ermittelt zu welcher Produktcharge die Meldung gehört. Hierfür wird eine vielzahl an Software und Datenbeständen benötigt. Dazu zählt die Office Suite von Microsoft und ein ERP-System in Kombination mit einer Lieferantenmanagement- (SAP SRM) und Vertriebslösung (SAP CRM). Nach der Zuordnung der Verbrauchermeldung zur Produktcharge wird im Sinne des Uptracing die Charge bis zum Erzeuger zurückverfolgt, um zu prüfen in welchem Produktionsschritt das gemeldete Problem entstanden ist. Hierdurch können Maßnahmen zum Abstellen des Problem erarbeitet werden, die an alle Teilnehmer übermittelt werden. Die Chargeninformationen werden bereitsgestellt von einer zentralen Instanz, der Viehvermarktungsgenossenschaft. Dies bedeutet, liegen der Viehvermarktungsgenossenschaft lückenhafte bzw. manipulierte Datensätze vor besteht die Gefahr eine Rückverfolgung nicht vollständig durchführen zu können. Ebenfalls muss der Verbraucher der Viehvermarktungsgenossenschaft vertrauen für vollständig- und korrektheit der bereitgestellten Informationen. Nachdem alle Teilnehmer informiert sind ist der Prozess der Rückverfolgung abgeschlossen. Entsprechende folge Prozesse für einen eventuellen Rückruf von Produkten werden beim Abschluss der Rückverfolgung teils automatisch teils manuell ausgelöst.
 
 \begin{figure}[H]
 	\centering
@@ -75,109 +75,46 @@ Der Ist-Prozess durchläuft die Schritte von der Verbrauchermeldung bis zur Info
 \end{figure}
 
 \paragraph{Soll-Prozess}
-Während im Ist-Prozess (Abbildung \ref{fig:target-business-process}) viele verschiedene IT-Systeme zum Einsatz kommen um alle Chargeninformationen zusammenzutragen, wird im Soll-Prozess das Blockchain Netzwerk und darauf aufsetzende dezentrale Applikationen genutzt. Betrachtet man die einzelnen Prozessschritte so ändert sich bei dem Einsatz einer Blockchain oberflächlich nichts, bei näherer Betrachtung wird dann allerdings deutlich, dass sämtliche Informationen zur Rückverfolgung der Charge vom Blockchain Netzwerk zur Verfügung gestellt werden und nicht in einzelnen Datensilos liegen wie im Ist-Prozess. So dient die Blockchain als gemeinsame Datenbasis für sämtliche Informationen die während der Produktion vom Erzeuger bis zum Lebensmitteleinzelhandel erhoben werden. Änderungen werden transparent in der Blockchain erfasst und sind durch den Konsensmechanismus vor nachträglicher Manipulation geschützt. 
+Während im Ist-Prozess (Abbildung \ref{fig:business-process-epc-diagramm}) viele verschiedene IT-Systeme zum Einsatz kommen um alle Chargeninformationen zusammenzutragen, wird im Soll-Prozess das Blockchain Netzwerk und darauf aufsetzende dezentrale Applikationen genutzt. Betrachtet man die einzelnen Prozessschritte so ändert sich bei dem Einsatz einer Blockchain oberflächlich nichts, bei näherer Betrachtung wird dann allerdings deutlich, dass sämtliche Informationen zur Rückverfolgung der Charge vom Blockchain Netzwerk zur Verfügung gestellt werden und nicht in einzelnen Datensilos liegen wie im Ist-Prozess. So dient die Blockchain als gemeinsame Datenbasis für sämtliche Informationen die während der Produktion vom Erzeuger bis zum Lebensmitteleinzelhandel erhoben werden. Änderungen werden transparent in der Blockchain erfasst und sind durch den Konsensmechanismus vor nachträglicher Manipulation geschützt. 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{pictures/business-process-epc-diagram-bw}
-	\caption[Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation]{Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation}
+	\caption[Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation]{Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation \textcolor{red}{Zu SOLL anpassen}}
 	\label{fig:target-business-process}
 \end{figure}
 
-\subsection{Funktionale Anforderungen}
-1. Alle funktionalen Anforderungen textuell beschreiben und wo sie hergeleitet sind, immer mit Referenz auf die Tabelle in der die Übersicht aller funktionaler Anforderungen zu finden ist.
-
-\begin{table}[H]
-    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
-        \toprule
-        ID                & Anforderung & Quelle \\
-        \midrule
-        \textbf{A1.1}              & Das Gesamtsystem muss fähig sein den Lebenszyklus eines Tieres vom Erzeuger bis zum Lebensmitteleinzelhandel abzubilden.                    & \textit{Wissensch. Kontext}                \\ \addlinespace
-        \multicolumn{1}{r}{A1.1.1} & Das Gesamtsystem muss fähig sein Tiere anzulegen/registrieren.                     &                 \\ \addlinespace
-        \multicolumn{1}{r}{A1.1.2} & Das Gesamtsystem muss fähig sein Tiere und Chargen einander zuzuordnen.                     &                 \\ \addlinespace
-        \multicolumn{1}{r}{A1.1.3} & Das Gesamtsystem muss fähig sein Tiere zwischen Teilnehmern zu transferieren im Sinne eines Eigentumswechsel.                     &                 \\
-        \textbf{A1.2}              & Das Gesamtsystem muss eine generische Schnittstelle zur Kommunikation mit dem Ledger anbieten.                     & \textit{Partner}                \\ \addlinespace
-        \textbf{A1.3}              & Das Gesamtsystem muss fähig sein Transaktionsdaten manipulationssicher speichern zu können.                     & \textit{Partner}                \\ \addlinespace
-        \textbf{A1.4}              & Das Gesamtsystem muss fähig sein den Lebenszyklus einer Charge abzubilden.                     & \textit{Partner}                \\ \addlinespace
-        \multicolumn{1}{r}{A1.4.1} & Das Gesamtsystem muss fähig sein Chargen anzulegen.                     &                 \\ \addlinespace
-        \multicolumn{1}{r}{A1.4.2} & Das Gesamtsystem muss fähig sein Chargen und Tiere einander zuzuordnen.                     &                 \\ \addlinespace
-        \bottomrule
-    \end{tabularx}
-    \caption{Funktionale Anforderungen}
-    \label{tab:functional-requirements}
-\end{table}
-
-\subsection{Rahmenbedingungen}
-1. Alle Rahmenbedingungen textuell beschreiben und wo sie hergeleitet sind, immer mit Referenz auf die Tabelle in der die Übersicht aller Rahmenbedingungen zu finden ist.
-
-\begin{table}[H]
-    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
-        \toprule
-        ID                & Anforderung & Quelle \\
-        \midrule
-        \textbf{A2.1}              & Der Prototyp muss mit der Hyperledger Fabric Blockchain Technologie konzipiert und implementiert werden.                     & \textit{Partner}                \\ \addlinespace
-        \textbf{A2.2}              & Der Prototyp bildet die Teilnehmer der Wirtschöpfungskette vom Erzeuger bis zum Lebensmitteleinzelhandel ab.                     & \textit{Partner}                \\ \addlinespace
-        \textbf{A2.3}              & Der Prototyp fokussiert sich bei der Transaktionsabwicklung auf die Tierart Schwein. (Verminderte Komplexität)                     & \textit{Partner}                \\ \addlinespace
-        \bottomrule
-    \end{tabularx}
-    \caption{Funktionale Anforderungen}
-    \label{tab:functional-requirements}
-\end{table}
-
-\subsection{Qualitätsanforderungen}
-1. Alle Qualitätsanforderungen textuell beschreiben und wo sie hergeleitet sind, immer mit Referenz auf die Tabelle in der die Übersicht aller Qualitätsanforderungen zu finden ist.
-
-\begin{table}[H]
-    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
-        \toprule
-        ID                & Anforderung & Quelle \\
-        \midrule
-        \textbf{A3.1}              & Die Architektur des Systems muss eine nachträgliche Erweiterung ermöglichen, um weitere Geschäftszweige abbilden zu können.                     & \textit{Wissensch. Kontext}                \\ \addlinespace
-        \textbf{A3.2}              & Die Architektur des Systems muss mindestens eine konstante Performance bei steigender Teilnehmerzahl.                     & \textit{Partner}                \\ \addlinespace
-        \textbf{A3.3}              & Das System muss auch bei Ausfall oder Komprimitierung eines oder mehrerer Teilnehmer konsistent und stabil weiter arbeiten.                    & \textit{Partner}                \\ \addlinespace
-        \bottomrule
-    \end{tabularx}
-    \caption{Funktionale Anforderungen}
-    \label{tab:functional-requirements}
-\end{table}
-
-\subsection{Systementwurf gemäß Architekturkonzept}
-Unter berücksichtigung der Resultate aus Kapitel \ref{solution-concept} im Kontext des Anwendungsfalls ergibt sich die Grobarchitektur für das System wie in Abbildung \ref{fig:high-level-architecture} dargestellt.
+\subsection{Systementwurf gemäß Architekturkonzept}\label{system-design-concept}
+Unter berücksichtigung der Resultate aus Kapitel \ref{solution-concept} im Kontext des Anwendungsfalls ergibt sich die Grobarchitektur für das System wie in Abbildung \ref{fig:blockchain-system-architecture} dargestellt.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\linewidth]{pictures/hyperledger-fabric-architecture}
-	\caption[High Level System Architecture]{High Level System Architecture}
-	\label{fig:high-level-architecture}
+	\includegraphics[width=1\linewidth]{pictures/blockchain-system-deployment-diagram}
+	\caption[Blockchain System Architektur]{Blockchain System Architektur}
+	\label{fig:blockchain-system-architecture}
 \end{figure}
 
-Danach besteht das Gesamtsystem aus logischer Sicht aus dem \textit{Ledger}, einer \textit{Zustandsdatenbank}, den \textit{Smart Contracts} (Chaincode), dem \textit{Konsensmechanismus}, den einzelnen \textit{Teilnehmern} und dem \textit{User Interface}. \textit{Ledger}, \textit{Zustandsdatenbank} und \textit{Smart Contracts} werden zusammen als \textit{Peer} bezeichnet. Zusätzlich gibt es noch eine Sicherheitsstrategie (\textit{CA}) zum Schutz der einzelnen Komponenten. Jeder Teilnehmer des Systems muss mindestens einen \textit{Peer} betreiben, um Transaktionen im Netzwerk erstellen und validieren zu können. Nachfolgend werden die einzelnen Komponenten beschrieben.
+Abbildung \ref{fig:organization-component-diagram} zeigt einen Knoten vom Typ \textit{Organization} im Detail. Dem nach besteht eine \textit{Organization} aus logischer Sicht aus dem \textit{Ledger}, einer \textit{Zustandsdatenbank}, den \textit{Smart Contracts} (Chaincode), dem \textit{Konsensmechanismus}, den einzelnen \textit{Teilnehmern} und dem \textit{User Interface}. \textit{Ledger}, \textit{Zustandsdatenbank} und \textit{Smart Contracts} werden zusammen als \textit{Peer} bezeichnet. Wobei die Ausführung der Smart Contracts in einer isolierten Umgebung erfolgt. Zusätzlich gibt es noch eine Sicherheitsstrategie (\ac{ca}) zum Schutz der einzelnen Komponenten. Jeder Teilnehmer des Systems muss mindestens einen \textit{Peer} betreiben, um Transaktionen im Netzwerk erstellen und validieren zu können. Mit jedem zusätzlichen Peer wird die individuelle Ausfallsicherheit der \textit{Organization} erhöht. Nachfolgend werden die einzelnen Komponenten näher beschrieben.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/organization-component-diagram}
+	\caption[Organisation Komponenten Diagramm]{Organisation Komponenten Diagramm}
+	\label{fig:organization-component-diagram}
+\end{figure}
 
 \subsubsection{Ledger/Konsens}
-Aufbau Ledger (Chain + CouchDB)\\
-Transaction Flow mit pBFT\\
-1.1 Ledger\\
-1.2 Channels\\
-1.3 Smart Contracts\\
-1.4.4 Endorsement Policies\\
-1.4.5 Gossip Protocol\\
-2.1 CA\\
-2.2 Peers\\
-2.2.1 Endorser\\
-2.2.2 Anchor\\
-2.2.3 General\\
-2.3 Orderer\\
-5 Transaction Flow\\
-5.1 Endorsement\\
-5.2 Ordering\\
-5.3 Validation
+Das sogenannte Ledger besteht aus der verketteten Liste der Transaktionen (Hyperledger Fabric Peer), einer Zustandsdatenbank (CouchDB) und dem Orderer Service. Zustandsveränderungen sind Veränderungen aufgrund von Smart Contract Ausführungen, welche durch Teilnehmer oder Smart Contracts ausgelöst werden. Jede Transaktion beschreibt eine Menge von Schlüsselwertpaaren zugehörig zu einem Asset. Assets und die darauf aufbauende Business Netzwerk Definition wird in Kapitel \ref{smart-contracts} näher erläutert. Damit ein Teilnehmer sich gegenüber dem Ledger authentifizieren kann verwendet das Hyperledger Fabric Framework eine \acf{pki}. Diese \ac{pki} wird realisiert durch einen \ac{msp} genannten Service. Dieser Service kümmert sich um die Vergabe und den Abgleich von digitalen Identitäten mit denen sich User gegenüber dem Ledger authentifizieren können. Durch diese Designentscheidung wird das Blockchain Netzwerk ein private permissioned Netzwerk und realisiert damit Anforderung \textit{A2.4}. Eine Anonymität der Teilnehmer ist innerhalb der Lieferkette ohnehin kaum gegeben und nur indirekt über mehrere Produktionsschritte erreichbar. Ein Ziel des Systems ist es transparenz für die Nutzer des Netzwerks zu bieten, aus diesem Grund wurde der Aspekt Anonymität außer acht gelassen. 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\linewidth]{pictures/hyperledger-fabric-architecture}
-	\caption[Hyperledger Fabric Architecture]{Hyperledger Fabric Architecture (eigene Darstellung)}
-	\label{fig:hyperledger-fabric-architecture}
-\end{figure}
+Neue Transaktionen im Netzwerk werden über ein User Interface durch einen Teilnehmer ausgelöst. Jede Transaktion durchläuft dann einen dreistufigen Prozess bis sie schlussendlich dem Ledger hinzugefügt wird (Abbildung \ref{fig:transaction-flow}). Die einzelnen Stufen sind 
+
+\begin{itemize}
+	\item Endorsement,
+	\item Ordering,
+	\item Validation.
+\end{itemize}
+
+Das Endorsement beginnt mit der Übermittlung der Transaktion zu einem Peer. Dieser verteilt die Transaktion im Netzwerk. Jeder Peer simuliert und prüft nun die Transaktion anhand der Geschäftslogik (Smart Contract). Nach erfolgreicher Prüfung erhält der Transaktionssteller eine Endorsement Signatur, welche an den Orderer Service weitergeleitet wird (Ordering). An dieser Stelle wird die Konsensmechanik durchlaufen und wenn ein Konsens über das Ergebnis der Transaktion hergestellt wurde (Validation) gibt der Orderer Service die Transaktion für das Ledger frei.
 
 \begin{figure}[H]
 	\centering
@@ -186,34 +123,150 @@ Transaction Flow mit pBFT\\
 	\label{fig:transaction-flow}
 \end{figure}
 
-\subsubsection{Smart Contracts / Business Netzwerk Modell}
-Klassendiagramm für Smart Contracts(Transaction Processors), Participants, Assets\\
-1.4.2 Assets\\
-1.4.3 Transactions\\
-1.4.4 Participants
+\subsubsection{Smart Contracts / Business Netzwerk Modell}\label{smart-contracts}
+Smart Contracts sind abgebildet als \textit{Transaction Processor Functions}. Zusätzlich werden für Hyperledger Fabric noch Definitionen zu \textit{Participants}, \textit{Assets} und \textit{Queries} erfasst. Diese Komponenten bilden zusammen das \textit{\ac{bna}} und stellen die Geschäftslogik dar. Anforderung \textit{A1.1} wird mit dem \textit{Business Network Archive} realisiert. Hyperledger Fabric bringt eine eigene Modellierungssprache mit. Mit dieser Sprache werden \textit{Assets}, \textit{Participants} und \textit{Transactions} modelliert. Die Sprache unterstützt Vererbung, Templates und abstrakte Klassen, ähnlich der objektorientierten Programmierung.
+
+Damit Transaktionen im Netzwerk verarbeitet werden können, müssen zugehörige \textit{Assets} modelliert und später im System angelegt werden. Für die transparente, lückenlose Rückverfolgung von Chargen sind folgende \textit{Assets} modelliert worden:
+
+\begin{itemize}
+	\item \textit{Material}
+	\item \textit{Batch}
+	\item \textit{BatchNetwork}
+\end{itemize}
+
+Mit einem \textit{Asset} \textit{Material} werden die Tiere bzw. Erzeugnisse der Produktionsbetriebe abgebildet. Sie werden identifiziert über eine global eindeutige Nummer. Eine Charge ist definiert als \textit{Batch} und ebenfalls wie ein \textit{Material} global eindeutig identifizierbar. Zur darstellung eines Chargengraphs dient die Entität \textit{BatchNetwork}. Darüber hinaus werden noch \textit{Enumerations} und \textit{Concepts} verwendet, um das modellierte System möglichst modular halten zu können. So ist eine nachträgliche Erweiterung bzw. Anpassung ohne großen Aufwand realisierbar. Es wurden folgende Enumerations und Concepts modelliert:
+
+\begin{itemize}
+	\item \textit{MaterialType}
+	\item \textit{MaterialQuality}
+	\item \textit{TransportLog}
+	\item \textit{Location}
+	\item \textit{SensorData}
+	\item \textit{Status}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/hlc-food-chain-model-assets}
+	\caption[Klassendiagramm Blockchain Netzwerk \textit{Assets}]{Klassendiagramm Blockchain Netzwerk \textit{Assets}}
+	\label{fig:hlc-food-chain-model-assets}
+\end{figure}
+
+Abbildung \ref{fig:hlc-food-chain-model-assets} stellt die Beziehungen zwischen den \textit{Assets}, \textit{Enumerations} und \textit{Concepts} in Form eines UML Klassendiagramms dar.
+
+Die Modellierung der \textit{Participants} ist relativ simpel gehalten. Es gibt eine abstrakte Entität \textit{Company} von der sich jeweils eine Teilnehmerkategorie des Blockchain Netzwerk spezialisiert. Eine \textit{Company} wird identifiziert durch die \ac{gln}\footnote{Die \ac{gln} ist eine zentral vergebene Identifikationsnummer von der GS1-Organisation zur eindeutigen Identifikation von Betriebsstätten.}. Außerdem wurde noch ein komplexer Datentyp in Form eines \textit{Concepts} verwendet. Mit dem \textit{Address} \textit{Concept} wird eine reguläre Geschäftsadresse des Unternehmens abgebildet und als eigenes Attribut der \textit{Company} Entität verwendet. Anforderung \textit{A2.2} wird mit dieser Datenstruktur erfüllt. In Abbildung \ref{fig:hlc-food-chain-model-participants} wird das beschriebene Konstrukt als Klassendiagramm dargestellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/hlc-food-chain-model-participants}
+	\caption[Klassendiagramm Blockchain Netzwerk \textit{Participants}]{Klassendiagramm Blockchain Netzwerk \textit{Participants}}
+	\label{fig:hlc-food-chain-model-participants}
+\end{figure}
+
+Die dritte Komponente des \textit{\ac{bna}} ist die Menge an \textit{Transactions} (Abbildung \ref{fig:hlc-food-chain-model-transactions}). \textit{Transactions} werden von \textit{Participants} ausgelöst und sie verändern oder erzeugen \textit{Assets}. Entsprechend wurden die Geschäftsvorgänge abgebildet die nötig sind um eine Chargenrückverfolgung zu ermöglichen (siehe Kapitel \ref{goal-description}). Es wurde eine \textit{Transaction} modelliert zum erzeugen von neuem Material - \textit{produceMaterial}. Diese \textit{Transaction} verlangt mehrere Parameter. Bis auf den Parameter \textit{newMaterial} sind alle weiteren Parameter optional. \textit{newMaterial} enthält alle Daten für ein neues Tier, das im Netzwerk registriert wird. Die optionalen Parameter werden verwendet, wenn in späteren Produktionsschritten vorhandene Erzeugnisse zu Zwischenprodukten weiterverarbeitet werden. Des weiteren sind \textit{Transactions} modelliert mit denen die Eigentumsverhältnisse eines \textit{Assets} verändert werden können. Außerdem lassen sich Chargen angelegen und mit registrierten Tieren verknüpfen. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/hlc-food-chain-model-transactions}
+	\caption[Klassendiagramm Blockchain Netzwerk \textit{Transactions}]{Klassendiagramm Blockchain Netzwerk \textit{Transactions}}
+	\label{fig:hlc-food-chain-model-transactions}
+\end{figure}
+
+% \subsubsection{API (REST)}
+% Endpoint Beschreibung\\
+% 3.1 REST API
 
 \subsubsection{Identity Management}
-PKI\\
-1.4.1 Organizations
+Administration und Interaktion mit dem System wird über ein Identity Management organisiert. Da es sich bei dem System um ein private permissioned Ledger handelt, sind per Definition (Kapitel \ref{Arten-von-Blockchain}) alle Teilnehmer untereinander vollständig bekannt und es gibt keine Anonymität. Dies wird durch den \textit{Membership Service Provider} realisiert. Die verwendete \acf{pki} besteht dabei aus
 
-\subsubsection{API (REST)}
-Endpoint Beschreibung\\
-3.1 REST API
+\begin{itemize}
+	\item einer Registrierungsstelle (RA), die die Identität von Instanzen überprüft, die ihre digitalen Zertifikate in der CA speichern möchten,
+	\item einer Zertifizierungsstelle (CA), die die digitalen Zertifikate speichert, ausstellt und signiert,
+	\item einem zentralen Verzeichnis, d. h. einer sicheren Datenbank zum Speichern und für das Indexieren von Schlüsseln,
+	\item einem Zertifikatsverwaltungssystem, das beispielsweise den Zugriff auf gespeicherte Zertifikate oder die Zustellung der auszugebenden Zertifikate verwaltet,
+	\item einer Zertifikatsrichtlinie mit den Anforderungen der \ac{pki} für ihre Verfahren. Außenstehende können damit die Vertrauenswürdigkeit der \ac{pki} analysieren.
+\end{itemize}
+
+Am Beispiel der Zertifikatsausstellung soll die Funktionsweise des \textit{Membership Service Providers} dargestellt werden. Zur Veranschaulichung des Ablaufs dient Abbildung \ref{fig:hyperledger-fabric-membership-blockchain}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/digital-identity-issue}
+	\caption[Ausstellen einer digitalen Identität für einen Teilnehmer der Blockchain]{Ausstellen einer digitalen Identität für einen Teilnehmer der Blockchain}
+	\label{fig:hyperledger-fabric-membership-blockchain}
+\end{figure}
+
+Bevor eine Transaktion ins Netzwerk zur Verarbeitung eingebracht werden kann, muss sich ein Teilnehmer gegenüber dem System authentifizieren. Hierfür ist ein gültige Ausweisdokument (in diesem Beispiel die digitale Identität) notwendig. Um diese ausgehändigt zu bekommen, werden folgende Schritte durchlaufen: Der entsprechende Teilnehmer meldet sich bei der zuständigen Stelle zur Registration (siehe Abbildung: Registrierungsstelle RA) und beantragt ein Ausweisdokument (1). Damit das Ausweisdokument eindeutig zugeordnet werden kann, ist dieses mit den für den Teilnehmer notwendigen und spezifischen Informationen ausgestattet. Die Registrierungsstelle überprüft die hinterlegten Informationen und bestätigt (2) diese gegenüber der Zertifizierungsstelle (CA), welche im nachfolgenden Schritt das entsprechende Zertifikat (digitale Identität) ausstellt (3). Mit Hilfe dieses Zertifikats kann sich der Teilnehmer dann gegenüber dem System authentifizieren (4). Zur Überprüfung der Gültigkeit und Integrität des Dokuments wird die digitale Identität im abschließenden Schritt gegenüber einer Validierungsstelle geprüft (5). Diese gleicht alle hinterlegten Informationen der CA (6) mit dem vorliegenden Dokument ab und bestätigt im Idealfall zum einen die Echtheit der Person und zum anderen auch die Echtheit und den Inhalt des Zertifikats (7). Der Teilnehmer beweist mithilfe der digitalen Identität, dass es sich wirklich um diesen Teilnehmer handelt.
+
+Der \textit{Membership Service Provider} ist so konzipiert, dass er bei Bedarf auch extern bereitgestellt werden könnte. So ist den Teilnehmern freigestellt, ob sie den Dienst selber betreiben oder das gesamte Netzwerk beispielsweise durch eine externe Zertifikatstelle die Identitätsvergabe regelt.
 
 \subsubsection{User Interface / \DH Apps}
-Mockups
+Endanwender sollen mit dem Gesamtsystem über GUI-Applikationen interagieren. Dazu wurden Mockups für die einzelnen Oberflächen designt. Der Einstieg erfolgt über eine sogenannte Launchpad Seite. Alle weiteren Applikationen lassen sich vom Launchpad aus erreichen. Das Launchpad dient dem Endanwender als zentrale Anlaufstelle um alle Geschäftsvorgänge abzuwickeln. Applikationen werden als Kachel in unterschiedlichen Gruppen angezeigt. Dabei wurde jeweils eine Gruppe für Asset Operationen und Chargen Operationen modelliert (siehe Abbildung \ref{fig:ui-launchpad}). Die Kacheln sind nach dem Ablauf des Lebenszyklus angeordnet. Beginnend mit der Anmeldung eines neuen Tieres im Netzwerk (\textit{Register Asset}).
 
-\subsubsection{Security / Permissions / Access-Control-List}
-Permissions.acl Vorgaben\\
-4.1 MSP
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/ui-launchpad}
+	\caption[Mockup: Einstiegsseite Endanwender]{Mockup: Einstiegsseite Endanwender}
+	\label{fig:ui-launchpad}
+\end{figure}
+
+Über diese Oberfläche kann ein Anwender die Eigenschaften des zu registrierenden Tieres erfassen. Zwingend nötige Informationen sind mit einem Stern am Beginn der Formularzeile markiert (Abbildung \ref{fig:ui-register-asset}). So sind bei einem Ferkel beispielsweise keine Tiere weiterverarbeitet worden (Formularfeld \textit{Processed Assets}) sondern es stellt den Anfang des Warenstroms dar. Wenn ein Ferkel zum Mastbetriebt transportiert wurde und der Mastbetrieb dann ein schlachtreifes Schwein erfassen will hat er die Möglichkeit das Ferkel bei der Registrierung des Schweins mitanzugeben. Innerhalb der Transaktionslogik kann dann auf diese Information reagiert werden. Im einfachsten Fall erfährt das verarbeitete Asset eine Statusänderung.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/ui-register-asset}
+	\caption[Mockup: Asset Registrierung]{Mockup: Asset Registrierung}
+	\label{fig:ui-register-asset}
+\end{figure}
+
+Des weiteren wurde eine Applikation modelliert mit der bereits erfasste Assets gepflegt werden können. Wie in Abbildung \ref{fig:ui-update-asset} durch die ausgegrauten Eingabefelder dargestellt, können bei einem vorhandenen Asset nicht alle Informationen nachträglich verändert werden. Schlüsselmerkmale wie die Identifikationsnummer werden vom System automatisch generiert beim Erfassen eines Assets und können daher nicht vom Anwender angepasst werden.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/ui-update-asset}
+	\caption[Mockup: Asset Update]{Mockup: Asset Update}
+	\label{fig:ui-update-asset}
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/ui-transfer-asset}
+	\caption[Mockup: Asset Transfer]{Mockup: Asset Transfer}
+	\label{fig:ui-transfer-asset}
+\end{figure}
+
+Äquivalent zu den Assets wurden ebenfalls Applikationen zum Anlegen und Pflegen von Chargen modelliert. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{pictures/ui-create-batch}
+	\caption[Mockup: Batch Create]{Mockup: Batch Create}
+	\label{fig:ui-create-batch}
+\end{figure}
+
+% Display Batch
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=1\linewidth]{pictures/ui-display-batch}
+% 	\caption[Mockup: Asset Registrierung]{Mockup: Asset Registrierung}
+% 	\label{fig:ui-display-batch}
+% \end{figure}
+
+% Display Batch Network
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=1\linewidth]{pictures/ui-display-batch-network}
+% 	\caption[Mockup: Asset Registrierung]{Mockup: Asset Registrierung}
+% 	\label{fig:ui-display-batch-network}
+% \end{figure}
+
+% \subsubsection{Security / Permissions / Access-Control-List}
+% Permissions.acl Vorgaben\\
 
 \subsection{Zusammenfassung Systementwurf}
-1. Anforderungsschema wurde beschrieben\\
-2. Ziele wurden erläutert\\
-3. Wertschöpfungskette und Geschäftsprozesse wurden dargestellt\\
-4. Rahmenbedingungen und Qualitätsanforderungen wurden beschrieben\\
-5. Funktionale Anforderungen wurden festgehalten\\
-6. Systementwurf wurde dokumentiert\\
-7. Ausblick nächstes Kapitel auf konkrete technische Umsetzung
+
+Mit dem Kapitel Systementwurf wurde die Methode der Anforderungserhebung beschrieben und eine Zieldefinition gegeben. Daneben sollte eine Betrachtung der Wertschöpfungskette und des Geschäftsprozess in Ist- und Soll-Variante aufzeigen an welchen Punkten ein Blockchain System im Prozess eingesetzt werden sollte um den Gesamtprozess der Chargenrückverfolgung zu unterstützen bzw. überhaupt erst möglich zu machen. Abschließend wurde der Systementwurf beschrieben unterteilt in Ledger/Konsens, Smart Contracts, Identity Management und dem User Interface. Im nächsten Kapitel wird dann die technische Umsetzung des Systementwurf für den Prototyp detailiert beschrieben.
 
 \newpage
