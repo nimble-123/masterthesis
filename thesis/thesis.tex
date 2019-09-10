@@ -11,7 +11,7 @@
 %% Note: Has only been tested with pdflatex, not latex (dvi). Still, there is
 %% theoretical support also for latex.
 %%
-\documentclass[enabledeprecatedfontcommands,12pt]{scrartcl}
+\documentclass[enabledeprecatedfontcommands,12pt,bibtotoc]{scrartcl}
 
 %% packages
 \usepackage[T1]{fontenc}
@@ -261,13 +261,16 @@
 % Insert conclusion
 \input{chapters/100_concluding_review}
 
-\pagenumbering{Roman}
-\setcounter{page}{7}
+%\pagenumbering{Roman}
+%\setcounter{page}{7}
+
+% Insert bibliography
+\input{chapters/110_bibliography}
 
 % Insert appendix
-\input{chapters/110_appendix}
+\input{chapters/120_appendix}
 
 % Insert declaration
-\input{chapters/120_declaration}
+\input{chapters/130_declaration}
 
 \end{document}

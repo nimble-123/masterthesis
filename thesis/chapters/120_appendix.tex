@@ -1,11 +1,8 @@
 \appendix
-%\begin{appendix}
-
 %\addcontentsline{toc}{section}{Anhang}
 %\section*{Anhang}
-\section{Anhang}
-\subsection*{Funktionale Anforderungen}
-%\subsection*{Funktionale Anforderungen}
+\section{Anforderungen}
+\subsection{Funktionale Anforderungen} \label{tab:functional-requirements}
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
         \toprule
@@ -22,11 +19,9 @@
         \multicolumn{1}{r}{A1.4.2} & Das Gesamtsystem muss fähig sein Chargen und Tiere einander zuzuordnen.                     &                 \\ \addlinespace
         \bottomrule
     \end{tabularx}
-    \caption{Funktionale Anforderungen}
-    \label{tab:functional-requirements}
 \end{table}
 
-\subsection{Rahmenbedingungen}
+\subsection{Rahmenbedingungen} \label{tab:functional-requirements}
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
         \toprule
@@ -38,11 +33,9 @@
         \textbf{A2.4}\phantomsection\label{req:A2.4}              & Das Gesamtsystem muss in einer abgeschlossenen Umgebung gehosted und vor pseudonymen Zugriff geschützt sein.                     & \textit{Partner}                \\ \addlinespace
         \bottomrule
     \end{tabularx}
-    \caption{Funktionale Anforderungen}
-    \label{tab:functional-requirements}
 \end{table}
 
-\subsection{Qualitätsanforderungen}
+\subsection{Qualitätsanforderungen} \label{tab:functional-requirements}
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
         \toprule
@@ -53,14 +46,12 @@
         \textbf{A3.3}              & Das System muss auch bei Ausfall oder Komprimitierung eines oder mehrerer Teilnehmer konsistent und stabil weiter arbeiten.                    & \textit{Partner}                \\ \addlinespace
         \bottomrule
     \end{tabularx}
-    \caption{Funktionale Anforderungen}
-    \label{tab:functional-requirements}
 \end{table}
 
 \newpage
-\subsection{Listings}
-\subsubsection{Listing A}
-\begin{lstlisting}[caption={Hyperledger Fabric Peer \textit{Dockerfile}},captionpos=b,language=Dockerfile,label=lst:dockerfile-hl-peer]
+\section{Listings}
+\subsection{Hyperledger Fabric Peer \textit{Dockerfile}} \label{lst:dockerfile-hl-peer}
+\begin{lstlisting}[language=Dockerfile]
 FROM golang:1.11.5
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -159,8 +150,8 @@ LABEL org.hyperledger.fabric.version=${PROJECT_VERSION} \
     org.hyperledger.fabric.base.version=${BASEIMAGE_RELEASE}
 \end{lstlisting}
 
-\subsubsection*{Listing B}
-\begin{lstlisting}[caption={Hyperledger Fabric Network \textit{Connection Profile}},captionpos=b,language=json,label=lst:connection-profile]
+\subsection{Hyperledger Fabric \textit{Network Connection Profile}} \label{lst:connection-profile}
+\begin{lstlisting}[language=json]
     {
         "name": "hlfv1",
         "x-type": "hlfv1",
@@ -224,13 +215,238 @@ LABEL org.hyperledger.fabric.version=${PROJECT_VERSION} \
     }
 \end{lstlisting}
 
-\newpage
-% \addcontentsline{toc}{section}{Literaturverzeichnis}
-\section{Literaturverzeichnis}
-\renewcommand{\refname}{B LITERATURVERZEICHNIS}
-\bibliographystyle{apalike}
-%\bibliography{thesis} % Point to BibTeX literature file e.g. literatur.bib
-{\def\section*#1{}\bibliography{thesis}}
+\subsection{Hyperledger Composer Model Definition} \label{lst:hlc-model-definition}
+\begin{lstlisting}[]
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-% \end{appendix}
+/**
+ * Write your model definitions here
+ */
+
+namespace io.dev.foodchain
+
+
+/*****************************************************************************/
+/* Participant definitions                                                   */
+/*****************************************************************************/
+
+abstract participant Company identified by gln {
+  o String gln
+  o String name
+  o Address address
+  o CompanyType type
+}
+
+participant Farmer extends Company {}
+
+participant Slaughterhouse extends Company {}
+
+participant CuttingPlant extends Company {}
+
+participant Manufacturer extends Company {}
+
+participant Wholesale extends Company {}
+
+participant Retailer extends Company {}
+
+participant Consumer identified by consumerId {
+  o String consumerId
+  o String name optional
+}
+
+/*****************************************************************************/
+/* Asset definitions                                                         */
+/*****************************************************************************/
+
+asset Material identified by materialId {
+  o String materialId
+  o MaterialType type
+  o MaterialQuality quality
+  o MaterialStatus status default = 'CREATED'
+  o Boolean bonus optional
+  --> Batch batch optional
+  --> Company owner optional
+  --> Company[] ownerHistory optional
+  o TransportLog[] transportLog optional
+  o SensorData[] sensorData optional
+}
+
+asset Batch identified by batchId {
+  o String batchId
+  o DateTime timestamp
+  o String description optional
+  o Integer availableMaterialCount default = 0
+  --> Material[] materials
+  o BatchStatus status
+}
+
+asset BatchNetwork identified by batchNetworkId {
+  o String batchNetworkId
+  o String description
+  --> Batch[] nodes optional
+  o Edge[] edges optional
+}
+
+/*****************************************************************************/
+/* Concept & Enumeration definitions                                         */
+/*****************************************************************************/
+
+concept Address {
+  o String street
+  o String number
+  o String postCode
+  o String country
+}
+
+concept TransportLog {
+  o DateTime timestamp
+  o Location location
+}
+
+concept Location {
+  o String latitude
+  o String longitude
+  o String altitude
+  o String description optional
+}
+
+concept SensorData {
+  o DateTime timestamp
+  o String key
+  o String value
+}
+
+concept Edge {
+  o String edgeId
+  --> Batch source
+  --> Batch target
+  o String weight optional
+}
+
+enum CompanyType {
+  o LANDWIRT
+  o SCHLACHTHOF
+  o ZERLEGUNG
+  o PRODUKTION
+  o GROSSHANDEL
+  o EINZELHANDEL
+  o TRANSPORT
+}
+
+enum MaterialType {
+  o SCHWEIN
+  o SCHWEINEHAELFTE
+  o KOPF
+  o RUECKEN
+  o VORDERKEULE
+  o RUMPF
+  o HINTERKEULE
+  o SALAMI
+  o BRATWURST
+}
+
+enum MaterialQuality {
+  o LOW
+  o MID
+  o HIGH
+}
+
+enum MaterialStatus {
+  o CREATED
+  o REGISTERED
+  o AVAILABLE_FOR_PRODUCTION
+  o IN_TRANSIT
+  o PROCESSED
+}
+
+enum BatchStatus {
+  o CREATED
+  o REGISTERED
+  o AVAILABLE_FOR_PRODUCTION
+  o IN_TRANSIT
+  o PROCESSED
+}
+
+/*****************************************************************************/
+/* Transaction definitions                                                   */
+/*****************************************************************************/
+
+transaction produceMaterial {
+  o Material newMaterial // new material object
+  --> Material[] inputMaterial optional // processed material (set status to 'processed')
+  o Integer inputMaterialCount optional
+  --> Batch[] inputBatch optional // processed batch (set status to 'processed')
+  o Integer inputBatchCount optional // how many materials from this batch are used for production
+}
+
+transaction transportMaterial {
+  --> Material material
+  --> Company destination
+}
+
+transaction changeMaterialOwnership {
+  --> Material material
+  --> Company newOwner
+}
+
+transaction sellMaterial {
+  --> Material material
+}
+
+transaction setMaterialStatus {
+  --> Material material // material to be modified
+  o MaterialStatus newStatus
+}
+
+transaction addBatchNetworkNode {
+  --> BatchNetwork network // batch network to be modified
+  --> Batch node
+  o Edge edge optional
+}
+
+transaction addBatchNetworkEdge {
+  --> BatchNetwork network // batch network to be modified
+  o Edge edge
+}
+
+transaction addSensorData {
+  --> Material material // material to be modified
+  o SensorData data
+}
+
+transaction addTransportLog {
+  --> Material material // material to be modified
+  o TransportLog logEntry
+}
+
+transaction generateMockMasterData {}
+transaction generateMockTransactionData {}
+transaction removeMockMasterData {}
+transaction removeMockTransactionData {}
+
+/*****************************************************************************/
+/* Event definitions                                                         */
+/*****************************************************************************/
+
+event changedMaterialOwnershipNotification {
+    --> Material changedMaterial
+}
+\end{lstlisting}
+
+\section{Interviewguide}
+
+\section{Transkription Experteninterview}
+
 \newpage
