@@ -1,0 +1,452 @@
+\appendix
+%\addcontentsline{toc}{section}{Anhang}
+%\section*{Anhang}
+\section{Anforderungen}
+\subsection{Funktionale Anforderungen} \label{tab:functional-requirements}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+        \toprule
+        ID                & Anforderung & Quelle \\
+        \midrule
+        \textbf{A1.1}              & Das Gesamtsystem muss fähig sein den Lebenszyklus eines Tieres vom Erzeuger bis zum Lebensmitteleinzelhandel abzubilden.                    & \textit{Wissensch. Kontext}                \\ \addlinespace
+        \multicolumn{1}{r}{A1.1.1} & Das Gesamtsystem muss fähig sein Tiere anzulegen/registrieren.                     &                 \\ \addlinespace
+        \multicolumn{1}{r}{A1.1.2} & Das Gesamtsystem muss fähig sein Tiere und Chargen einander zuzuordnen.                     &                 \\ \addlinespace
+        \multicolumn{1}{r}{A1.1.3} & Das Gesamtsystem muss fähig sein Tiere zwischen Teilnehmern zu transferieren im Sinne eines Eigentumswechsel.                     &                 \\
+        \textbf{A1.2}              & Das Gesamtsystem muss eine generische Schnittstelle zur Kommunikation mit dem Ledger anbieten.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A1.3}              & Das Gesamtsystem muss fähig sein Transaktionsdaten manipulationssicher speichern zu können.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A1.4}              & Das Gesamtsystem muss fähig sein den Lebenszyklus einer Charge abzubilden.                     & \textit{Partner}                \\ \addlinespace
+        \multicolumn{1}{r}{A1.4.1} & Das Gesamtsystem muss fähig sein Chargen anzulegen.                     &                 \\ \addlinespace
+        \multicolumn{1}{r}{A1.4.2} & Das Gesamtsystem muss fähig sein Chargen und Tiere einander zuzuordnen.                     &                 \\ \addlinespace
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Rahmenbedingungen} \label{tab:functional-requirements}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+        \toprule
+        ID                & Anforderung & Quelle \\
+        \midrule
+        \textbf{A2.1}              & Der Prototyp muss mit der Hyperledger Fabric Blockchain Technologie konzipiert und implementiert werden.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A2.2}              & Der Prototyp bildet die Teilnehmer der Wirtschöpfungskette vom Erzeuger bis zum Lebensmitteleinzelhandel ab.                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A2.3}              & Der Prototyp fokussiert sich bei der Transaktionsabwicklung auf die Tierart Schwein. (Verminderte Komplexität)                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A2.4}\phantomsection\label{req:A2.4}              & Das Gesamtsystem muss in einer abgeschlossenen Umgebung gehosted und vor pseudonymen Zugriff geschützt sein.                     & \textit{Partner}                \\ \addlinespace
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Qualitätsanforderungen} \label{tab:functional-requirements}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+        \toprule
+        ID                & Anforderung & Quelle \\
+        \midrule
+        \textbf{A3.1}              & Die Architektur des Systems muss eine nachträgliche Erweiterung ermöglichen, um weitere Geschäftszweige abbilden zu können.                     & \textit{Wissensch. Kontext}                \\ \addlinespace
+        \textbf{A3.2}              & \textcolor{red}{Die Architektur des Systems muss mindestens eine konstante Performance bei steigender Teilnehmerzahl.}                     & \textit{Partner}                \\ \addlinespace
+        \textbf{A3.3}              & Das System muss auch bei Ausfall oder Komprimitierung eines oder mehrerer Teilnehmer konsistent und stabil weiter arbeiten.                    & \textit{Partner}                \\ \addlinespace
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\newpage
+\section{Listings}
+\subsection{Hyperledger Fabric Peer \textit{Dockerfile}} \label{lst:dockerfile-hl-peer}
+\begin{lstlisting}[language=Dockerfile]
+FROM golang:1.11.5
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV FABRIC_ROOT=$GOPATH/src/github.com/hyperledger/fabric
+ENV CHAINTOOL_RELEASE=1.1.2
+
+# Architecture of the node
+ENV ARCH=amd64
+# version for the base images (baseos, baseimage, ccenv, etc.), used in core.yaml as BaseVersion
+ENV BASEIMAGE_RELEASE=0.4.14
+# BASE_VERSION is required in core.yaml for the runtime fabric-baseos
+ENV BASE_VERSION=1.4.0
+# version for the peer/orderer binaries, the community version tracks the hash value like 1.0.0-snapshot-51b7e85
+# PROJECT_VERSION is required in core.yaml to build image for cc container
+ENV PROJECT_VERSION=1.4.0
+# generic golang cc builder environment (core.yaml): builder: $(DOCKER_NS)/fabric-ccenv:$(ARCH)-$(PROJECT_VERSION)
+ENV DOCKER_NS=hyperledger
+# for golang or car's baseos for cc runtime: $(BASE_DOCKER_NS)/fabric-baseos:$(ARCH)-$(BASEIMAGE_RELEASE)
+ENV BASE_DOCKER_NS=hyperledger
+ENV LD_FLAGS="-X github.com/hyperledger/fabric/common/metadata.Version=${BASE_VERSION} \
+    -X github.com/hyperledger/fabric/common/metadata.BaseVersion=${BASEIMAGE_RELEASE} \
+    -X github.com/hyperledger/fabric/common/metadata.BaseDockerLabel=org.hyperledger.fabric \
+    -X github.com/hyperledger/fabric/common/metadata.DockerNamespace=hyperledger \
+    -X github.com/hyperledger/fabric/common/metadata.BaseDockerNamespace=hyperledger \
+    -X github.com/hyperledger/fabric/common/metadata.Experimental=true \
+    -linkmode external -extldflags '-static -lpthread'"
+
+# Peer config path
+ENV FABRIC_CFG_PATH=/etc/hyperledger/fabric
+RUN mkdir -p /var/hyperledger/db \
+    /var/hyperledger/production \
+    $GOPATH/src/github.com/hyperledger \
+    $FABRIC_CFG_PATH \
+    /chaincode/input \
+    /chaincode/output
+
+# Install development dependencies
+RUN apt-get update \
+        && apt-get install -y apt-utils python-dev \
+        && apt-get install -y libsnappy-dev zlib1g-dev libbz2-dev libyaml-dev libltdl-dev libtool \
+        && apt-get install -y python-pip \
+        && apt-get install -y tree jq unzip\
+        && rm -rf /var/cache/apt
+
+# install chaintool
+#RUN curl -L https://github.com/hyperledger/fabric-chaintool/releases/download/v0.10.3/chaintool > /usr/local/bin/chaintool \
+RUN curl -fL https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric/hyperledger-fabric/chaintool-${CHAINTOOL_RELEASE}/hyperledger-fabric-chaintool-${CHAINTOOL_RELEASE}.jar > /usr/local/bin/chaintool \
+    && chmod a+x /usr/local/bin/chaintool
+
+# install gotools
+RUN go get github.com/golang/protobuf/protoc-gen-go \
+    && go get github.com/maxbrunsfeld/counterfeiter \
+    && go get github.com/axw/gocov/... \
+    && go get github.com/AlekSi/gocov-xml \
+    && go get golang.org/x/tools/cmd/goimports \
+    && go get golang.org/x/lint/golint \
+    && go get github.com/estesp/manifest-tool \
+    && go get github.com/client9/misspell/cmd/misspell \
+    && go get github.com/estesp/manifest-tool \
+    && go get github.com/onsi/ginkgo/ginkgo
+
+# Clone the Hyperledger Fabric code and cp sample config files
+RUN cd $GOPATH/src/github.com/hyperledger \
+    && git clone --single-branch -b release-1.4 --depth 1 http://gerrit.hyperledger.org/r/fabric \
+    && cp $FABRIC_ROOT/devenv/limits.conf /etc/security/limits.conf \
+    && cp -r $FABRIC_ROOT/sampleconfig/* $FABRIC_CFG_PATH/ \
+    && cp $FABRIC_ROOT/examples/cluster/config/configtx.yaml $FABRIC_CFG_PATH/ \
+    && cp $FABRIC_ROOT/examples/cluster/config/cryptogen.yaml $FABRIC_CFG_PATH/
+
+# install configtxgen, cryptogen and configtxlator
+RUN cd $FABRIC_ROOT/ \
+    && go install -tags "experimental" -ldflags "${LD_FLAGS}" github.com/hyperledger/fabric/common/tools/configtxgen \
+    && go install -tags "experimental" -ldflags "${LD_FLAGS}" github.com/hyperledger/fabric/common/tools/cryptogen \
+    && go install -tags "experimental" -ldflags "${LD_FLAGS}" github.com/hyperledger/fabric/common/tools/configtxlator
+
+# Install eventsclient
+RUN cd $FABRIC_ROOT/examples/events/eventsclient \
+    && go install \
+    && go clean
+
+# Install discover cmd
+RUN CGO_CFLAGS=" " go install -tags "experimental" -ldflags "-X github.com/hyperledger/fabric/cmd/discover/metadata.Version=${BASE_VERSION}" github.com/hyperledger/fabric/cmd/discover
+
+# The data and config dir, can map external one with -v
+VOLUME /var/hyperledger
+#VOLUME /etc/hyperledger/fabric
+
+# temporarily fix the `go list` complain problem, which is required in chaincode packaging, see core/chaincode/platforms/golang/platform.go#GetDepoymentPayload
+ENV GOROOT=/usr/local/go
+
+WORKDIR $FABRIC_ROOT
+
+# This is only a workaround for current hard-coded problem when using as fabric-baseimage.
+RUN ln -s $GOPATH /opt/gopath
+LABEL org.hyperledger.fabric.version=${PROJECT_VERSION} \
+    org.hyperledger.fabric.base.version=${BASEIMAGE_RELEASE}
+\end{lstlisting}
+
+\subsection{Hyperledger Fabric \textit{Network Connection Profile}} \label{lst:connection-profile}
+\begin{lstlisting}[language=json]
+    {
+        "name": "hlfv1",
+        "x-type": "hlfv1",
+        "x-commitTimeout": 300,
+        "version": "1.0.0",
+        "client": {
+            "organization": "Org1",
+            "connection": {
+                "timeout": {
+                    "peer": {
+                        "endorser": "300",
+                        "eventHub": "300",
+                        "eventReg": "300"
+                    },
+                    "orderer": "300"
+                }
+            }
+        },
+        "channels": {
+            "composerchannel": {
+                "orderers": [
+                    "orderer.example.com"
+                ],
+                "peers": {
+                    "peer0.org1.example.com": {
+                        "endorsingPeer": true,
+                        "chaincodeQuery": true,
+                        "ledgerQuery": true,
+                        "eventSource": true
+                    }
+                }
+            }
+        },
+        "organizations": {
+            "Org1": {
+                "mspid": "Org1MSP",
+                "peers": [
+                    "peer0.org1.example.com"
+                ],
+                "certificateAuthorities": [
+                    "ca.org1.example.com"
+                ]
+            }
+        },
+        "orderers": {
+            "orderer.example.com": {
+                "url": "grpc://orderer.example.com:7050"
+            }
+        },
+        "peers": {
+            "peer0.org1.example.com": {
+                "url": "grpc://peer0.org1.example.com:7051"
+            }
+        },
+        "certificateAuthorities": {
+            "ca.org1.example.com": {
+                "url": "http://ca.org1.example.com:7054",
+                "caName": "ca.org1.example.com"
+            }
+        }
+    }
+\end{lstlisting}
+
+\subsection{Hyperledger Composer Model Definition} \label{lst:hlc-model-definition}
+\begin{lstlisting}[]
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace io.dev.foodchain
+
+
+/*****************************************************************************/
+/* Participant definitions                                                   */
+/*****************************************************************************/
+
+abstract participant Company identified by gln {
+  o String gln
+  o String name
+  o Address address
+  o CompanyType type
+}
+
+participant Farmer extends Company {}
+
+participant Slaughterhouse extends Company {}
+
+participant CuttingPlant extends Company {}
+
+participant Manufacturer extends Company {}
+
+participant Wholesale extends Company {}
+
+participant Retailer extends Company {}
+
+participant Consumer identified by consumerId {
+  o String consumerId
+  o String name optional
+}
+
+/*****************************************************************************/
+/* Asset definitions                                                         */
+/*****************************************************************************/
+
+asset Material identified by materialId {
+  o String materialId
+  o MaterialType type
+  o MaterialQuality quality
+  o MaterialStatus status default = 'CREATED'
+  o Boolean bonus optional
+  --> Batch batch optional
+  --> Company owner optional
+  --> Company[] ownerHistory optional
+  o TransportLog[] transportLog optional
+  o SensorData[] sensorData optional
+}
+
+asset Batch identified by batchId {
+  o String batchId
+  o DateTime timestamp
+  o String description optional
+  o Integer availableMaterialCount default = 0
+  --> Material[] materials
+  o BatchStatus status
+}
+
+asset BatchNetwork identified by batchNetworkId {
+  o String batchNetworkId
+  o String description
+  --> Batch[] nodes optional
+  o Edge[] edges optional
+}
+
+/*****************************************************************************/
+/* Concept & Enumeration definitions                                         */
+/*****************************************************************************/
+
+concept Address {
+  o String street
+  o String number
+  o String postCode
+  o String country
+}
+
+concept TransportLog {
+  o DateTime timestamp
+  o Location location
+}
+
+concept Location {
+  o String latitude
+  o String longitude
+  o String altitude
+  o String description optional
+}
+
+concept SensorData {
+  o DateTime timestamp
+  o String key
+  o String value
+}
+
+concept Edge {
+  o String edgeId
+  --> Batch source
+  --> Batch target
+  o String weight optional
+}
+
+enum CompanyType {
+  o LANDWIRT
+  o SCHLACHTHOF
+  o ZERLEGUNG
+  o PRODUKTION
+  o GROSSHANDEL
+  o EINZELHANDEL
+  o TRANSPORT
+}
+
+enum MaterialType {
+  o SCHWEIN
+  o SCHWEINEHAELFTE
+  o KOPF
+  o RUECKEN
+  o VORDERKEULE
+  o RUMPF
+  o HINTERKEULE
+  o SALAMI
+  o BRATWURST
+}
+
+enum MaterialQuality {
+  o LOW
+  o MID
+  o HIGH
+}
+
+enum MaterialStatus {
+  o CREATED
+  o REGISTERED
+  o AVAILABLE_FOR_PRODUCTION
+  o IN_TRANSIT
+  o PROCESSED
+}
+
+enum BatchStatus {
+  o CREATED
+  o REGISTERED
+  o AVAILABLE_FOR_PRODUCTION
+  o IN_TRANSIT
+  o PROCESSED
+}
+
+/*****************************************************************************/
+/* Transaction definitions                                                   */
+/*****************************************************************************/
+
+transaction produceMaterial {
+  o Material newMaterial // new material object
+  --> Material[] inputMaterial optional // processed material (set status to 'processed')
+  o Integer inputMaterialCount optional
+  --> Batch[] inputBatch optional // processed batch (set status to 'processed')
+  o Integer inputBatchCount optional // how many materials from this batch are used for production
+}
+
+transaction transportMaterial {
+  --> Material material
+  --> Company destination
+}
+
+transaction changeMaterialOwnership {
+  --> Material material
+  --> Company newOwner
+}
+
+transaction sellMaterial {
+  --> Material material
+}
+
+transaction setMaterialStatus {
+  --> Material material // material to be modified
+  o MaterialStatus newStatus
+}
+
+transaction addBatchNetworkNode {
+  --> BatchNetwork network // batch network to be modified
+  --> Batch node
+  o Edge edge optional
+}
+
+transaction addBatchNetworkEdge {
+  --> BatchNetwork network // batch network to be modified
+  o Edge edge
+}
+
+transaction addSensorData {
+  --> Material material // material to be modified
+  o SensorData data
+}
+
+transaction addTransportLog {
+  --> Material material // material to be modified
+  o TransportLog logEntry
+}
+
+transaction generateMockMasterData {}
+transaction generateMockTransactionData {}
+transaction removeMockMasterData {}
+transaction removeMockTransactionData {}
+
+/*****************************************************************************/
+/* Event definitions                                                         */
+/*****************************************************************************/
+
+event changedMaterialOwnershipNotification {
+    --> Material changedMaterial
+}
+\end{lstlisting}
+
+\section{Interviewguide}
+
+\section{Transkription Experteninterview}
+
+\newpage
