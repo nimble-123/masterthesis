@@ -162,7 +162,7 @@ Damit die Funktionalität des Blockchain Netzwerks in bestehende IT Landschaften
 
 Mit dem Ansatz einer \ac{rest} \ac{api} wird die Idee einer programmiersprachen unabhängigen Schnittstelle realisiert. Nahezu jede moderne Programmiersprache ist in der Lage simple \ac{http} Anfragen zu formulieren, über das Internet abzusetzen und das Resultat auszuwerten. Dadurch kann eine breite Masse an \ac{ui} Technologien und Frameworks verwendet werden, um für den Endanwender entsprechende Applikationen zur Nutzung der Smart Contract Funktionalität zu implementieren. Ebenfalls sind externe Systeme wie beispielsweise \ac{erp}-Systeme über die \ac{rest} \ac{api} in der Lage mit dem Blockchain Netzwerk zu kommunizieren und Asset Operationen auszuführen.
 
-Die \ac{rest} Schnittstelle wird dabei nach der \textit{OpenAPI} Spezifikation \citep[siehe][]{OAI2018} generiert und zur Verfügung gestellt. Bei der Generierung wird aus den Modelldefinitionen und der Transaktionslogik die Klassen- und Funktionsdokumentation extrahiert und in der Schnittstellendokumention dargestellt.
+Die \ac{rest} Schnittstelle wird dabei nach der \textit{OpenAPI}\footnote{OpenAPI (ursprünglich Swagger) bietet eine Spezifikation und ein Framework zum Beschreiben, Erzeugen, Konsumieren und Visualisieren von \ac{rest} Schnittstellen \citep{OAI2018, Purushothaman2015}.} Spezifikation generiert und zur Verfügung gestellt. Bei der Generierung wird aus den Modelldefinitionen und der Transaktionslogik die Klassen- und Funktionsdokumentation extrahiert und in der Schnittstellendokumention dargestellt.
 
 Wird die \ac{rest} Schnittstellen über den Hyperledger Composer REST Server ausgeliefert erhält man eine Übersicht aller \textit{Assets, Participants, Transactions \& Queries} die über den Smart Contract abgebildet worden sind. Abbildung \ref{fig:rest-api-explorer} zeigt einen Ausschnitt der Oberfläche. Darauf sind drei \ac{api} Endpunkte abgebildet namentlich \textit{generateMockTransactionData}, \textit{Manufacturer} und \textit{Material}. Die ersten beiden Endpunkte bilden eine \textit{Transaction} und einen \textit{Participant} aus dem Smart Contract ab. Der dritte Endpunkt zeigt die Dokumentation einer \ac{http} \textit{GET} Operation für ein \textit{Material} mit Beispielwerten eines Resultats. Darunter sind alle weiteren möglichen \ac{http} Operationen inklusive des codierten \ac{uri}.
 
@@ -176,7 +176,8 @@ Wird die \ac{rest} Schnittstellen über den Hyperledger Composer REST Server aus
 %3 Authentication via OAuth 2.0
 
 \subsection{Zusammenfassung technische Umsetzung}
+In diesem Kapitel wurde gezeigt wie die Basis einer Blockchain Lösung mit Hyperledger Fabric und Composer realisiert wird. Dazu wurde, wie zuvor im Systementwurf konzeptioniert, ein Peer Netzwerk aufgespannt. Darauf aufbauend ist die Geschäftslogik mit Hyperledger Composer implementiert worde. Eine Kapselung des Smart Contracts in eine \ac{rest} Schnittstelle dient dazu auch externen Anwendungen die Funktionalität des Smart Contracts bereitzustellen. Dabei wurde die \ac{rest} \ac{api} nach der \textit{OpenAPI} Spezifikation modelliert.
 
-
+%Fundament mit HL Fabric gebaut, Logikschicht über HL Composer realisiert und Zugriff über standartisierte REST Schnittstelle ermöglicht.
 
 \newpage
