@@ -1,5 +1,5 @@
 \section{Systementwurf}
-\textcolor{red}{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.}
+Beginnend mit einer Erläuterung der Anforderungserhebung soll in diesem Kapitel der Systementwurf dokumentiert werden. Dazu ist eine Zieldefinition gegeben anhand welcher das spätere System und seine Funktionalitäten skizziert werden. Neben der reinen Zieldefinition dient eine Beschreibung der Wertschöpfungskette im allgemeinen und eine Betrachtung des Waren- und Datenstrom im genaueren dazu den Kontext für den Systementwurf herzustellen. Anschließend wird der eigentliche Geschäftsprozess der Chargenrückverfolgung im Ist- und Soll-Zustand dargestellt, um die Unterschiede bei einem Einsatz einer Blockchain Lösung herauszuarbeiten. Der Systementwurf mit einer Erklärung aller Einzelkomponenten schließt dieses Kapitel ab.
 
 \subsection{Vorgehensweise Anforderungserhebung}
 Die Anforderungen für ein zu konzipierende System wurden vor dem Hintergrund der Evaluation des Geschäftsprozesses erhoben. Außerdem wurde bei der Erfassung der Anforderung darauf geachtet, das der Prototyp beim Praxispartner als Unterstützung für zukünftige Innovationsfragen herangezogen werden kann. Wie von \citet{Dick2017, HullElizabeth2011} beschrieben, kann das Prototyping selbst bereits als Anforderungsanalyse angesehen werden, jedoch wurde für die prototypische Implementierung des Systementwurfs eine gesonderte Anforderungsanalyse durchgeführt. Ziel dieser Vorgehensweise ist eine präzise Definition und Eingrenzung der Anforderungsbeschreibung während des Konzeptions- und Implementierungsprozesses.
@@ -69,7 +69,7 @@ Der Ist-Prozess (Abbildung \ref{fig:business-process-epc-diagramm}) durchläuft 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\linewidth]{pictures/business-process-epc-diagram-bw}
+	\includegraphics[width=1\linewidth]{pictures/business-process-source-epc-diagram-bw}
 	\caption[Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation]{Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation}
 	\label{fig:business-process-epc-diagramm}
 \end{figure}
@@ -79,8 +79,8 @@ Während im Ist-Prozess (Abbildung \ref{fig:business-process-epc-diagramm}) viel
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\linewidth]{pictures/business-process-epc-diagram-bw}
-	\caption[Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation]{Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation \textcolor{red}{Zu SOLL anpassen}}
+	\includegraphics[width=1\linewidth]{pictures/business-process-target-epc-diagram-bw}
+	\caption[Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation]{Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation}
 	\label{fig:target-business-process}
 \end{figure}
 
@@ -103,7 +103,7 @@ Abbildung \ref{fig:organization-component-diagram} zeigt einen Knoten vom Typ \t
 	\label{fig:organization-component-diagram}
 \end{figure}
 
-\subsubsection{Ledger/Konsens}
+\subsubsection{Ledger / Konsens}
 Das sogenannte Ledger besteht aus der verketteten Liste der Transaktionen (Hyperledger Fabric Peer), einer Zustandsdatenbank (CouchDB) und dem Orderer Service. Zustandsveränderungen sind Veränderungen aufgrund von Smart Contract Ausführungen, welche durch Teilnehmer oder Smart Contracts ausgelöst werden. Jede Transaktion beschreibt eine Menge von Schlüsselwertpaaren zugehörig zu einem Asset. Assets und die darauf aufbauende Business Netzwerk Definition wird in Kapitel \ref{smart-contracts} näher erläutert. Damit ein Teilnehmer sich gegenüber dem Ledger authentifizieren kann verwendet das Hyperledger Fabric Framework eine \acf{pki}. Diese \ac{pki} wird realisiert durch einen \ac{msp} genannten Service. Dieser Service kümmert sich um die Vergabe und den Abgleich von digitalen Identitäten mit denen sich User gegenüber dem Ledger authentifizieren können. Durch diese Designentscheidung wird das Blockchain Netzwerk ein private permissioned Netzwerk und realisiert damit Anforderung \textit{A2.4}. Eine Anonymität der Teilnehmer ist innerhalb der Lieferkette ohnehin kaum gegeben und nur indirekt über mehrere Produktionsschritte erreichbar. Ein Ziel des Systems ist es transparenz für die Nutzer des Netzwerks zu bieten, aus diesem Grund wurde der Aspekt Anonymität außer acht gelassen. 
 
 Neue Transaktionen im Netzwerk werden über ein User Interface durch einen Teilnehmer ausgelöst. Jede Transaktion durchläuft dann einen dreistufigen Prozess bis sie schlussendlich dem Ledger hinzugefügt wird (Abbildung \ref{fig:transaction-flow}). Die einzelnen Stufen sind 
