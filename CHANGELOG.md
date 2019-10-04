@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.1.0](https://github.com/nlsltz/masterthesis/compare/v1.0.0...v1.1.0) (2019-10-04)
+
+
+### Bug Fixes
+
+* **Font encoding:** Change font encoding to T1 ([2b92854](https://github.com/nlsltz/masterthesis/commit/2b92854))
+* **Solution Concept:** Change content according to remarks ([59c026d](https://github.com/nlsltz/masterthesis/commit/59c026d))
+* Fix style of bibliography and appendix ([274b8f9](https://github.com/nlsltz/masterthesis/commit/274b8f9))
+* Fix wrong acronym command in figure caption ([ce01f0e](https://github.com/nlsltz/masterthesis/commit/ce01f0e))
+* Fix wrong header ([19574ff](https://github.com/nlsltz/masterthesis/commit/19574ff))
+* Remove italic fontstyle in section description ([df77149](https://github.com/nlsltz/masterthesis/commit/df77149))
+
+
+### Features
+
+* **Blockchain:** Add content for pBFT consensus section ([22f5e3d](https://github.com/nlsltz/masterthesis/commit/22f5e3d))
+* **Presentation:** Add content ([0371a09](https://github.com/nlsltz/masterthesis/commit/0371a09))
+* Add content ([14a08e8](https://github.com/nlsltz/masterthesis/commit/14a08e8))
+* **Related Work:** Add content ([65c9ff4](https://github.com/nlsltz/masterthesis/commit/65c9ff4))
+* **Solution Concept:** Add content for analysis results ([66bd927](https://github.com/nlsltz/masterthesis/commit/66bd927))
+* **SWOT:** Add first content for SWOT analysis ([2195bb6](https://github.com/nlsltz/masterthesis/commit/2195bb6))
+* **System Design:** Add content ([9657f1f](https://github.com/nlsltz/masterthesis/commit/9657f1f))
+* Add a lot of content ([2d85a4e](https://github.com/nlsltz/masterthesis/commit/2d85a4e))
+* Add a lot of content ([c47067d](https://github.com/nlsltz/masterthesis/commit/c47067d))
+* Add content ([8391c56](https://github.com/nlsltz/masterthesis/commit/8391c56))
+* Update basics and add content to solution concept ([d6eb94d](https://github.com/nlsltz/masterthesis/commit/d6eb94d))
+* **System Design:** Add correct image and section introduction ([9713a59](https://github.com/nlsltz/masterthesis/commit/9713a59))
+* **Technical Implementation:** Add content ([a83a06c](https://github.com/nlsltz/masterthesis/commit/a83a06c))
+* **Technical Implementation:** Add section content ([adf526b](https://github.com/nlsltz/masterthesis/commit/adf526b))
+
+
+
 # [1.0.0](https://github.com/nlsltz/masterthesis/compare/v0.6.0...v1.0.0) (2019-06-01)
 
 
