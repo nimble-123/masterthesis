@@ -128,7 +128,7 @@ rule OwnerHasFullAccessToTheirAssets {
 \end{lstlisting}
 
 \noindent
-Das letzte Element des \acf{bna} ist die Abfragedefinition. Hier können für die Verwendung innerhalb der Transaktionslogik oder direkter Anfragen über externe Anwendungen \acs{sql}-ähnliche Abfragen formuliert werden. Listing \ref{lst:model-example-query} zeigt eine einfache Abfrage, um alle Assets vom Typ \textit{Material} zu selektieren für die gilt, das die boolesche Eigenschaft \textit{bonus} den Wert \textit{wahr} hat und das die Eigenschaft \textit{type} gleich dem Parameter \textit{\_\$type} ist. Parameter die innerhalb einer Anfrage definiert werden über den Präfix \textit{\_\$} müssen beim Aufruf der Abfrage mit übergeben werden. Über den eindeutigen Namen \textit{selectBonusMaterials} lässt sich diese Abfrage direkt in der Transaktionslogik ausführen.
+Das letzte Element des \acf{bna} ist die Abfragedefinition. Hier können für die Verwendung innerhalb der Transaktionslogik oder direkter Anfragen über externe Anwendungen Abfragen formuliert werden die eine ähnliche Syntax verwenden wie in der \ac{sql}. Listing \ref{lst:model-example-query} zeigt eine einfache Abfrage, um alle Assets vom Typ \textit{Material} zu selektieren für die gilt, das die boolesche Eigenschaft \textit{bonus} den Wert \textit{wahr} hat und das die Eigenschaft \textit{type} gleich dem Parameter \textit{\_\$type} ist. Parameter die innerhalb einer Anfrage definiert werden über den Präfix \textit{\_\$} müssen beim Aufruf der Abfrage mit übergeben werden. Über den eindeutigen Namen \textit{selectBonusMaterials} lässt sich diese Abfrage direkt in der Transaktionslogik ausführen.
 
 \begin{lstlisting}[caption={Abfragedefinition},label=lst:model-example-query]
     query selectBonusMaterials {
@@ -169,7 +169,7 @@ Wird die \ac{rest} Schnittstellen über den Hyperledger Composer REST Server aus
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{pictures/rest-api-explorer}
-	\caption[Weboberfläche der \ac{rest} \ac{api}]{Weboberfläche der \ac{rest} \ac{api}}
+	\caption[Weboberfläche der \acs{rest} \acs{api}]{Weboberfläche der \ac{rest} \ac{api}}
 	\label{fig:rest-api-explorer}
 \end{figure}
 
