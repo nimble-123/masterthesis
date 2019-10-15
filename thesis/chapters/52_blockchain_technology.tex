@@ -9,10 +9,11 @@ Ein \textit{Block} innerhalb der Kette kann definiert werden als verschlüsselte
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{pictures/change-in-transaction-model-blockchain}
-	\caption[Transaktionsmodell Blockchain]{Transaktionsmodell Blockchain \textcolor{red}{QUELLE}}
+	\caption[Transaktionsmodell Blockchain]{Transaktionsmodell Blockchain \citep{Wald2017}}
 	\label{fig:change-in-transaction-model-blockchain}
 \end{figure}
 
+\noindent
 Wird von einem der Teilnehmer eine Transaktion ausgelöst, wird diese nicht durch einen Intermediär sondern durch das Netzwerk erfasst und verarbeitet (Abbildung \ref{fig:change-in-transaction-model-blockchain}). Ein neuer \textit{Block} wird erschaffen und validiert wie es durch das Konsensprotokoll festgelegt wird. Dabei können solche \textit{Blockchain} Systeme unterschiedlich ausgeprägt sein. Dies zeigt sich zb. an der Art des Zugriffs, also wer darf Transaktionen lesen, wer darf sie schreiben. Außerdem kann der Mechanismus zur Konsensfindung je System anders sein.
 
 % \citep{Abeyratne2016}
@@ -40,7 +41,7 @@ Die am häufigsten verwendeten Begriffe werden im Folgenden anhand eines Schicht
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{pictures/layer-model-blockchain}
-	\caption[Schichtenmodell \textit{Blockchain} Begriffe]{Schichtenmodell \textit{Blockchain} Begriffe \textcolor{red}{QUELLE}}
+	\caption[Schichtenmodell \textit{Blockchain} Begriffe]{Schichtenmodell \textit{Blockchain} Begriffe (Eigene Darstellung)}
 	\label{fig:layer-model-blockchain}
 \end{figure}
 
@@ -73,9 +74,7 @@ Der Bitcoin ist die Kryptowährung, die auf der ursprünglichen \textit{Blockcha
 Bei der Auswahl der Art einer \textit{Blockchain} trifft man auf zwei Widersprüche die nachfolgend kurz erläutert sind. Darauf folgt eine Betrachtung der Konfliktursachen und die sich daraus ableitenden Kategorien in die sich ein Blockchain System einordnen lässt.
 
 \paragraph{Transparenz vs. Vertraulichkeit}$~~$\\
-Verwendet man eine \textit{Blockchain} werden Besitzverhältnisse durch die Transaktionshistorie ermittelt. Dabei lässt sie eine \textit{Blockchain} mit einem öffentlichen Register vergleichen. Im Sinne der Übertragung von Eigentum sind Offenheit und Transparenz zwei wesentliche Eigenschaften der Blockchain. Durch diese Offenheit ist jeder Teilnehmer in der Lage alle Transaktionen einzusehen und auf Manipulationen zu prüfen.
-
-Dieses Vorgehen steht im Gegensatz zur Vertraulichkeit, die in bestimmten Bereichen unabdingbar ist. Durch Vertraulichkeit werden Informationen wie die Transaktionsdaten oder deren Details (beteiligte Konten oder transferierte Menge) vor unbefugter Einsicht geschützt. Hierdurch entsteht der Widerspruch zwischen Transparenz auf der einen Seite und Anforderungen an die Vertraulichkeit auf der anderen Seite \citep{Drescher2017}.
+Verwendet man eine \textit{Blockchain} werden Besitzverhältnisse durch die Transaktionshistorie ermittelt. Dabei lässt sie eine \textit{Blockchain} mit einem öffentlichen Register vergleichen. Im Sinne der Übertragung von Eigentum sind Offenheit und Transparenz zwei wesentliche Eigenschaften der Blockchain. Durch diese Offenheit ist jeder Teilnehmer in der Lage alle Transaktionen einzusehen und auf Manipulationen zu prüfen. Dieses Vorgehen steht im Gegensatz zur Vertraulichkeit, die in bestimmten Bereichen unabdingbar ist. Durch Vertraulichkeit werden Informationen wie die Transaktionsdaten oder deren Details (beteiligte Konten oder transferierte Menge) vor unbefugter Einsicht geschützt. Hierdurch entsteht der Widerspruch zwischen Transparenz auf der einen Seite und Anforderungen an die Vertraulichkeit auf der anderen Seite \citep{Drescher2017}.
 
 \paragraph{Sicherheit vs. Geschwindigkeit}$~~$\\
 Die Datenstruktur einer \textit{Blockchain} sichert die Transaktionshistorie vor Manipulationen und Fälschungen. Jeder neue \textit{Block} der in der \textit{Blockchain} gespeichert werden soll muss vom Netzwerk durch das Lösen einer kryptographischen Aufgabe erzeugt und der Datenstruktur hinzugefügt werden. Dadurch ist es ziemlich aufwendig die Transaktionshistorie nachträglich zu manipulieren oder zu fälschen. Durch diesen Sicherheitsmechanismus sinkt die Geschwindigkeit mit der ein \textit{Blockchain} Netzwerk neue Transaktionen verarbeiten kann. Moderne Applikationen erfordern Geschwindigkeit und Skalierbarkeit was im direkten Kontrast zum erwähnten Sicherheitskonzept einer \textit{Blockchain} steht \citep{Drescher2017}.
@@ -138,12 +137,13 @@ Ein \textit{Peer-to-Peer} Netzwerk ist der Gegensatz zum klassischen \textit{Cli
 \end{itemize}
 
 \subsubsection{Kryptografisches Hashing}
-Kryptografisches Hashing gehört zu einem der wichtigsten Instrumente der Kryptografie und bildet einen eigenen Teilbereich der Kryptografie. Mit einer kryptografischen Hash-Funktion lässt sich aus einem beliebig langen Wort (oder Datensatz) eine Zeichenkette mit fixer Stellenanzahl generieren. Die jeweilige Ausgabelänge wird in Bit angegeben. Formal ist eine Hash-Funktion definiert als
+Kryptografisches Hashing gehört zu einem der wichtigsten Instrumente der Kryptografie und bildet einen eigenen Teilbereich der Kryptografie. Mit einer kryptografischen Hash-Funktion lässt sich aus einem beliebig langen Wort (oder Datensatz) eine Zeichenkette mit fixer Stellenanzahl generieren. Die jeweilige Ausgabelänge wird in Bit angegeben. Formal ist eine Hash-Funktion definiert als \clearpage
 
 \begin{equation}
 	f:\left \{ 0,1 \right \}^{*} \mapsto \left \{ 0,1 \right \}^{n}
 \end{equation}
 
+\noindent
 Das Ergebnis wird als digitaler Fingerabdruck bezeichnet. Die Generierung des Hash-Werts ist nicht zwingend kryptografisch, denn nicht jede Hash-Funktion erfüllt alle Anforderungen einer kryptografischen Hash-Funktion \citep{Menezes1997, Diffie1976}. Dabei gilt, eine kryptografische Hash-Funktion muss folgende Kriterien erfüllen:
 
 \begin{itemize}
@@ -157,7 +157,7 @@ Mit der Eindeutigkeit ist gegeben, dass ein bestimmter Eingabewert immer zum sel
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\linewidth]{pictures/schema-hash-function}
-	\caption[Funktionsweise einer kryptografischen Hash-Funktion]{Funktionsweise einer kryptografischen Hash-Funktion \textcolor{red}{QUELLE Elektronik Kompendium}}
+	\caption[Funktionsweise einer kryptografischen Hash-Funktion]{Funktionsweise einer kryptografischen Hash-Funktion \citep{Schaerer2019}}
 	\label{fig:schema-hash-function}
 \end{figure}
 
@@ -205,16 +205,10 @@ Die erste Kategorie wird auch Nakamoto-Konsens genannt nach dem Pseudonym des Bi
 Außerdem sind hybride Konsensmechanismen möglich die eine Mischung aus Lotterie und \ac{bft} darstellen. Nachfolgend sollen die beiden meist verwendeten Konsensmechanismen kurz erläutert werden.
 
 \paragraph{Proof-of-Work}$~~$\\
-Das Konzept des \acf{pow} existierte schon vor der ersten Blockchain Applikation (Bitcoin). Die erste moderne Anwendung wurde 1996 von Adam Back unter dem Namen \glqq Hashcash\grqq{} eingereicht. Diese Anwendung hat auf Grundlage des SHA265-Algorithmus einen \ac{pow} Mechanismus eingesetzt um E-Mail Spam zu verhindern \citep{Back2002}.
-
-Der Mechanismus des \ac{pow} kann relativ simpel beschrieben werden. Es ist die Tatsache, dass ein Teilnehmer des Netzwerks allen anderen Teilnehmern das Ergebnis der von ihm durchgeführten Berechnungen vorlegt. Die durchzuführenden Operationen sind an sich nicht kompliziert, allerdings müssen sie so oft durchgeführt werden, dass der Teilnemer eine erhebliche Rechenleistung dafür aufbringen muss. Daher spricht man von \glqq Proof-of-Work\grqq{}, da der Teilnehmer mit einem korrekten Ergebnis einen Nachweis seiner geleisteten Arbeit gibt. Konkret muss der Teilnehmer ein Ergebnis finden, das mit einer  bestimmten Anzahl an führenden Nullen beginnt. Je größer die Anzahl der führenden Nullen ist, desto schwierieger ist es für den Teilnehmer ein valides Ergebnis zu finden. Die Anzahl der Nullen bzw. die Schwierigkeit wird an die Anzahl der Teilnehmer und ihrer Rechenleistung im Netzwerk angepasst, sodass ein neues Ergebnis in festen Intervallen gefunden werden kann.\footnote{Im Bitcoin Blockchain Netzwerk wird die Schwierigkeit dauerhaft so angepasst, dass nur alle 10 Minuten ein neuer Block berechnet werden kann.} Für die Berechnung des Ergebnisses fügt der Teilnehmer zu den eigentlichen Transaktionsdaten eine sogenannte \glqq Nonce\grqq{} hinzu. Aus diesen Daten versucht der Teilnehmer das Ergebnis zu berechnen mit der entsprechenden Anzahl an führenden Nullen. Bei jeder Runde wird die \glqq Nonce\grqq{} verändert. Dies wird solange durchgeführt bist das Ergebnis zur aktuellen Schwierigkeit im Netzwerk passt.
+Das Konzept des \acf{pow} existierte schon vor der ersten Blockchain Applikation (Bitcoin). Die erste moderne Anwendung wurde 1996 von Adam Back unter dem Namen \glqq Hashcash\grqq{} eingereicht. Diese Anwendung hat auf Grundlage des SHA265-Algorithmus einen \ac{pow} Mechanismus eingesetzt um E-Mail Spam zu verhindern \citep{Back2002}. Der Mechanismus des \ac{pow} kann relativ simpel beschrieben werden. Es ist die Tatsache, dass ein Teilnehmer des Netzwerks allen anderen Teilnehmern das Ergebnis der von ihm durchgeführten Berechnungen vorlegt. Die durchzuführenden Operationen sind an sich nicht kompliziert, allerdings müssen sie so oft durchgeführt werden, dass der Teilnemer eine erhebliche Rechenleistung dafür aufbringen muss. Daher spricht man von \glqq Proof-of-Work\grqq{}, da der Teilnehmer mit einem korrekten Ergebnis einen Nachweis seiner geleisteten Arbeit gibt. Konkret muss der Teilnehmer ein Ergebnis finden, das mit einer  bestimmten Anzahl an führenden Nullen beginnt. Je größer die Anzahl der führenden Nullen ist, desto schwierieger ist es für den Teilnehmer ein valides Ergebnis zu finden. Die Anzahl der Nullen bzw. die Schwierigkeit wird an die Anzahl der Teilnehmer und ihrer Rechenleistung im Netzwerk angepasst, sodass ein neues Ergebnis in festen Intervallen gefunden werden kann.\footnote{Im Bitcoin Blockchain Netzwerk wird die Schwierigkeit dauerhaft so angepasst, dass nur alle 10 Minuten ein neuer Block berechnet werden kann.} Für die Berechnung des Ergebnisses fügt der Teilnehmer zu den eigentlichen Transaktionsdaten eine sogenannte \glqq Nonce\grqq{} hinzu. Aus diesen Daten versucht der Teilnehmer das Ergebnis zu berechnen mit der entsprechenden Anzahl an führenden Nullen. Bei jeder Runde wird die \glqq Nonce\grqq{} verändert. Dies wird solange durchgeführt bist das Ergebnis zur aktuellen Schwierigkeit im Netzwerk passt.
 
 \paragraph{Practical Byzantine Fault Tolerance}$~~$\\
-Das \ac{pbft}-Modell konzentriert sich in erster Linie auf die Bereitstellung einer Zustandsmaschine, die byzantinische Fehler (kompromittierte Knoten oder Netzwerkteilnehmer) toleriert. Dies geschiet durch die Annahme, dass es unabhängige Knotenausfälle und manipulierte Nachrichten gibt. Der Algorithmus wurde für den Einsatz in asynchronen Systemen konzipiert und optimiert auf hohe Performance. Im Wesentlichen sind alle Knoten im \ac{pbft}-Modell in Reihe angeordnet, wobei ein Knoten als Primärknoten und die restlichen Knoten als Backupknoten bezeichnet werden. Alle Knoten innerhalb des Systems kommunizieren untereinander mit dem Ziel einen einheitlichen Zustand des Systems zu finden. Die Knoten müssen dabei nachweisen, das eine Nachricht von ihnen stammt und das diese Nachricht während der Übertragung nicht manipuliert wurde \citep{Tuan2017}.
-
-Damit das \ac{pbft}-Modell funktioniert, wird davon ausgegangen, dass die Anzahl der kompromittierten Knoten im Netzwerk nicht größer oder gleich \nicefrac{1}{3} der Gesamtanzahl an Knoten im Netzwerk ist. Je mehr Knoten das Netzwerk bilden, desto mathematisch unwahrscheinlicher ist es, dass eine Anzahl von Knoten die sich \nicefrac{1}{3} der Gesamtknotenanzahl nähert kompromittiert ist.
-
-Jede Runde des \ac{pbft}-Konsens, genannt \textit{Views}, besteht aus 4 Phasen. Das Modell folgt dabei eher dem Format \glqq Kommandant und Offiziere\grqq{} durch die Anwesenheit des Primärknotens. Beim byzantinischen Generalsproblem sind alle Generäle gleichwertig, was hier nicht der Fall ist. Die Phasen des \ac{pbft}-Konsens sehen wie folgt aus.
+Das \ac{pbft}-Modell konzentriert sich in erster Linie auf die Bereitstellung einer Zustandsmaschine, die byzantinische Fehler (kompromittierte Knoten oder Netzwerkteilnehmer) toleriert. Dies geschiet durch die Annahme, dass es unabhängige Knotenausfälle und manipulierte Nachrichten gibt. Der Algorithmus wurde für den Einsatz in asynchronen Systemen konzipiert und optimiert auf hohe Performance. Im Wesentlichen sind alle Knoten im \ac{pbft}-Modell in Reihe angeordnet, wobei ein Knoten als Primärknoten und die restlichen Knoten als Backupknoten bezeichnet werden. Alle Knoten innerhalb des Systems kommunizieren untereinander mit dem Ziel einen einheitlichen Zustand des Systems zu finden. Die Knoten müssen dabei nachweisen, das eine Nachricht von ihnen stammt und das diese Nachricht während der Übertragung nicht manipuliert wurde \citep{Tuan2017}. Damit das \ac{pbft}-Modell funktioniert, wird davon ausgegangen, dass die Anzahl der kompromittierten Knoten im Netzwerk nicht größer oder gleich \nicefrac{1}{3} der Gesamtanzahl an Knoten im Netzwerk ist. Je mehr Knoten das Netzwerk bilden, desto mathematisch unwahrscheinlicher ist es, dass eine Anzahl von Knoten die sich \nicefrac{1}{3} der Gesamtknotenanzahl nähert kompromittiert ist. Jede Runde des \ac{pbft}-Konsens, genannt \textit{Views}, besteht aus 4 Phasen. Das Modell folgt dabei eher dem Format \glqq Kommandant und Offiziere\grqq{} durch die Anwesenheit des Primärknotens. Beim byzantinischen Generalsproblem sind alle Generäle gleichwertig, was hier nicht der Fall ist. Die Phasen des \ac{pbft}-Konsens sehen wie folgt aus.
 
 \begin{enumerate}
 	\item Ein Client sendet eine Anfrage an den Primärknoten, um eine Serviceoperation durchzuführen.
@@ -223,8 +217,4 @@ Jede Runde des \ac{pbft}-Konsens, genannt \textit{Views}, besteht aus 4 Phasen. 
 	\item Der Client erwartet \(3f + 1\) Antworten von verschiedenen Knoten mit dem gleichen Ergebnis.\footnote{Mit \(f\) ist die Anzahl an tollerierbaren kompromittierten Knoten gemeint.} Das Ergebnis ist das Ergebnis der Serviceoperation.
 \end{enumerate}
 
-Alle Knoten müssen die Anforderung erfüllen deterministisch zu operieren und im gleichen Zustand mit der Operation zu beginnen. Das Endergebnis ist, das sich alle nicht-kompromittierten Knoten auf die Reihenfolge der Datensätze einigen und dies geschlossen akzeptieren oder ablehnen.
-
-Der Primärknoten wird in jeder \textit{View} nach dem Round-Robin Verfahren ausgewählt und kann auch ausgetauscht wurde durch eine Erweiterung des Modells. Ein Austausch kann durchgeführt werden, wenn der Primärknoten die Anfrage nicht innerhalb eines bestimmten Zeitlimits an die Backupknoten weiterleitet.
-
-\textcolor{red}{Quellen ergänzen!}
+Alle Knoten müssen die Anforderung erfüllen deterministisch zu operieren und im gleichen Zustand mit der Operation zu beginnen. Das Endergebnis ist, das sich alle nicht-kompromittierten Knoten auf die Reihenfolge der Datensätze einigen und dies geschlossen akzeptieren oder ablehnen. Der Primärknoten wird in jeder \textit{View} nach dem Round-Robin Verfahren ausgewählt und kann auch ausgetauscht wurde durch eine Erweiterung des Modells. Ein Austausch kann durchgeführt werden, wenn der Primärknoten die Anfrage nicht innerhalb eines bestimmten Zeitlimits an die Backupknoten weiterleitet \citep{Castro1999}.

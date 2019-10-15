@@ -31,7 +31,7 @@ Jede dieser Komponenten stellt einen Docker Container dar und ist auf Netzwerkeb
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{pictures/poc-food-chain-traceability}
-	\caption[Gesamtsystem Prototyp]{Gesamtsystem Prototyp}
+	\caption[Gesamtsystem Prototyp]{Gesamtsystem Prototyp (Eigene Darstellung)}
 	\label{fig:poc-food-chain-traceability}
 \end{figure}
 
@@ -65,23 +65,19 @@ event notification {
 }
 \end{lstlisting}
 
-Zeile 1 in Listing \ref{lst:example-model-definition} definiert einen Namensraum für das gesamte Model. In einem produktiven Scenario würde ein Model erheblich größer sein, als das im Prototyp verwendete vereinfachte Model. Damit bei steigender Komplexität des abzubildenden Models Überblick und Wartbarkeit erhalten bleiben lässt sich das Model über mehrere Dateien abbilden und über den Namensraum auf logischer Ebene miteinander verknüpfen. Zeile 3 bis einschließlich Zeile 6 zeigt die Definition der abstrakten Klasse \textit{Company} vom Typ \textit{Participant}. Diese Definition wird in Zeile 10 konkret ausgeprägt durch die Klasse \textit{Farmer}. Äquivalent dazu werden auch alle anderen Teilnehmer der Wertschöpfungskette implementiert. Zeile 10 bis Zeile 14 zeigt die Implementierung des Assets \textit{Material}. Über die Eigenschaft \textit{owner} (Zeile 12) wird ein \textit{Material} später immer einem eindeutigen Besitzer zugeordnet. Die Eigenschaft \textit{owner} wurde dabei als direkte Ressourcenverknüpfung implementiert. Eine Ressourcenverknüpfung im Hyperledger Model lässt sich mit einer Fremdschlüsselbeziehung in einem relationalen Datenbankschema vergleichen. Die Eigenschaft kann in diesem Fall nur Werte annehmen, die eine gültige Ausprägung der abstrakten Klasse \textit{Company} darstellen und damit auch allen konkreten Ausprägungen dieser Klasse.
+\noindent
+Zeile 1 in Listing \ref{lst:example-model-definition} definiert einen Namensraum für das gesamte Model. In einem produktiven Scenario würde ein Model erheblich größer sein, als das im Prototyp verwendete vereinfachte Model. Damit bei steigender Komplexität des abzubildenden Models Überblick und Wartbarkeit erhalten bleiben lässt sich das Model über mehrere Dateien abbilden und über den Namensraum auf logischer Ebene miteinander verknüpfen. Zeile 3 bis einschließlich Zeile 6 zeigt die Definition der abstrakten Klasse \textit{Company} vom Typ \textit{Participant}. Diese Definition wird in Zeile 10 konkret ausgeprägt durch die Klasse \textit{Farmer}. Äquivalent dazu werden auch alle anderen Teilnehmer der Wertschöpfungskette implementiert. Zeile 10 bis Zeile 14 zeigt die Implementierung des Assets \textit{Material}. Über die Eigenschaft \textit{owner} (Zeile 12) wird ein \textit{Material} später immer einem eindeutigen Besitzer zugeordnet. Die Eigenschaft \textit{owner} wurde dabei als direkte Ressourcenverknüpfung implementiert. Eine Ressourcenverknüpfung im Hyperledger Model lässt sich mit einer Fremdschlüsselbeziehung in einem relationalen Datenbankschema vergleichen. Die Eigenschaft kann in diesem Fall nur Werte annehmen, die eine gültige Ausprägung der abstrakten Klasse \textit{Company} darstellen und damit auch allen konkreten Ausprägungen dieser Klasse.\\
 
 Um das Beispiel einfach und verständlich zu halten wurden die Definitionen der \textit{Participants} und \textit{Assets} in verkürzter Form abgebildet. Das vollständige Prototypen Model befindet sich im Anhang \ref{lst:hlc-model-definition}. Eine \textit{Transaction} mit zugehörigem \textit{Event} ist in Zeile 15 bis 22 dargestellt. Die \textit{Transaction} definiert dabei zwei Parameter als Ressourcenverknüpfung. Es werden das Asset \textit{material} sowie der neue Eigentümer \textit{newOwner} benötigt. Das \textit{Event} definiert nur einen Parameter und zwar eine Ressourcenverknüpfung zum angepassten Asset \textit{changedMaterial}. Wird das Event emittiert kann der Empfänger über die Ressource alle Informationen des Vorgangs nachvollziehen. In angebundenen \ac{ui} Applikationen kann dann auf das Event entsprechend reagiert werden bzw. können Drittsysteme beispielsweise Workflowprozesse auslösen.
 
 \begin{lstlisting}[caption={Transaction Processor Function \textit{changeMaterialOwnership(tx)}},language=ES6,label=lst:transaction-logic-change-ownership]
-/**
-* Change material ownership transaction
-* @param {io.dev.foodchain.changeMaterialOwnership} tx
-* @transaction
-*/
 async function changeMaterialOwnership(tx) {
     const oMaterial = tx.material;
     const oNewOwner = tx.newOwner;
     const oActualOwner = tx.material.owner;
 
-    const oMaterialRegistry = await getAssetRegistry(NS + '.Material');
-    const bMaterialExists = await oMaterialRegistry.exists(oMaterial.getIdentifier());
+    const oMaterialReg = await getAssetRegistry(NS + '.Material');
+    const bMaterialExists = await oMaterialReg.exists(oMaterial.getIdentifier());
     if(!bMaterialExists) {
         throw new Error('Input material does not exist.');
     }
@@ -104,6 +100,7 @@ async function changeMaterialOwnership(tx) {
 }
 \end{lstlisting}
 
+\noindent
 Damit ein \textit{Participant} Funktionen auf einem \textit{Asset} ausführen kann wurden im vorherigen Abschnitt \textit{Transactions} modelliert. Zu jeder \textit{Transaction} Definition im Modell gehört eine Logikimplementierung. Verknüpft wird die Modelldefinition mit der Implementierung über die Annotation \textit{@transaction}. Eine \textit{Transaction} Funktion hat als einzigen Parameter das \textit{Transaction} Objekt. Über dieses Objekt kann innerhalb der Funktion auf alle Werte der Transaktion zurückgegriffen werden. Für das Beispiel des Eigentumswechsel wurde eine Transaktion definiert, die zum einen das \textit{Material} beinhaltet und zum anderen eine Referenz auf den neuen Eigentümer (siehe Listing \ref{lst:example-model-definition} Zeile 16 f.). Der Aufbau einer \textit{Transaction} Funktion folgt stets dem Muster - Initialiseren der Eingabeparameter, Plausibilitätsprüfungen, Geschäftslogik und abschließend die optionale Event Emittierung. Das Initialisieren der Eingabewerte wurde von Zeile 8 bis Zeile 10 implementiert. Es werden alle benötigten Werte der Transaktion zu lokalen Variablen zugewiesen. Zeile 14 bis Zeile 28 deckt die Plausibilitätsprüfung ab, hier wird geprüft ob im Falle des Eigentumswechsels
 
 \begin{itemize}
@@ -112,9 +109,8 @@ Damit ein \textit{Participant} Funktionen auf einem \textit{Asset} ausführen ka
     \item ob der neue Eigentümer als \textit{Participant} im Netzwerk vorliegt.
 \end{itemize}
 
-Die eigentliche Geschäftslogik ist relativ simpel und von Zeile 31 bis 33 implementiert. Für eine spätere Rückverfolgung der Eigentumsverhältnisse wird der aktuelle Eigentümer zur Eigentümerhistorie (Eigenschaft \textit{ownerHistory}) hinzugefügt und der neue Eigentümer wird gesetzt. Danach müssen die Assetänderungen noch an das Systemregister übermittelt werden. Das Schlüsselwort \textit{await} wird verwendet, da es sich hier um einen asynchronen Aufruf handelt und in der Logik so eine Haltemarke gesetzt wird sodass auf das Ergebnis des Aufrufs gewartet wird bevor mit der weiteren Verarbeitung der Funktion fortgefahren wird. Sollten bis zu diesem Zeitpunkt keine Fehler in der Verarbeitung aufgetreten sein, wird ein \textit{Event} erzeugt, mit Daten gefüllt und emittiert.
-
-Einfache Berechtigungsprüfungen wie in der Transaktionslogik lassen sich auch über die Zugriffskontrolle regeln. Hyperledger unterscheidet zwischen der Zugriffskontrolle für Ressourcen innerhalb des Netzwerks und der Zugriffskontrolle für Änderungen seitens der Netzwerkadministration. Um den Zugriff auf eine Ressource zu steuern wird eine Regel definiert wie in Listing \ref{lst:model-permissions}. Diese Regel sagt aus, dass sie für jeden \textit{Participant} und bei jeder Operation (Lesen, Anlegen, Ändern, Löschen) angewandt wird (Zeile 3/4). Sie gilt für alle Ressourcen aus dem Namensraum \textit{io.dev.foodchain.*} und als Bedingung wurde definiert, dass der Besitzer \textit{r.owner.getIdentifier()} der Ressource gleich dem aktuellen \textit{Participant} ist (Zeile 5/6). Ist diese Regel erfüllt wird die Operation erlaubt bzw. bei nicht erfüllen der Zugriff auf die Ressource verweigert. Es ist anzumerken, dass die Regeln in der Reihenfolge ausgewertet werden in der sie definiert sind und die erste Regel deren Bedingung erfüllt ist, bestimmt ob der Zugang gewährt oder verweigert wird. Sofern keine Regel angewandt werden kann wird der Zugriff standardmäßig verweigert.
+\noindent
+Die eigentliche Geschäftslogik ist relativ simpel und von Zeile 31 bis 33 implementiert. Für eine spätere Rückverfolgung der Eigentumsverhältnisse wird der aktuelle Eigentümer zur Eigentümerhistorie (Eigenschaft \textit{ownerHistory}) hinzugefügt und der neue Eigentümer wird gesetzt. Danach müssen die Assetänderungen noch an das Systemregister übermittelt werden. Das Schlüsselwort \textit{await} wird verwendet, da es sich hier um einen asynchronen Aufruf handelt und in der Logik so eine Haltemarke gesetzt wird sodass auf das Ergebnis des Aufrufs gewartet wird bevor mit der weiteren Verarbeitung der Funktion fortgefahren wird. Sollten bis zu diesem Zeitpunkt keine Fehler in der Verarbeitung aufgetreten sein, wird ein \textit{Event} erzeugt, mit Daten gefüllt und emittiert. Einfache Berechtigungsprüfungen wie in der Transaktionslogik lassen sich auch über die Zugriffskontrolle regeln. Hyperledger unterscheidet zwischen der Zugriffskontrolle für Ressourcen innerhalb des Netzwerks und der Zugriffskontrolle für Änderungen seitens der Netzwerkadministration. Um den Zugriff auf eine Ressource zu steuern wird eine Regel definiert wie in Listing \ref{lst:model-permissions}. Diese Regel sagt aus, dass sie für jeden \textit{Participant} und bei jeder Operation (Lesen, Anlegen, Ändern, Löschen) angewandt wird (Zeile 3/4). Sie gilt für alle Ressourcen aus dem Namensraum \textit{io.dev.foodchain.*} und als Bedingung wurde definiert, dass der Besitzer \textit{r.owner.getIdentifier()} der Ressource gleich dem aktuellen \textit{Participant} ist (Zeile 5/6). Ist diese Regel erfüllt wird die Operation erlaubt bzw. bei nicht erfüllen der Zugriff auf die Ressource verweigert. Es ist anzumerken, dass die Regeln in der Reihenfolge ausgewertet werden in der sie definiert sind und die erste Regel deren Bedingung erfüllt ist, bestimmt ob der Zugang gewährt oder verweigert wird. Sofern keine Regel angewandt werden kann wird der Zugriff standardmäßig verweigert.
 
 \begin{lstlisting}[caption={Berechtigungsdefinition},label=lst:model-permissions]
 rule OwnerHasFullAccessToTheirAssets {
@@ -131,14 +127,12 @@ rule OwnerHasFullAccessToTheirAssets {
 Das letzte Element des \acf{bna} ist die Abfragedefinition. Hier können für die Verwendung innerhalb der Transaktionslogik oder direkter Anfragen über externe Anwendungen Abfragen formuliert werden die eine ähnliche Syntax verwenden wie in der \ac{sql}. Listing \ref{lst:model-example-query} zeigt eine einfache Abfrage, um alle Assets vom Typ \textit{Material} zu selektieren für die gilt, das die boolesche Eigenschaft \textit{bonus} den Wert \textit{wahr} hat und das die Eigenschaft \textit{type} gleich dem Parameter \textit{\_\$type} ist. Parameter die innerhalb einer Anfrage definiert werden über den Präfix \textit{\_\$} müssen beim Aufruf der Abfrage mit übergeben werden. Über den eindeutigen Namen \textit{selectBonusMaterials} lässt sich diese Abfrage direkt in der Transaktionslogik ausführen.
 
 \begin{lstlisting}[caption={Abfragedefinition},label=lst:model-example-query]
-    query selectBonusMaterials {
-      description: "Select materials based on bonus condition"
-      statement:
-          SELECT io.dev.foodchain.Material
-              WHERE (bonus == true)
-              AND (type == _$type)
-              ORDER BY [status ASC]
-    }
+query selectBonusMaterials {
+    statement:
+        SELECT io.dev.foodchain.Material
+            WHERE (bonus == true) AND (type == _$type)
+            ORDER BY [status ASC]
+}
 \end{lstlisting}
 
 \noindent
@@ -176,7 +170,7 @@ Wird die \ac{rest} Schnittstellen über den Hyperledger Composer REST Server aus
 %3 Authentication via OAuth 2.0
 
 \subsection{Zusammenfassung technische Umsetzung}
-In diesem Kapitel wurde gezeigt wie die Basis einer Blockchain Lösung mit Hyperledger Fabric und Composer realisiert wird. Dazu wurde, wie zuvor im Systementwurf konzeptioniert, ein Peer Netzwerk aufgespannt. Darauf aufbauend ist die Geschäftslogik mit Hyperledger Composer implementiert worde. Eine Kapselung des Smart Contracts in eine \ac{rest} Schnittstelle dient dazu auch externen Anwendungen die Funktionalität des Smart Contracts bereitzustellen. Dabei wurde die \ac{rest} \ac{api} nach der \textit{OpenAPI} Spezifikation modelliert.
+In diesem Kapitel wurde gezeigt wie die Basis einer Blockchain Lösung mit Hyperledger Fabric und Composer realisiert wird. Dazu wurde, wie zuvor im Systementwurf konzeptioniert, ein Peer Netzwerk bestehend aus zwei Organisationen mit jeweils zwei Peer Nodes aufgespannt. Ebenfalls wurden zwei Zertifikatstellen für beide Organisationen in die Systemarchitektur mit aufgenommen. Darauf aufbauend ist die Geschäftslogik mit Hyperledger Composer implementiert worden. Dazu gehört die Definition von Assets, Participants, Transactions und Events. Zu jeder Transaction wird eine Transaction Processor Function in JavaScript implementiert. Aus diesen Komponenten wurde das Business Network Archive gebaut, welches im zuvor aufgespannten Hyperledger Fabric Blockchain Netzwerk deployt wurde. Eine Kapselung des Smart Contracts in eine \ac{rest} Schnittstelle dient dazu externen Anwendungen, wie beispielsweise Endanwender Applikationen, die Funktionalität des Smart Contracts bereitzustellen. Dabei wurde die \ac{rest} \ac{api} nach der \textit{OpenAPI} Spezifikation modelliert.
 
 %Fundament mit HL Fabric gebaut, Logikschicht über HL Composer realisiert und Zugriff über standartisierte REST Schnittstelle ermöglicht.
 

@@ -1,4 +1,4 @@
-\section{Systementwurf} \label{sec:system-desgin}
+\section{Systementwurf} \label{sec:system-design}
 Beginnend mit einer Erläuterung der Anforderungserhebung soll in diesem Kapitel der Systementwurf dokumentiert werden. Dazu ist eine Zieldefinition gegeben anhand welcher das spätere System und seine Funktionalitäten skizziert werden. Neben der reinen Zieldefinition dient eine Beschreibung der Wertschöpfungskette im allgemeinen und eine Betrachtung des Waren- und Datenstrom im genaueren dazu den Kontext für den Systementwurf herzustellen. Anschließend wird der eigentliche Geschäftsprozess der Chargenrückverfolgung im Ist- und Soll-Zustand dargestellt, um die Unterschiede bei einem Einsatz einer Blockchain Lösung herauszuarbeiten. Der Systementwurf mit einer Erklärung aller Einzelkomponenten schließt dieses Kapitel ab.
 
 \subsection{Vorgehensweise Anforderungserhebung}
@@ -8,7 +8,7 @@ Im Zuge der Anforderungserhebung wurden die Anforderungen in Zusammenarbeit mit 
 
 Die Anforderungen wurden untergliedert in funktionale Anforderungen, Rahmenbedingungen und Qualitätsanforderungen. Ebenso wurden die Anforderungen hierarchisch strukturiert und um eine Quelle ergänzt nach \citet{Koelsch2016}. Dies soll die Nachverfolgbarkeit der Anforderungen während der Evaluation unterstützen.
 
-\subsection{Das Ziel: Chargenrückverfolgung innerhalb der Fleischwarenindustrie} \label{goal-description}
+\subsection{Das Ziel: Chargenrückverfolgung} \label{goal-description}
 Das System soll unter experimentellen, abstrahierten Bedingungen die Chargenrückverfolgung von Schweinen innerhalb der Produktions- und Wertschöpfungskette realisieren. Dafür muss das System den Prozess vom Erzeuger bis zum Groß- und Einzelhandel unterstützen. Konkret sollen Erzeuger neue Tiere im Blockchain Netzwerk registrieren und einer Charge zuordnen können. Bereits registrierte Tiere sollen zur Weiterverarbeitung freigegeben werden können und ein Eigentumswechsel muss durch das System abbildbar sein. Die Gesamtheit der Transaktionen zwischen den Teilnehmern der Wertschöpfungskette kann als Graph angesehen werden. Anhand dieses Graphen soll eine Rückverfolgbarkeit einer Charge gewährleistet werden. Über eine Benutzungsoberfläche sollen die Teilnehmer jederzeit in der Lage sein den Graphen einsehen zu können. Für die technische Umsetzung des System spielt die Benutzungsoberfläche jedoch eine nachgelagerte Priorität. Hauptaugenmerk des Systementwurfs liegt auf dem technologischen Aufbau des Blockchain Netzwerk und den Schnittstellen für etwaige Drittsysteme zur automatischen Erfassung von Tieren. Eine automatische Erfassung von neuen Tieren kann beispielsweise über \ac{iot}-Sensoren in Schlachthaken erfolgen. Ebenso würde sich ein Eigentumswechsel, wenn Tiere vom Erzeuger an den Schlachthof verkauft werden, über \acs{rfid}-Chips und entsprechende Lesegeräte, welche per Schnittstelle mit dem Blockchain Netzwerk verbunden sind, abwickeln lassen \citep{Dorri2017, Samaniego2016}.
 
 \subsection{Die Wertschöpfungskette im Detail}
@@ -22,26 +22,26 @@ Vom Erzeuger bis zum Endverbraucher ist die Wertschöpfungskette in Deutschland 
 
 Die Wertschöpfungskette vom Erzeuger bis zum Fleischwarenproduzenten gliedert sich grob in vier Produktionsschritte, welche nachfolgend kurz beschrieben und in Abbildung \ref{fig:structure-value-chain-meat-industry-numbered} schematisch dargestellt werden. Dabei sind sieben Parteien direkt in den Gesamtprozess bis zum Verbraucher involviert und eine achte Partei wirkt indirekt als Vermittler zwischen den anderen Parteien mit.
 
-\begin{landscape}
-    \begin{figure}
+%\begin{landscape}
+    \begin{figure}[h!]
         \centering
-        \includegraphics[width=1.0\linewidth]{pictures/structure-value-chain-meat-industry-numbered}
+        \includegraphics[angle=90, width=0.3\linewidth]{pictures/structure-value-chain-meat-industry-numbered}
         \caption[Struktur der Wertschöpfungskette der Fleischwirtschaft]{Struktur der Wertschöpfungskette der Fleischwirtschaft nach \citet{Petersen2010, Voss2010, Beck2008}}
         \label{fig:structure-value-chain-meat-industry-numbered}
     \end{figure}
-\end{landscape}
+%\end{landscape}
 
 \noindent
 Der Warenstrom beginnt mit (1) der Futtermittellieferung an die Jungtiererzeuger und Viehhalter. Jeder Betrieb wird dabei über die \ac{iln} global eindeutig identifiziert. (2) Nach der Aufzucht der Jungtiere werden diese durch Transportunternehmen zu den Viehhaltern transportiert. In den Mästbetrieben bleiben die Tiere dann bis zur Schlachtreife. (3) Im Auftrag der Schlacht- und Zerlegebetriebe werden die schlachtreifen Tiere von den Mästbetrieben angeliefert. Nach der Verarbeitung der Tiere in den Schlacht- und Zerlegebetrieben werden diese (4) an die verschiedenen Abnehmer geliefert, um letztendlich zu Produkten für den Verbraucher weiterverarbeitet zu werden. Hieraus ergibt sich, dass mindestens an den erwähnten vier Punkten der Wertschöpfungskette eine Prozessschnittstelle vom Blockchain Netzwerk bedient werden können muss.
 
 \subsubsection{Informationswege in der Fleischindustrie}
 
-Abbildung \ref{fig:data-stream-meat-industry} zeigt den nachfolgend beschriebenen Datenstrom zwischen den einzelnen Produktionsstufen der Fleischindustrie. \textcolor{red}{Referenz zu Anforderungen} (1) Jungtiererzeuger und Viehhalter senden jeweils eine Futtermittelbestellung an den Futtermittellieferanten. (2) Nach erfolgreicher Lieferung informiert der Futtermittellieferant den privaten Viehhandel bzw. die Viehvermarktungsgenossenschaften respektive Erzeugergemeinschaften. Die Viehhalter melden einerseits (3) die Aufnahme der Jungtiere und andererseits (4) die schlachtreife von Tieren an die Viehvermarktungsgenossenschaften zur Weitervermittlung and die Schlacht- und Zerlegebetriebe. (5) Bei der Weitervermittlung werden die Informationen über die Tiere an Schlacht- und Zerlegebetriebe übermittelt. (6) Mit dem Lieferauftrag initiiert das Schlachtunternehmen die Bestellung und den Transport der schlachtreifen Tiere. (7) Die Viehvermarktungsgenossenschaften bestätigen den Lieferauftrag mit einer elektronischen Ankündigung der Schlachtviehlieferung. Bei der Anlieferung der Tiere gleicht das Schlachtunternehmen die tatsächliche angelieferte Anzahl mit der bestellten Menge ab und meldet die Werte an die Viehvermarktungsgenossenschaften zurück. Mit dieser Wareneingangsmeldung kann die Viehvermarktungsgenossenschaft den Bestand und die aktuellen Standorte der Tiere aktualisieren. (9) Im Schlachtunternehmen werden dann weitere Informationen zu den Stammdaten der Tiere erfasst. Dazu zählen die \ac{vvvo}-Nummern der Landwirte, eine Vergabe Partie-Nummer je Lkw und eine fortlaufende Schlachtnummer. (10)Anschließend werden die Informationen wieder an die Viehvermarktungsgenossenschaft zurück gemeldet. (11) Letztendlich bedienen die Schlacht- und Zerlegebetriebe die Bestellungen der Fleischwerke, Lebensmitteleinzelhandel, Metzgereien und die Gastronomie. (12) Hier werden dann auch die letzten Stammdaten zu den Produkten erfasst und verknüpft wie beispielsweise Artikelbezeichnung, Stückzahl, Schlachtdatum und Schlacht-Nummer. (13) Mit der Zuordnung der zuverarbeitenden Fleischerzeugnisse zum Lieferschein in einem \ac{erp}-System enden die betrachteten Informationswege in der Fleischindustrie.
+Abbildung \ref{fig:data-stream-meat-industry} zeigt den nachfolgend beschriebenen Datenstrom zwischen den einzelnen Produktionsstufen der Fleischindustrie. (1) Jungtiererzeuger und Viehhalter senden jeweils eine Futtermittelbestellung an den Futtermittellieferanten. (2) Nach erfolgreicher Lieferung informiert der Futtermittellieferant den privaten Viehhandel bzw. die Viehvermarktungsgenossenschaften respektive Erzeugergemeinschaften. Die Viehhalter melden einerseits (3) die Aufnahme der Jungtiere und andererseits (4) die schlachtreife von Tieren an die Viehvermarktungsgenossenschaften zur Weitervermittlung and die Schlacht- und Zerlegebetriebe. (5) Bei der Weitervermittlung werden die Informationen über die Tiere an Schlacht- und Zerlegebetriebe übermittelt. (6) Mit dem Lieferauftrag initiiert das Schlachtunternehmen die Bestellung und den Transport der schlachtreifen Tiere. (7) Die Viehvermarktungsgenossenschaften bestätigen den Lieferauftrag mit einer elektronischen Ankündigung der Schlachtviehlieferung. Bei der Anlieferung der Tiere gleicht das Schlachtunternehmen die tatsächliche angelieferte Anzahl mit der bestellten Menge ab und meldet die Werte an die Viehvermarktungsgenossenschaften zurück. Mit dieser Wareneingangsmeldung kann die Viehvermarktungsgenossenschaft den Bestand und die aktuellen Standorte der Tiere aktualisieren. (9) Im Schlachtunternehmen werden dann weitere Informationen zu den Stammdaten der Tiere erfasst. Dazu zählen die \ac{vvvo}-Nummern der Landwirte, eine Vergabe Partie-Nummer je Lkw und eine fortlaufende Schlachtnummer. (10)Anschließend werden die Informationen wieder an die Viehvermarktungsgenossenschaft zurück gemeldet. (11) Letztendlich bedienen die Schlacht- und Zerlegebetriebe die Bestellungen der Fleischwerke, Lebensmitteleinzelhandel, Metzgereien und die Gastronomie. (12) Hier werden dann auch die letzten Stammdaten zu den Produkten erfasst und verknüpft wie beispielsweise Artikelbezeichnung, Stückzahl, Schlachtdatum und Schlacht-Nummer. (13) Mit der Zuordnung der zuverarbeitenden Fleischerzeugnisse zum Lieferschein in einem \ac{erp}-System enden die betrachteten Informationswege in der Fleischindustrie.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{pictures/data-stream-meat-industry-numbered}
-	\caption[Datenströme innerhalb der Wertschöpfungskette]{Datenströme innerhalb der Wertschöpfungskette \textcolor{red}{QUELLE}}
+	\caption[Datenströme innerhalb der Wertschöpfungskette]{Datenströme innerhalb der Wertschöpfungskette nach \citet{Petersen2010, Voss2010, Beck2008}}
 	\label{fig:data-stream-meat-industry}
 \end{figure}
 
@@ -70,22 +70,22 @@ Der Ist-Prozess (Abbildung \ref{fig:business-process-epc-diagramm}) durchläuft 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{pictures/business-process-source-epc-diagram-bw}
-	\caption[Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation]{Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation}
+	\caption[Ist-Geschäftsprozess Chargenrückverfolgung]{Ist-Geschäftsprozess Chargenrückverfolgung in eEPK Notation}
 	\label{fig:business-process-epc-diagramm}
 \end{figure}
 
 \paragraph{Soll-Prozess}
-Während im Ist-Prozess (Abbildung \ref{fig:business-process-epc-diagramm}) viele verschiedene IT-Systeme zum Einsatz kommen um alle Chargeninformationen zusammenzutragen, wird im Soll-Prozess das Blockchain Netzwerk und darauf aufsetzende dezentrale Applikationen genutzt. Betrachtet man die einzelnen Prozessschritte so ändert sich bei dem Einsatz einer Blockchain oberflächlich nichts, bei näherer Betrachtung wird dann allerdings deutlich, dass sämtliche Informationen zur Rückverfolgung der Charge vom Blockchain Netzwerk zur Verfügung gestellt werden und nicht in einzelnen Datensilos liegen wie im Ist-Prozess. So dient die Blockchain als gemeinsame Datenbasis für sämtliche Informationen die während der Produktion vom Erzeuger bis zum Lebensmitteleinzelhandel erhoben werden. Änderungen werden transparent in der Blockchain erfasst und sind durch den Konsensmechanismus vor nachträglicher Manipulation geschützt. 
+Während im Ist-Prozess (Abbildung \ref{fig:business-process-epc-diagramm}) viele verschiedene IT-Sys\-teme zum Einsatz kommen um alle Chargeninformationen zusammenzutragen, wird im Soll-Prozess das Blockchain Netzwerk und darauf aufsetzende dezentrale Applikationen genutzt. Betrachtet man die einzelnen Prozessschritte so ändert sich bei dem Einsatz einer Blockchain oberflächlich nichts, bei näherer Betrachtung wird dann allerdings deutlich, dass sämtliche Informationen zur Rückverfolgung der Charge vom Blockchain Netzwerk zur Verfügung gestellt werden und nicht in einzelnen Datensilos liegen wie im Ist-Prozess. So dient die Blockchain als gemeinsame Datenbasis für sämtliche Informationen die während der Produktion vom Erzeuger bis zum Lebensmitteleinzelhandel erhoben werden. Änderungen werden transparent in der Blockchain erfasst und sind durch den Konsensmechanismus vor nachträglicher Manipulation geschützt. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\linewidth]{pictures/business-process-target-epc-diagram-bw}
-	\caption[Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation]{Darstellung des Geschäftsprozess Chargenrückverfolgung in eEPK Notation}
+	\includegraphics[width=0.92\linewidth]{pictures/business-process-target-epc-diagram-bw}
+	\caption[Soll-Geschäftsprozess Chargenrückverfolgung]{Soll-Geschäftsprozess Chargenrückverfolgung in eEPK Notation}
 	\label{fig:target-business-process}
 \end{figure}
 
 \subsection{Systementwurf gemäß Architekturkonzept}\label{system-design-concept}
-Unter berücksichtigung der Resultate aus Kapitel \ref{sec:solution-concept} im Kontext des Anwendungsfalls ergibt sich die Grobarchitektur für das System wie in Abbildung \ref{fig:blockchain-system-architecture} dargestellt.
+Unter berücksichtigung der Resultate aus Kapitel \ref{sec:solution-concept} im Kontext des Anwendungsfalls ergibt sich die Grobarchitektur für das System wie in Abbildung \ref{fig:blockchain-system-architecture} dargestellt. Außerdem wird ein einzelner Knoten der Gesamtarchitektur im Detail beschrieben.
 
 \begin{figure}[H]
 	\centering
@@ -114,6 +114,7 @@ Neue Transaktionen im Netzwerk werden über ein User Interface durch einen Teiln
 	\item Validation.
 \end{itemize}
 
+\noindent
 Das Endorsement beginnt mit der Übermittlung der Transaktion zu einem Peer. Dieser verteilt die Transaktion im Netzwerk. Jeder Peer simuliert und prüft nun die Transaktion anhand der Geschäftslogik (Smart Contract). Nach erfolgreicher Prüfung erhält der Transaktionssteller eine Endorsement Signatur, welche an den Orderer Service weitergeleitet wird (Ordering). An dieser Stelle wird die Konsensmechanik durchlaufen und wenn ein Konsens über das Ergebnis der Transaktion hergestellt wurde (Validation) gibt der Orderer Service die Transaktion für das Ledger frei.
 
 \begin{figure}[H]
@@ -123,7 +124,7 @@ Das Endorsement beginnt mit der Übermittlung der Transaktion zu einem Peer. Die
 	\label{fig:transaction-flow}
 \end{figure}
 
-\subsubsection{Smart Contracts / Business Netzwerk Modell}\label{smart-contracts}
+\subsubsection{Smart Contracts}\label{smart-contracts}
 Smart Contracts sind abgebildet als \textit{Transaction Processor Functions}. Zusätzlich werden für Hyperledger Fabric noch Definitionen zu \textit{Participants}, \textit{Assets} und \textit{Queries} erfasst. Diese Komponenten bilden zusammen das \textit{\ac{bna}} und stellen die Geschäftslogik dar. Anforderung \textit{A1.1} wird mit dem \textit{Business Network Archive} realisiert. Hyperledger Fabric bringt eine eigene Modellierungssprache mit. Mit dieser Sprache werden \textit{Assets}, \textit{Participants} und \textit{Transactions} modelliert. Die Sprache unterstützt Vererbung, Templates und abstrakte Klassen, ähnlich der objektorientierten Programmierung.
 
 Damit Transaktionen im Netzwerk verarbeitet werden können, müssen zugehörige \textit{Assets} modelliert und später im System angelegt werden. Für die transparente, lückenlose Rückverfolgung von Chargen sind folgende \textit{Assets} modelliert worden:
@@ -134,6 +135,7 @@ Damit Transaktionen im Netzwerk verarbeitet werden können, müssen zugehörige 
 	\item \textit{BatchNetwork}
 \end{itemize}
 
+\noindent
 Mit einem \textit{Asset} \textit{Material} werden die Tiere bzw. Erzeugnisse der Produktionsbetriebe abgebildet. Sie werden identifiziert über eine global eindeutige Nummer. Eine Charge ist definiert als \textit{Batch} und ebenfalls wie ein \textit{Material} global eindeutig identifizierbar. Zur darstellung eines Chargengraphs dient die Entität \textit{BatchNetwork}. Darüber hinaus werden noch \textit{Enumerations} und \textit{Concepts} verwendet, um das modellierte System möglichst modular halten zu können. So ist eine nachträgliche Erweiterung bzw. Anpassung ohne großen Aufwand realisierbar. Es wurden folgende Enumerations und Concepts modelliert:
 
 \begin{itemize}
@@ -152,9 +154,8 @@ Mit einem \textit{Asset} \textit{Material} werden die Tiere bzw. Erzeugnisse der
 	\label{fig:hlc-food-chain-model-assets}
 \end{figure}
 
-Abbildung \ref{fig:hlc-food-chain-model-assets} stellt die Beziehungen zwischen den \textit{Assets}, \textit{Enumerations} und \textit{Concepts} in Form eines UML Klassendiagramms dar.
-
-Die Modellierung der \textit{Participants} ist relativ simpel gehalten. Es gibt eine abstrakte Entität \textit{Company} von der sich jeweils eine Teilnehmerkategorie des Blockchain Netzwerk spezialisiert. Eine \textit{Company} wird identifiziert durch die \ac{gln}\footnote{Die \ac{gln} ist eine zentral vergebene Identifikationsnummer von der GS1-Organisation zur eindeutigen Identifikation von Betriebsstätten.}. Außerdem wurde noch ein komplexer Datentyp in Form eines \textit{Concepts} verwendet. Mit dem \textit{Address} \textit{Concept} wird eine reguläre Geschäftsadresse des Unternehmens abgebildet und als eigenes Attribut der \textit{Company} Entität verwendet. Anforderung \textit{A2.2} wird mit dieser Datenstruktur erfüllt. In Abbildung \ref{fig:hlc-food-chain-model-participants} wird das beschriebene Konstrukt als Klassendiagramm dargestellt.
+\noindent
+Abbildung \ref{fig:hlc-food-chain-model-assets} stellt die Beziehungen zwischen den \textit{Assets}, \textit{Enumerations} und \textit{Concepts} in Form eines UML Klassendiagramms dar. Die Modellierung der \textit{Participants} ist relativ simpel gehalten. Es gibt eine abstrakte Entität \textit{Company} von der sich jeweils eine Teilnehmerkategorie des Blockchain Netzwerk spezialisiert. Eine \textit{Company} wird identifiziert durch die \ac{gln}\footnote{Die \ac{gln} ist eine zentral vergebene Identifikationsnummer der GS1-Organisation zur eindeutigen Identifikation von Betriebsstätten.}. Außerdem wurde noch ein komplexer Datentyp in Form eines \textit{Concepts} verwendet. Mit dem \textit{Address} \textit{Concept} wird eine reguläre Geschäftsadresse des Unternehmens abgebildet und als eigenes Attribut der \textit{Company} Entität verwendet. Anforderung \textit{A2.2} wird mit dieser Datenstruktur erfüllt. In Abbildung \ref{fig:hlc-food-chain-model-participants} wird das beschriebene Konstrukt als Klassendiagramm dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -163,6 +164,7 @@ Die Modellierung der \textit{Participants} ist relativ simpel gehalten. Es gibt 
 	\label{fig:hlc-food-chain-model-participants}
 \end{figure}
 
+\noindent
 Die dritte Komponente des \textit{\ac{bna}} ist die Menge an \textit{Transactions} (Abbildung \ref{fig:hlc-food-chain-model-transactions}). \textit{Transactions} werden von \textit{Participants} ausgelöst und sie verändern oder erzeugen \textit{Assets}. Entsprechend wurden die Geschäftsvorgänge abgebildet die nötig sind um eine Chargenrückverfolgung zu ermöglichen (siehe Kapitel \ref{goal-description}). Es wurde eine \textit{Transaction} modelliert zum erzeugen von neuem Material - \textit{produceMaterial}. Diese \textit{Transaction} verlangt mehrere Parameter. Bis auf den Parameter \textit{newMaterial} sind alle weiteren Parameter optional. \textit{newMaterial} enthält alle Daten für ein neues Tier, das im Netzwerk registriert wird. Die optionalen Parameter werden verwendet, wenn in späteren Produktionsschritten vorhandene Erzeugnisse zu Zwischenprodukten weiterverarbeitet werden. Des weiteren sind \textit{Transactions} modelliert mit denen die Eigentumsverhältnisse eines \textit{Assets} verändert werden können. Außerdem lassen sich Chargen angelegen und mit registrierten Tieren verknüpfen. 
 
 \begin{figure}[H]
@@ -187,6 +189,7 @@ Administration und Interaktion mit dem System wird über ein Identity Management
 	\item einer Zertifikatsrichtlinie mit den Anforderungen der \ac{pki} für ihre Verfahren. Außenstehende können damit die Vertrauenswürdigkeit der \ac{pki} analysieren.
 \end{itemize}
 
+\noindent
 Am Beispiel der Zertifikatsausstellung soll die Funktionsweise des \textit{Membership Service Providers} dargestellt werden. Zur Veranschaulichung des Ablaufs dient Abbildung \ref{fig:hyperledger-fabric-membership-blockchain}.
 
 \begin{figure}[H]
@@ -196,12 +199,15 @@ Am Beispiel der Zertifikatsausstellung soll die Funktionsweise des \textit{Membe
 	\label{fig:hyperledger-fabric-membership-blockchain}
 \end{figure}
 
+\noindent
 Bevor eine Transaktion ins Netzwerk zur Verarbeitung eingebracht werden kann, muss sich ein Teilnehmer gegenüber dem System authentifizieren. Hierfür ist ein gültige Ausweisdokument (in diesem Beispiel die digitale Identität) notwendig. Um diese ausgehändigt zu bekommen, werden folgende Schritte durchlaufen: Der entsprechende Teilnehmer meldet sich bei der zuständigen Stelle zur Registration (siehe Abbildung: Registrierungsstelle RA) und beantragt ein Ausweisdokument (1). Damit das Ausweisdokument eindeutig zugeordnet werden kann, ist dieses mit den für den Teilnehmer notwendigen und spezifischen Informationen ausgestattet. Die Registrierungsstelle überprüft die hinterlegten Informationen und bestätigt (2) diese gegenüber der Zertifizierungsstelle (CA), welche im nachfolgenden Schritt das entsprechende Zertifikat (digitale Identität) ausstellt (3). Mit Hilfe dieses Zertifikats kann sich der Teilnehmer dann gegenüber dem System authentifizieren (4). Zur Überprüfung der Gültigkeit und Integrität des Dokuments wird die digitale Identität im abschließenden Schritt gegenüber einer Validierungsstelle geprüft (5). Diese gleicht alle hinterlegten Informationen der CA (6) mit dem vorliegenden Dokument ab und bestätigt im Idealfall zum einen die Echtheit der Person und zum anderen auch die Echtheit und den Inhalt des Zertifikats (7). Der Teilnehmer beweist mithilfe der digitalen Identität, dass es sich wirklich um diesen Teilnehmer handelt.
 
 Der \textit{Membership Service Provider} ist so konzipiert, dass er bei Bedarf auch extern bereitgestellt werden könnte. So ist den Teilnehmern freigestellt, ob sie den Dienst selber betreiben oder das gesamte Netzwerk beispielsweise durch eine externe Zertifikatstelle die Identitätsvergabe regelt.
 
 \subsubsection{User Interface / \DH Apps}
 Endanwender sollen mit dem Gesamtsystem über GUI-Applikationen interagieren. Dazu wurden Mockups für die einzelnen Oberflächen designt. Der Einstieg erfolgt über eine sogenannte Launchpad Seite. Alle weiteren Applikationen lassen sich vom Launchpad aus erreichen. Das Launchpad dient dem Endanwender als zentrale Anlaufstelle um alle Geschäftsvorgänge abzuwickeln. Applikationen werden als Kachel in unterschiedlichen Gruppen angezeigt. Dabei wurde jeweils eine Gruppe für Asset Operationen und Chargen Operationen modelliert (siehe Abbildung \ref{fig:ui-launchpad}). Die Kacheln sind nach dem Ablauf des Lebenszyklus angeordnet. Beginnend mit der Anmeldung eines neuen Tieres im Netzwerk (\textit{Register Asset}).
+
+Über diese Oberfläche kann ein Anwender die Eigenschaften des zu registrierenden Tieres erfassen. Zwingend nötige Informationen sind mit einem Stern am Beginn der Formularzeile markiert (Abbildung \ref{fig:ui-register-asset}). So sind bei einem Ferkel beispielsweise keine Tiere weiterverarbeitet worden (Formularfeld \textit{Processed Assets}) sondern es stellt den Anfang des Warenstroms dar. Wenn ein Ferkel zum Mastbetriebt transportiert wurde und der Mastbetrieb dann ein schlachtreifes Schwein erfassen will hat er die Möglichkeit das Ferkel bei der Registrierung des Schweins mitanzugeben. Innerhalb der Transaktionslogik kann dann auf diese Information reagiert werden. Im einfachsten Fall erfährt das verarbeitete Asset eine Statusänderung.
 
 \begin{figure}[H]
 	\centering
@@ -210,8 +216,6 @@ Endanwender sollen mit dem Gesamtsystem über GUI-Applikationen interagieren. Da
 	\label{fig:ui-launchpad}
 \end{figure}
 
-Über diese Oberfläche kann ein Anwender die Eigenschaften des zu registrierenden Tieres erfassen. Zwingend nötige Informationen sind mit einem Stern am Beginn der Formularzeile markiert (Abbildung \ref{fig:ui-register-asset}). So sind bei einem Ferkel beispielsweise keine Tiere weiterverarbeitet worden (Formularfeld \textit{Processed Assets}) sondern es stellt den Anfang des Warenstroms dar. Wenn ein Ferkel zum Mastbetriebt transportiert wurde und der Mastbetrieb dann ein schlachtreifes Schwein erfassen will hat er die Möglichkeit das Ferkel bei der Registrierung des Schweins mitanzugeben. Innerhalb der Transaktionslogik kann dann auf diese Information reagiert werden. Im einfachsten Fall erfährt das verarbeitete Asset eine Statusänderung.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{pictures/ui-register-asset}
@@ -219,7 +223,7 @@ Endanwender sollen mit dem Gesamtsystem über GUI-Applikationen interagieren. Da
 	\label{fig:ui-register-asset}
 \end{figure}
 
-Des weiteren wurde eine Applikation modelliert mit der bereits erfasste Assets gepflegt werden können. Wie in Abbildung \ref{fig:ui-update-asset} durch die ausgegrauten Eingabefelder dargestellt, können bei einem vorhandenen Asset nicht alle Informationen nachträglich verändert werden. Schlüsselmerkmale wie die Identifikationsnummer werden vom System automatisch generiert beim Erfassen eines Assets und können daher nicht vom Anwender angepasst werden.
+Des weiteren wurde eine Applikation modelliert mit der bereits erfasste Assets gepflegt werden können. Wie in Abbildung \ref{fig:ui-update-asset} durch die ausgegrauten Eingabefelder dargestellt, können bei einem vorhandenen Asset nicht alle Informationen nachträglich verändert werden. Schlüsselmerkmale wie die Identifikationsnummer werden beim Erfassen eines Assets automatisch vom System generiert und können daher nicht durch den Anwender angepasst werden.
 
 \begin{figure}[H]
 	\centering
@@ -228,7 +232,7 @@ Des weiteren wurde eine Applikation modelliert mit der bereits erfasste Assets g
 	\label{fig:ui-update-asset}
 \end{figure}
 
-
+Da während der Produktionskette ein Asset mehrfach zwischen den Teilnehmern ausgetauscht werden kann, muss der Anwender eine Möglichkeit haben diesen Eigentumswechsel erfassen zu können. Diese Möglichkeit wird in Abbildung \ref{fig:ui-transfer-asset} dargestellt. Der Anwender sieht in der linken Liste alle Assets, welche aktuell im Besitz der Organisation sind. Nach der Auswahl eines Assets hat der Anwender die Möglichkeit in der rechten Detailansicht einen neuen Eigentümer auszuwählen. Alle Teilnehmer des Netzwerk werden in der Dropdown-Liste aufgeführt. Speichert der Anwender das Asset, erfolgt im Hintergrund die Ausführung der Transaktion im Blockchain Netzwerk. Die Benutzungsoberfläche reagiert auf das Ergebnis der Transaktion mit einer Aktualisierung der Asset Liste, sodass wieder nur die Assets angezeigt werden die auch tatsächlich im Besitz der Organisation sind.
 
 \begin{figure}[H]
 	\centering
@@ -237,7 +241,7 @@ Des weiteren wurde eine Applikation modelliert mit der bereits erfasste Assets g
 	\label{fig:ui-transfer-asset}
 \end{figure}
 
-Äquivalent zu den Assets wurden ebenfalls Applikationen zum Anlegen und Pflegen von Chargen modelliert. \textcolor{red}{PAAR SÄTZE NOCH ZU DEN MOCKUPS}
+Äquivalent zu den Assets wurden ebenfalls Applikationen zum Anlegen und Pflegen von Chargen modelliert. Wie in Kapitel \ref{sec:system-design} modelliert, wird eine Charge eindeutig über eine Identifikationsnummer identifiziert. Zusätzlich muss vom Anwender ein Zeitstempel erfasst werden, um eine Charge nachträglich einfacher finden zu können. Der Zeitstempel wird standardmäßig mit dem heutigen Datum vorbelegt, da beim Praxispartner mit Tageschargen gearbeitet wird. Damit im Nachgang ermittelt werden kann, welche Assets bzw. Chargen in die neue Charge eingeflossen sind lassen sich über zwei Eingabefelder im Netzwerk registrierte Chargen und Assets auswählen.
 
 \begin{figure}[H]
 	\centering

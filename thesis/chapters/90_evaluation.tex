@@ -1,33 +1,49 @@
 \section{Evaluation} \label{sec:evaluation}
-\textcolor{red}{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.}
+Gemäß der beschriebenen Vorgehensweise aus Kapitel \ref{sec:method} wurden das modellierte Lösungskonzept im Allgemeinen sowie der implementierte Prototyp hinsichtlich der Realitätsnähe, Übertragbarkeit und Innovationsgehalt durch ein Experteninterview evaluiert. Als Interviewpartner wurde der stellvertrende IT-Leiter des Westfleisch Konzern herangezogen. Die Auswahl erfolgte auf Grund der langjährigen Berufserfahrung innerhalb der Fleischwarenindustrie, sowie dem tiefen Prozesswissen auch für angrenzende Produktionsschritte. Ebenfalls ist der Interviewpartner im Forschungsprojekt \ac{reif}\footnote{Projektwebsite \url{https://ki-reif.de}} vertreten und kann hierdurch Kompetenzen im bereich der neuen Technologien wie \acf{ki}, Blockchain sowie \acf{iot} vorweisen. Das Interview fand in den Büroräumen der Westfleisch SCE mbH in Münster statt. Wie \citet{Ritchie2013} schreiben, dient dies dazu dem Interviewpartner ein möglichst komfortables und ruhiges Umfeld zu bieten.
 
-\subsection{Experteninterview}
+Das Interview verlief nach dem im Anhang \ref{sec:interview-guide} beschriebenen Interviewguide. Dabei wurde zunächst eine kurze Vorstellung der Position des Befragten im Konzern gegeben und anschließend anhand einer Präsentation die Ergebnisse diskutiert. Zum besseren Verständnis wurde noch eine kurze Demo des entwickelten Prototypen durchgeführt, damit der Befragte ein klares Bild vom umgesetzten Lösungskonzept und Systementwurf bekommt. Eine Transkription des vollständigen Interviews befindet sich in Anhang \ref{sec:interview}. Die im folgenden genannten Zeilenangaben beziehen sich auf das Transkript.
 
-\subsection{Kennzahlen}
+Das Oberthema Blockchain war dem Befragten nicht fremd, da er über das Forschungsprojekt \ac{reif} ebenfalls mit den Problemen der Rückverfolgung und manipulationssicherer Transaktionsverarbeitung in Berühung gekommen ist. Dies zeigen die folgenden Aussagen:
 
-\paragraph{Transaktionskosten}
+\begin{displayquote}
+    \glqq Thema Blockchain (..) ist ja in aller Munde zur Zeit. Damit haben wir auch Berührungspunkte im Forschungsprojekt, da wir dort auch versuchen die Wertschöpfungskette der Lebensmittelbranche zu optimieren.\grqq{} (Z. 41f)
+\end{displayquote}
 
-\paragraph{Transaktionsgeschwindigkeit}
+Der gewählte Ansatz das Blockchain Netzwerk mit der Hyperledger Fabric Software umzusetzen auf Grund der inherenten Eigenschaften und einiger Vorteile, die im Lösungskonzept (Kapitel \ref{sec:solution-concept}) beschrieben wurden, konnten vom Interviewpartner bestätigt werden.
 
-\paragraph{Datenverfügbarkeit}
+\begin{displayquote}
+    \glqq Macht Sinn, Hashwerte sagen mir noch was aus meinem Studium ((\textit{lachen})) auch wenn das schon etwas länger her ist.\grqq{} (Z. 83f)\\
+    \glqq Also hast du dich für dieses Hyperledger entschieden auf Grund der Geschwindigkeit und dem Fokus der Software auf den industriellen Sektor?\grqq{} (Z. 106f)
+\end{displayquote}
 
-\paragraph{Innovationskraft}
+Im Interview wurde nochmal deutlich, wie wichtig gemeinsames Netzwerk zur Chargenrückverfolgung eigentlich ist. Der Befragte beschreibt die Schwierigkeiten der verschiedenen Dateiformate bei der Integration von Zulieferen und Kunden, welche beim Einsatz eines gemeinsamen Blockchain Netzwerks wegfallen würden.
 
-\paragraph{Transaktional}
+\begin{displayquote}
+    \glqq Also können wir über die Smart Contracts unsere Geschäftslogik abbilden bzw. auch unsere Zulieferer und Endkunden. Wenn man bedenkt das wir so knapp 130 Kunden haben und jeder Kunde uns ein anderes Format für ihre Chargeninformationen vorgibt bzw. nutzt, dann würde so ein System schon wirklich Sinn machen allein aus Gründen der Standardisierung.\grqq{} (Z. 134ff)
+\end{displayquote}
 
-\paragraph{Geschwindigkeit}
+Der Befragte war positiv überrascht über die gewählte Benutzeroberfläche, welche mit dem SAP UI5 Framework im SAP Fiori Design modelliert wurde. Hier konnten vom Befragten noch Anmerkungen für eine zukünftige weiterentwicklung des Prototypen entgegen genommen werden.
 
-\paragraph{Transparenz}
+\begin{displayquote}
+    \glqq Also ich hab gesehen das du die Oberflächen mit Fiori modelliert hast. [...] Da könnte man sich sicherlich nochmal mit den Fachabteilungen hinsetzen und gucken das man da einen Feinschliff reinbekommt. Ich mein, für einen Prototyp ist das aus meiner Sicht völlig ausreichend, aber wenn man sowas dann auf einer Messe präsentieren möchte vielleicht im Zusammenspiel mit einem KI Systen ((\textit{lachen})) dann muss sowas ja heutzutage alles sehr gut aussehen.\grqq{} (Z. 161ff)
+\end{displayquote}
 
-\paragraph{Vertrauen}
+Bezüglich des Potentials des Prototypen hat der Befragte erwähnt, dass Lösungen bzw. Systeme die über die Unternehmensgrenze hinweg funktionieren sollen ein gewisser Anreiz für die Teilnehmer geschaffen werden muss damit sie überhaupt an so einem System teilnehmen.
 
-\paragraph{Unveränderlichkeit}
+\begin{displayquote}
+    \glqq Der entscheidende Punkt ist aus meiner Sicht ist oft die Marktdurchdringung. Du kannst noch so tolle Systeme und Technologien entwickeln, wenn niemand am Markt oder in der Branche dieses System nutzt, aus welchen Gründen auch immer, dann wird dieses System keinen Erfolg haben. Deshalb sollte man im Blick behalten, das mit so einem System eine Art \glqq Win-Win\grqq{} Situation hergestellt wird. Wenn ich als Teilnehmer des Netzwerk etwas hineingebe muss ich auch immer etwas herausbekommen, sonst sinkt mein Interesse dieses System zu verwenden.\grqq{} (Z. 182ff)
+\end{displayquote}
 
-\paragraph{Geschäftsregeln}
+Als mögliche weitere Ausbaustufen des Prototyps wären beispielsweise die Integration von Veterinärinformation zu den untersuchten Tieren sowie Daten zu den verwendeten Futtermitteln genannt.
 
-\paragraph{PKI}
+\begin{displayquote}
+    \glqq Natürlich, wie gesagt generell könnte man so ein System für sämtliche Tierarten erweitern, die wir so durch die Produktionswerke schieben. Obendrauf wäre es ziemlich interessant Auswertungen der Veterinäre mit zu erfassen. Endkunden wollen wissen wieviel Antibiotika in ihrer Wurst steckt. Grade bei Hühnerfleisch, da legen die Käufer sehr viel Wert drauf mittlerweile. Außerdem wird immer öfter nicht nur auf die Art und Weise der Haltung geschaut, sondern auch was die Tiere während ihres Lebens als Futter bekommen haben.\grqq{} (Z. 197ff)
+\end{displayquote}
 
-\paragraph{Platform}
+Abschließend wurde vom Befragten noch hinzugefügt, dass ein solches Blockchain Netzwerk vom Ansatz her als eine Vorstufe zur gesamten Optimierung der Wertschöpfungskette angesehen werden kann. Diese Optimierung wird aktuell durch den Befragten im Forschungsprojekt \ac{reif} erarbeitet.
 
+\begin{displayquote}
+    \glqq Demnach hast du mit deiner Arbeit ein ganzen Stück an Vorarbeit für das Forschungsprojekt REIF geleistet und bewiesen das eine Rückverfolgbarkeit mit dieser Technologie vom Landwirt bis zum Endkunden machbar ist.\grqq{} (Z. 220ff)
+\end{displayquote}
 
 \newpage

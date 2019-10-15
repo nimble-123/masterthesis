@@ -37,6 +37,7 @@
 \usepackage{nicefrac}
 \usepackage{listings} %For code in appendix
 \usepackage{textcomp} % for upquote
+\usepackage{lineno}
 
 \colorlet{punct}{red!60!black}
 \definecolor{background}{HTML}{EEEEEE}
@@ -190,7 +191,6 @@
   upquote=true  % requires textcomp
 }
 
-
 % For pdflatex
 \ifpdf
   % One of these two:
@@ -224,6 +224,9 @@
 %\cfoot{}
 %\rfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
+\clubpenalty10000
+\widowpenalty10000
+\displaywidowpenalty=10000
 
 \geometry{a4paper,left=3cm,right=3cm}
 %\geometry{a4paper,left=3cm,right=2.5cm}   % Please use these settings for a PhD-thesis
