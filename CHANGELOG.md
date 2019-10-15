@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.2.0](https://github.com/nlsltz/masterthesis/compare/v1.1.0...v1.2.0) (2019-10-15)
+
+
+### Features
+
+* Add section evaluation ([74da248](https://github.com/nlsltz/masterthesis/commit/74da248))
+
+
+
 # [1.1.0](https://github.com/nlsltz/masterthesis/compare/v1.0.0...v1.1.0) (2019-10-04)
 
 
