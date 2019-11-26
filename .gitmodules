@@ -4,3 +4,6 @@
 [submodule "workspace/source/hlc-food-chain-traceability"]
 	path = workspace/source/hlc-food-chain-traceability
 	url = https://github.com/nimble-123/hlc-food-chain-traceability.git
+[submodule "workspace/source/ui5-foodchain-batch-graph"]
+	path = workspace/source/ui5-foodchain-batch-graph
+	url = https://github.com/nimble-123/ui5-foodchain-batch-graph.git
