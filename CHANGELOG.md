@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.4.0](https://github.com/nlsltz/masterthesis/compare/v1.3.1...v1.4.0) (2019-11-28)
+
+
+### Bug Fixes
+
+* Fix wrong figure version ([0855e39](https://github.com/nlsltz/masterthesis/commit/0855e39))
+
+
+### Features
+
+* **Demo App:** Add demo app repository as submodule ([d0635ad](https://github.com/nlsltz/masterthesis/commit/d0635ad))
+* **Kolloquium:** Add slides ([6de052c](https://github.com/nlsltz/masterthesis/commit/6de052c))
+
+
+
 ## [1.3.1](https://github.com/nlsltz/masterthesis/compare/v1.3.0...v1.3.1) (2019-10-21)
 
 
